@@ -17,6 +17,7 @@ Formát: **animovaný whiteboard bez kreslící ruky, 8–10 minut, 1× týdně.
 | [docs/03-KNIHOVNA-HLASEK.md](docs/03-KNIHOVNA-HLASEK.md) | Hlášky a momenty pro cutaway. Náhrada archivu, na kterém stojí originál |
 | [docs/04-VIDEA-01-30.md](docs/04-VIDEA-01-30.md) | 30 videí — titulky, hooky, thumbnaily, cutaway assety |
 | [docs/05-VIZUALNI-STYL.md](docs/05-VIZUALNI-STYL.md) | Paleta, tah, opakující se postava, thumbnail systém, struktura dílu |
+| [docs/06-ROZBOR-FORMATU.md](docs/06-ROZBOR-FORMATU.md) | Rozbor tří dílů referenčního pořadu s 18× rozptylem — co dělá dobře, co špatně, a osmibodový checklist pro každý díl |
 | [docs/knihovna.html](docs/knihovna.html) | **Prohledatelná knihovna** — hlášky i videa v jedné stránce, filtr podle licence a hledání. [Publikovaná verze](https://claude.ai/code/artifact/7ee5ea1d-5326-4c94-8392-d8b44670518e) |
 
 ---
@@ -32,9 +33,11 @@ se nepíše.
 Každá položka v [03](docs/03-KNIHOVNA-HLASEK.md) má značku 🟢/🟡/🔴. Nemá-li ji,
 do videa nejde. Zdrojový soubor se bere z původního archivu, ne z YouTube ripu.
 
-**3. Titulek je konkrétní anomálie, ne obecná otázka.**
-„How does X work?" v angličtině prohraje se search giganty. Odůvodnění a benchmark
-v [RESEARCH.md](RESEARCH.md).
+**3. Titulek je konkrétní anomálie a předmětem je divák.**
+„How does X work?“ prohraje se search giganty. A v referenčním pořadu platí, že kde
+je předmětem titulku divák sám, výsledek je řádově vyšší — „Proč **nemáme** rádi
+církev“ 313 K vs „Jak vzniklo očkování“ 18 K. Data v
+[06-ROZBOR-FORMATU.md](docs/06-ROZBOR-FORMATU.md), benchmark v [RESEARCH.md](RESEARCH.md).
 
 ---
 
@@ -44,7 +47,8 @@ v [RESEARCH.md](RESEARCH.md).
 - [x] Právní režim cutawayů
 - [x] Knihovna zdrojů
 - [x] Startovní knihovna hlášek
-- [x] 30 videí — titulky a thumbnaily
+- [x] 30 videí — titulky, struktura a thumbnaily
+- [x] Rozbor formátu — co referenční pořad dělá dobře a co špatně
 - [x] Vizuální systém
 - [ ] Handle ověřený v YouTube Studiu (`@whatthefacttv`, záloha `@whatthefactusa`)
 - [ ] Scénář dílu 01

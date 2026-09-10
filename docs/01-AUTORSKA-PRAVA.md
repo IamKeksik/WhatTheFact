@@ -66,6 +66,123 @@ strukturu, kterou nemůžeš ovlivnit. Každý díl je loterie. To se nedá ská
 
 ---
 
+## 1b. „Vezmu jen audio, max 8 sekund" — vyvráceno
+
+Tohle je samostatná domněnka a zaslouží samostatnou odpověď, protože zní
+rozumně a je **nesprávná ve všech třech svých částech**.
+
+### Část A: hranice v sekundách neexistuje
+
+Neexistuje žádný počet sekund, pod kterým je užití automaticky legální.
+Není to 8, není to 3, není to 1.
+
+**Bridgeport Music v. Dimension Films** (6. obvod, 2005): žalovaný použil
+**dvousekundový** kytarový akord, navíc posunutý v tónové výšce. Soud rozhodl,
+že *de minimis* výjimka se u digitálního samplování zvukových nahrávek
+neuplatňuje vůbec, a napsal to takhle:
+
+> **„Get a license or do not sample."**
+
+Zdroje: [Wikipedia](https://en.wikipedia.org/wiki/Bridgeport_Music,_Inc._v._Dimension_Films) ·
+[Justia — plné znění](https://law.justia.com/cases/federal/appellate-courts/F3/410/792/574458/) ·
+[GWU Music Copyright Infringement Resource](https://blogs.law.gwu.edu/mcir/case/bridgeport-music-v-dimension-films-et-al/) ·
+[Harvard JOLT (PDF)](http://jolt.law.harvard.edu/articles/pdf/v29/29HarvJLTech551.pdf)
+
+**Nuance, kterou ti musím říct celou:** 9. obvod tohle odmítl následovat
+a v *VMG Salsoul v. Ciccone* (2016) *de minimis* obhajobu u zvukových nahrávek
+připustil
+([Washington University Law Review](https://openscholarship.wustl.edu/law_lawreview/vol95/iss1/9/)).
+
+Takže existuje **rozpor mezi obvody**. To ale není dobrá zpráva — znamená to,
+že tvoje expozice závisí na tom, ve kterém obvodu na tebe někdo podá žalobu.
+Na tom se nedá postavit produkční proces.
+
+### Část B: „jen audio" je horší, ne lepší
+
+Intuice říká, že audio je menší zásah než obraz. U autorského práva i u Content ID
+je to naopak.
+
+1. **Zvuková stopa filmu je součástí toho audiovizuálního díla.** Neexistuje
+   „vzal jsem jen zvuk, tak jsem film nepoužil".
+2. **Zvuková nahrávka má navíc vlastní, samostatné autorské právo.** Bereš tedy
+   potenciálně dvě práva místo jednoho.
+3. **Audio fingerprinting je nejsilnější část Content ID**, ne nejslabší.
+   Systém matchuje, i když nahrávku posuneš v tónové výšce, podložíš ji
+   voiceoverem nebo použiješ jen krátký úsek. A doloženo:
+   **Content ID matchlo nahrávky pod tři sekundy.**
+
+Zdroje: [YouTube Content ID — jak funguje](https://support.lacupulamusic.com/hc/en-us/articles/222954367-Youtube-Content-ID-How-does-it-work) ·
+[Gyre — legální užití trending audia 2026](https://gyre.pro/blog/using-trending-audio-legally-a-guide-for-youtube-creators) ·
+[Scott Smitelli — experimenty s audio Content ID](https://www.scottsmitelli.com/articles/youtube-audio-content-id/)
+
+### Část C: napárování na vlastní animaci ti nepomůže tam, kde to potřebuješ
+
+Napárování na tvoji animaci je transformativní **prvek**. Ale připomínám z § 1:
+fair use vyžaduje, aby cizí materiál **podpíral tvůj komentář**, ne aby byl tou
+atrakcí.
+
+A u cutaway gagu **hláška JE ta atrakce**. To je celý smysl toho střihu. Takže
+právě v té konfiguraci, kterou chceš, stojíš v nejslabší možné pozici — bez
+ohledu na to, že obraz je tvůj.
+
+### Co je na tvé domněnce pravdy
+
+Jedna věc: **často ti to projde.** To je pravda a nebudu to zastírat.
+
+- U velmi krátkých a zkreslených úseků match někdy nevznikne
+- YouTube navíc **nepřijímá referenční audio pod 20 sekund**, takže samotný
+  krátký úryvek nemusí být v databázi jako reference
+
+Ale to je **pravděpodobnost obejití, ne právní nárok.** Rozdíl je zásadní:
+
+| Tvoje domněnka | Realita |
+|---|---|
+| „nepodléhá to licenčním podmínkám" | podléhá; jen tě někdy nikdo nechytí |
+| „8 sekund je bezpečná hranice" | žádná hranice v sekundách neexistuje |
+| „audio je menší zásah" | audio je nejdetekovanější složka |
+
+A pozor — **Content ID není jediné riziko.** Zbývá manuální claim držitele práv
+a DMCA takedown, což už je **strike**, ne přesměrování příjmů. Tři striky
+a kanál je zrušený.
+
+### Proč to ten pořad může dělat a ty ne
+
+Tohle je jádro celé věci a je to jednoduché:
+
+> **Česká televize ten archiv vlastní nebo k němu má licenci.**
+
+Není legální ta *technika*. Legální jsou ta *práva*. Když pořad střihne hlášku
+z českého filmu, dělá to jako veřejnoprávní vydavatel s právy k tomu materiálu.
+Ty bys dělal totéž bez nich. Stejný střih, jiná právní situace.
+
+Inspirovat se formátem je v pořádku. Zkopírovat mechaniku, která stojí na
+právech, jež nemáš, v pořádku není.
+
+### Řešení, které ti dá 80 % efektu a 0 % rizika
+
+**Přenahraj hlášku vlastním hlasem.**
+
+Krátká fráze není chráněná (§ 2a). Když ji vyslovíš ty a napáruješ na svoji
+animaci, nepoužil jsi **ani** filmovou stopu, **ani** zvukovou nahrávku.
+Použil jsi nechráněný text. Content ID nemá co matchovat, protože v databázi
+nic takového není.
+
+A u nejsilnější části knihovny **můžeš použít originální zvuk legálně**:
+federální materiál je public domain, takže **skutečný hlas Teda Stevense**,
+jak říká „series of tubes", je tvůj k použití zdarma. Stejně slyšení Kongresu
+i audio ze SCOTUS.
+
+| Kategorie v knihovně | Originální audio? |
+|---|---|
+| Kongres, SCOTUS, federální PSA (🟢) | **ano, originál, zdarma** |
+| Prelinger po ověření (🟡) | **ano, originál** |
+| Film, seriál, zpravodajství (🔴) | **ne — přenahraj vlastním hlasem** |
+
+Praktický dopad: 🔴 kategorie je v knihovně **4 položky ze 46** (kategorie F — lokální zpravodajství). Zbytek můžeš
+brát v originále. Ta ztráta je mnohem menší, než to vypadalo.
+
+---
+
 ## 2. Dobrá zpráva: whiteboard animace ti dává čistou cestu
 
 Tady je pointa, kterou původní formát ani nemůže využít — ale ty ano, protože
