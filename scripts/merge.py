@@ -18,7 +18,7 @@ SHARDS = os.path.join(ROOT, "data", "shards")
 KEYS = ["id","quote","quote_verbatim","speaker","source_title","source_type","year",
         "audio_url","audio_url_type","youtube","start_time","duration_sec","duration_estimated",
         "context_before","context_after","cultural_background","why_it_lands",
-        "self_contained","licence","licence_note","topics","verification",
+        "self_contained","recognition","licence","licence_note","topics","verification",
         "verification_note","search_query","alt_sources","beat"]
 
 SOURCE_TYPES = {"congressional_hearing","scotus_argument","court_audio","federal_psa",
@@ -26,6 +26,7 @@ SOURCE_TYPES = {"congressional_hearing","scotus_argument","court_audio","federal
                 "radio","podcast","speech","film","tv","advertisement","other"}
 LICENCES = {"green_federal_pd","green_pd_age","yellow_verify","red_rights_reserved"}
 SELF = {"yes","partial","memory_dependent"}
+RECOG = {"universal","high","niche"}
 VERIF = {"verified_transcript","unverified"}
 
 def norm(q):
@@ -44,6 +45,7 @@ def validate(r, where):
     if r["source_type"] not in SOURCE_TYPES: errs.append(f"neznámý source_type {r['source_type']!r}")
     if r["licence"] not in LICENCES:         errs.append(f"neznámá licence {r['licence']!r}")
     if r["self_contained"] not in SELF:      errs.append(f"neznámé self_contained {r['self_contained']!r}")
+    if r["recognition"] not in RECOG:        errs.append(f"neznámé recognition {r['recognition']!r}")
     if r["verification"] not in VERIF:       errs.append(f"neznámé verification {r['verification']!r}")
     if not isinstance(r["duration_sec"], (int, float)) or r["duration_sec"] <= 0:
         errs.append("duration_sec musí být kladné číslo")

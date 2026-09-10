@@ -127,6 +127,10 @@ main{padding-block:8px 72px}
 .f-stop{background:var(--stop-soft); color:var(--stop); border:1px solid var(--stop)}
 .ver{font-family:var(--f-mono); font-size:10px; letter-spacing:.05em; padding:4px 7px; border:1px dashed var(--rule2); color:var(--ink3)}
 .v-ok{color:var(--ok); border:1px solid var(--ok)}
+.rec{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.05em; padding:4px 7px; cursor:help; white-space:nowrap}
+.rec-universal{background:var(--brand); color:var(--paper); border:1px solid var(--brand)}
+.rec-high{color:var(--brand); border:1px solid var(--brand)}
+.rec-niche{color:var(--ink3); border:1px dashed var(--rule2)}
 .sc{font-size:11.5px; color:var(--ink2); cursor:help; border-bottom:1px dotted var(--rule2)}
 .sc-yes{color:var(--ink)}
 .rid{font-family:var(--f-mono); font-size:10px; color:var(--ink3); word-break:break-all; margin-top:2px}
@@ -160,6 +164,8 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="stat s-warn"><b>@@YELLOW@@</b><span>žlutá · ověř soubor</span></div>
       <div class="stat s-stop"><b>@@RED@@</b><span>červená · přemluvit</span></div>
       <div class="stat"><b>@@SELF@@</b><span>samonosných</span></div>
+      <div class="stat"><b>@@UNI@@</b><span>zná každý</span></div>
+      <div class="stat"><b>@@NICHE@@</b><span>zná málokdo</span></div>
       <div class="stat s-warn"><b>@@VER@@</b><span>s ukotveným časem</span></div>
       <div class="stat"><b>@@YT@@</b><span>s odkazem na YouTube</span></div>
     </div>
@@ -180,7 +186,11 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       </div>
       <div class="chips"><span class="chiplab">Seam</span>@@SEAMTABS@@</div>
       <div class="chips">
-        <span class="chiplab">Licence</span>
+        <span class="chiplab">Pozná to</span>
+        <button class="chip" data-f="rec" data-v="universal" aria-pressed="false">zná každý</button>
+        <button class="chip" data-f="rec" data-v="high" aria-pressed="false">zná hodně lidí</button>
+        <button class="chip" data-f="rec" data-v="niche" aria-pressed="false">zná málokdo</button>
+        <span class="chiplab" style="margin-left:8px">Licence</span>
         <button class="chip" data-f="lic" data-v="green_federal_pd" aria-pressed="false">zelená</button>
         <button class="chip" data-f="lic" data-v="yellow_verify" aria-pressed="false">žlutá</button>
         <button class="chip" data-f="lic" data-v="red_rights_reserved" aria-pressed="false">červená</button>
@@ -213,7 +223,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
   var q = document.getElementById('q');
   var count = document.getElementById('count');
   var empty = document.getElementById('empty');
-  var on = {seam:[], lic:[], ver:[], self:[]};
+  var on = {seam:[], lic:[], ver:[], self:[], rec:[]};
 
   function apply(){
     var term = q.value.trim().toLowerCase();
@@ -226,6 +236,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
           && (!on.lic.length  || on.lic.indexOf(r.dataset.lic) > -1)
           && (!on.ver.length  || on.ver.indexOf(r.dataset.ver) > -1)
           && (!on.self.length || on.self.indexOf(r.dataset.self) > -1)
+          && (!on.rec.length  || on.rec.indexOf(r.dataset.rec) > -1)
           && (!term || r.dataset.hay.indexOf(term) > -1);
         r.classList.toggle('hidden', !ok);
         if(ok){ vis++; shown++; }

@@ -5,11 +5,39 @@ description: Sběr krátkých amerických zvukových hlášek (soundbitů) na cu
 
 # Sběr hlášek
 
-Knihovna je `data/soundbites.jsonl` — jeden JSON objekt na řádek, 26 klíčů,
+Knihovna je `data/soundbites.jsonl` — jeden JSON objekt na řádek, 27 klíčů,
 schéma v `references/schema.md`. Prohlížečka je `docs/soundbites.html`.
 
 Kanál střihne 1–8sekundový klip každých 45–60 s, aby zlomil rejstřík formální
 narace. Hledáš přesně tohle a nic jiného. Nepíšeš scénáře, neradíš — vyrábíš data.
+
+## Co hledáš především
+
+**Divák to má poznat.** Hláška, kterou Američan zná z filmu, seriálu, reklamy nebo
+virálu, funguje dvakrát: jednou obsahem věty a podruhé tím, že si posluchač
+vzpomene. To je hlavní ložisko a začíná se u něj.
+
+Pořadí priorit:
+
+1. **Kultovní film, seriál, animák** — SpongeBob, Simpsonovi, Anchorman, hlášky,
+   které lidé citují mezi sebou.
+2. **Virály** — Vine, YouTube, TikTok. Nejvyšší rozpoznatelnost u publika pod 35.
+3. **Reklamní slogany, které přeskočily do běžné řeči** — „Where's the beef?“,
+   „I've fallen and I can't get up“.
+4. **Lokální zprávy a bizarní segmenty**, které se staly memem.
+5. **Kongres a soudy** — teprve tady, a jen momenty, které se skutečně rozšířily.
+6. **Prelinger a federální archiv** — nejnižší priorita. Právně čisté, ale skoro
+   nic z toho nikdo nezná. Ber odsud jen to, co je vtipné samo o sobě.
+
+Pole `recognition` (`universal` / `high` / `niche`) tuhle osu měří a je stejně
+důležité jako `self_contained`. **Dávka, ve které je většina řádků `niche`, je
+špatná dávka**, i kdyby byla právně bez chybičky.
+
+Licence tomu nepřekáží. Kultovní materiál bude skoro celý `red_rights_reserved`
+a pro tenhle kanál je to normální stav: krátká fráze chráněná není, whiteboard
+scénu překreslí, hlas se přemluví. Jediné, na co si dej pozor, je **imitace
+konkrétního hlasu** — ta je v americké judikatuře žalovatelná (Midler v. Ford).
+Neutrální přečtení téže věty je bezpečné.
 
 ## Nejtvrdší pravidlo
 
@@ -103,11 +131,11 @@ původní řádek — to je jediné povolené přepsání.
 
 | Agent | Území |
 |---|---|
-| 1 | SCOTUS — ústní jednání, hledej `(Laughter)` v přepisech |
-| 2 | Kongres — slyšení k jednomu tématu, které panel nechápe |
-| 3 | Prelinger — jeden žánr: hygiena, autoškola, kancelář, randění |
-| 4 | Federální agentury — PSA, NASA, NTSB, FAA, civilní obrana |
-| 5 | Předválečné a němé — nahrávky do 1930, `green_pd_age` |
+| 1 | Kultovní film — jeden žánr nebo dekáda, hlášky, které lidé citují mezi sebou |
+| 2 | Seriály a animace — SpongeBob, Simpsonovi, sitcomy |
+| 3 | Virály — Vine, YouTube, TikTok, jedno období |
+| 4 | Reklamní slogany, které přeskočily do běžné řeči |
+| 5 | Kongres, soudy a archiv — jen momenty, které se skutečně rozšířily |
 
 Rotuj je mezi běhy, ať se knihovna nevykloní k jednomu seamu.
 

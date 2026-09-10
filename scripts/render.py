@@ -13,21 +13,26 @@ TPLP=os.path.join(ROOT,"scripts","soundbites.tpl.html")
 rows=[json.loads(l) for l in open(SRC) if l.strip()]
 
 SEAM={
+ "youtube_viral":("VIRÁL","Virály, Vine a YouTube","Nejvyšší rozpoznatelnost v celé knihovně. Skoro vždy červené — text se přemluví, scéna překreslí. Přesně na tohle je whiteboard stavěný."),
+ "tv":("SERIÁL","Kultovní seriály a animace","Hlášky, které Američan pozná z první slabiky. Práva hlídají studia agresivně, ale krátká fráze chráněná není."),
  "scotus_argument":("SCOTUS","Nejvyšší soud — ústní jednání","Přepisy značí smích slovem „(Laughter)“. Federální PD, ale bez přístupu k Oyez z tohoto prostředí nejde ukotvit čas — všechny řádky nesou dohledávací dotaz."),
  "congressional_hearing":("KONGRES","Slyšení Kongresu","Nejúrodnější seam. Záznam výboru je federální dílo; ripy z YouTube a C-SPAN slouží jen k nalezení místa."),
  "prelinger_film":("PRELINGER","Výchovné a společenské filmy","Nejvyšší podíl hlášek srozumitelných bez americké paměti. Zároveň nejvíc práce s licencí — PD je zhruba dvoutřetinová, ověřuje se po souboru."),
  "federal_psa":("PSA","Federální kampaně","Pozor: dvě nejfederálnější maskoti země jsou nejméně použitelné. Detail v licenčních poznámkách."),
- "advertisement":("REKLAMA","Reklamní kampaně","Vypadá jako veřejná osvěta, je to soukromá nezisková organizace. Původní zvuk nepoužitelný."),
+ "advertisement":("REKLAMA","Reklamní slogany a kampaně","Slogany, které přeskočily z televize do běžné řeči. Pozor na ochranné známky, ne jen na autorská práva."),
  "speech":("PROJEV","Projevy z Bílého domu","Prezidentova část je federální dílo. U první dámy to jednoznačné není."),
- "local_news":("LOKÁLKA","Lokální zprávy — virály","Vše červené: záznam patří stanici. Text se přemluví, scéna překreslí — přesně na to je whiteboard."),
+ "local_news":("LOKÁLKA","Lokální zprávy — virály","Vše červené: záznam patří stanici. Text se přemluví, scéna překreslí."),
  "other":("MISE","NASA a řízení letového provozu","Jediné dva řádky s reálně ukotveným časem v celé knihovně. Zvuk mise je federální PD; CVR z NTSB je uzavřený zdroj."),
 }
-ORDER=["scotus_argument","congressional_hearing","prelinger_film","other","local_news","federal_psa","advertisement","speech"]
+ORDER=["youtube_viral","tv","advertisement","local_news","congressional_hearing","scotus_argument","prelinger_film","other","federal_psa","speech"]
 
 LIC={"green_federal_pd":("ok","ZELENÁ · FEDERÁLNÍ PD"),
      "green_pd_age":("ok","ZELENÁ · PD VĚKEM"),
      "yellow_verify":("warn","ŽLUTÁ · OVĚŘ SOUBOR"),
      "red_rights_reserved":("stop","ČERVENÁ · PŘEMLUVIT")}
+RECOG={"universal":("Zná každý","Naprostá většina Američanů to okamžitě pozná."),
+       "high":("Zná hodně lidí","Pozná to velká část publika, typicky jedna generace."),
+       "niche":("Zná málokdo","Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.")}
 SELF={"yes":("Samonosné","Funguje na kohokoli. Absurdita je uvnitř věty."),
       "partial":("Částečně samonosné","Funguje samo, se znalostí zdroje je silnější."),
       "memory_dependent":("Vyžaduje paměť","Vtip žije ve vzpomínce na scénu. Nízká priorita.")}
@@ -37,6 +42,7 @@ def e(s): return html.escape(str(s), quote=True)
 def row_html(r):
     lic_cls, lic_lab = LIC[r["licence"]]
     self_lab, self_hint = SELF[r["self_contained"]]
+    rec_lab, rec_hint = RECOG[r["recognition"]]
     ver_ok = r["verification"] == "verified_transcript"
     dur = r["duration_sec"]
     pct = min(dur/10*100, 100)
@@ -62,7 +68,7 @@ def row_html(r):
     hay = " ".join([r["quote"], r["speaker"], r["source_title"], r["why_it_lands"],
                     r["cultural_background"], " ".join(r["topics"]), str(r["year"]), r["id"]]).lower()
     topics = "".join(f'<span class="tp">{e(t)}</span>' for t in r["topics"])
-    return f'''<article class="row" data-lic="{e(r['licence'])}" data-ver="{'v' if ver_ok else 'u'}" data-self="{e(r['self_contained'])}" data-hay="{e(hay)}">
+    return f'''<article class="row" data-lic="{e(r['licence'])}" data-ver="{'v' if ver_ok else 'u'}" data-self="{e(r['self_contained'])}" data-rec="{e(r['recognition'])}" data-hay="{e(hay)}">
   <div class="row-a">
     <p class="q">„{e(r['quote'])}“ {vq}</p>
     <p class="who"><b>{e(r['speaker'])}</b> · {e(r['source_title'])} · {r['year']}</p>
@@ -88,6 +94,7 @@ def row_html(r):
     {st}{bt}
     <span class="flag f-{lic_cls}">{lic_lab}</span>
     <span class="ver {'v-ok' if ver_ok else 'v-no'}">{'Ověřeno přepisem' if ver_ok else 'Neověřeno'}</span>
+    <span class="rec rec-{e(r['recognition'])}" title="{e(rec_hint)}">{rec_lab}</span>
     <span class="sc sc-{e(r['self_contained'])}" title="{e(self_hint)}">{self_lab}</span>
     <code class="rid">{e(r['id'])}</code>
   </div>
@@ -101,6 +108,8 @@ n_lic=collections.Counter(r["licence"] for r in rows)
 n_ver=sum(1 for r in rows if r["verification"]=="verified_transcript")
 n_self=sum(1 for r in rows if r["self_contained"]=="yes")
 n_yt=sum(1 for r in rows if r.get("youtube"))
+n_uni=sum(1 for r in rows if r["recognition"]=="universal")
+n_niche=sum(1 for r in rows if r["recognition"]=="niche")
 
 sections=[]
 for k in ORDER:
@@ -125,6 +134,8 @@ out = (TPL.replace("@@TOTAL@@", str(len(rows)))
           .replace("@@VER@@", str(n_ver))
           .replace("@@SELF@@", str(n_self))
           .replace("@@YT@@", str(n_yt))
+          .replace("@@UNI@@", str(n_uni))
+          .replace("@@NICHE@@", str(n_niche))
           .replace("@@SEAMTABS@@", seam_tabs)
           .replace("@@SECTIONS@@", "\n".join(sections)))
 open(OUT,"w",encoding="utf-8").write(out)

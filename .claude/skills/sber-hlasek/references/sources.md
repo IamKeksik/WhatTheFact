@@ -1,11 +1,31 @@
 # Zdroje
 
-Nehledej „funny quotes“. Hledej místa, kde se absurdita zapisuje úředně.
+Tiery jsou seřazené podle **rozpoznatelnosti**, ne podle čistoty licence. Kanál
+stojí na tom, že divák hlášku pozná; licence se řeší přemluvením.
+
+## Tier 0 — kultovní a virální materiál
+
+Hlavní ložisko. Skoro všechno je `red_rights_reserved`, a to je v pořádku: krátká
+fráze chráněná není, whiteboard scénu překreslí, hlas se přemluví.
+
+| Zdroj | K čemu |
+|---|---|
+| **Know Your Meme** | Nejlepší jediný zdroj v celém seznamu. Datace, první výskyt, přesné znění, čísla přehrání, často vložený originál |
+| **Reddit** | r/AskReddit, r/movies, r/nostalgia, r/OutOfTheLoop, r/tipofmytongue, r/VineClips, r/youtubehaiku. Vlákna, kde si lidé vzpomínají na hlášky — rozpoznatelnost je předfiltrovaná hlasováním |
+| Fandom wiki (spongebob.fandom.com a spol.) | Doslovné přepisy dílů, názvy epizod, data odvysílání |
+| IMDb, sekce Quotes | Doslovné znění filmových a seriálových replik |
+| Wikiquote | Totéž, s uvedením zdroje |
+| Dictionary.com / Urban Dictionary, hesla memů | Kdy fráze přeskočila do běžné řeči |
+| Soundboardy — 101soundboards, myinstants | Na **nalezení** a poslech. Vždy červené |
+
+Postup, který funguje: vlákno na Redditu vybere kandidáty → Know Your Meme dá
+dataci a znění → přepis na Fandomu nebo IMDb ověří doslovnost → YouTube ukotví čas.
 
 ## Tier 1 — federální, public domain, původní zvuk se smí použít
 
-Priorita. Jsou právně čisté **a** neúměrně často samonosné, protože vtip bývá
-v tom, že něco absurdního říká úředně někdo úřední.
+Nižší priorita, než se dřív myslelo. Právně jsou čisté a občas samonosné, ale
+rozpoznatelnost je většinou nulová — ber odsud jen to, co je vtipné samo o sobě
+nebo co se skutečně rozšířilo.
 
 | Zdroj | URL | Poznámka |
 |---|---|---|
@@ -63,6 +83,8 @@ Stahování z YouTube je navíc proti podmínkám služby. Skript
 
 ## Strategie hledání, které fungují
 
+0. **Začni u vlákna, kde se o tom lidi baví.** Hlasování v takovém vlákně už za
+   tebe rozpoznatelnost předfiltrovalo. Teprve pak ověřuj.
 1. **Grepuj přepisy na smích.** SCOTUS a Kongres ho značí doslova: `(Laughter)`,
    `[Laughter]`. Hledej `site:oyez.org "(Laughter)"` a čti, co tomu předchází.
 2. **Slyšení plus téma, kterému panel nerozumí.** Technologie, šifrování, sociální

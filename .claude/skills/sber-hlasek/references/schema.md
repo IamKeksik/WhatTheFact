@@ -1,6 +1,6 @@
 # Schéma řádku
 
-Jeden JSON objekt na řádek, **všech 26 klíčů vždy přítomných**. Validuje
+Jeden JSON objekt na řádek, **všech 27 klíčů vždy přítomných**. Validuje
 `scripts/merge.py`; co neprojde, se do knihovny nedostane.
 
 ```json
@@ -25,6 +25,7 @@ Jeden JSON objekt na řádek, **všech 26 klíčů vždy přítomných**. Validu
   "cultural_background": "Proč to Američan pozná. Kdy to vstoupilo do kultury, jak široce, čeho je to zkratka.",
   "why_it_lands": "Mechanismus. Je absurdita uvnitř věty, v přednesu, nebo v ironii toho, kdo to říká?",
   "self_contained": "yes",
+  "recognition": "universal",
   "licence": "yellow_verify",
   "licence_note": "Co přesně ověřit a proč.",
   "topics": ["regulátoři, co nechápou, co regulují", "internetová infrastruktura"],
@@ -64,6 +65,20 @@ neposoudí, jestli vtip sedne.
 - `partial` — funguje samo, se znalostí zdroje je to silnější.
 - `memory_dependent` — humor žije ve vzpomínce na scénu. **Zapisuj, ale je to
   nízká priorita.** V `why_it_lands` napiš natvrdo, co musí posluchač znát předem.
+
+**`recognition`** — jak moc to americký divák pozná. Druhá nejdůležitější
+klasifikace, protože kanál stojí na tom, že si posluchač vzpomene.
+
+- `universal` — pozná naprostá většina Američanů. *(„Where's the beef?“,
+  „Is this real life?“)*
+- `high` — pozná velká část publika, typicky jedna generace. *(Vine hlášky u lidí
+  pod 35, reklamy 80. let u lidí nad 45.)* Do `cultural_background` napiš která.
+- `niche` — rozpoznatelnost skoro nulová. Musí obstát čistě obsahem věty.
+
+`recognition` a `self_contained` jsou dvě různé osy a pletou se. `self_contained`
+říká, jestli vtip funguje bez kontextu; `recognition`, jestli si ho někdo
+vybaví. Nejlepší položky mají obojí. **Dávka, kde převažuje `niche`, je špatná
+dávka**, i když je právně bez chybičky.
 
 **`licence`**
 
@@ -143,6 +158,7 @@ kandidáty — první volba často padne na licenci.
 - `start_time` vyplněn ⇒ `verification` je `verified_transcript`.
 - `duration_sec` ≤ 10.
 - `topics` má 2 až 5 položek.
+- `recognition` je jedno z `universal`, `high`, `niche`.
 - `youtube` je pole; každá položka má `url` v kanonickém tvaru a `title`.
 - `id` je kebab-case a v knihovně unikátní; unikátní musí být i normalizované
   znění hlášky (malá písmena, bez interpunkce).
