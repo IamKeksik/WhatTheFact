@@ -1,1 +1,5 @@
-data/shards/merged/
+# Odkládací adresář paralelních agentů.
+# Agenti sem píšou svoje shardy, scripts/merge.py je zvaliduje, slije do
+# data/soundbites.jsonl (verzované) a spotřebované přesune do merged/.
+# Shardy jsou tedy vstup, ne výstup — verzovaná je knihovna, ne meziprodukt.
+data/shards/
