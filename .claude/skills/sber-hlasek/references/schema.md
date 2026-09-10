@@ -1,6 +1,6 @@
 # Schéma řádku
 
-Jeden JSON objekt na řádek, **všech 25 klíčů vždy přítomných**. Validuje
+Jeden JSON objekt na řádek, **všech 26 klíčů vždy přítomných**. Validuje
 `scripts/merge.py`; co neprojde, se do knihovny nedostane.
 
 ```json
@@ -14,6 +14,9 @@ Jeden JSON objekt na řádek, **všech 25 klíčů vždy přítomných**. Validu
   "year": 2006,
   "audio_url": "https://www.youtube.com/watch?v=VIDEO_ID&t=317s",
   "audio_url_type": "youtube_timestamp",
+  "youtube": [
+    {"url": "https://www.youtube.com/watch?v=6w5sfAyxmFk", "title": "Series of Tubes full speech – Senator Ted Stevens"}
+  ],
   "start_time": "00:05:17",
   "duration_sec": 5,
   "duration_estimated": true,
@@ -92,6 +95,32 @@ buď to zahoď, nebo zapiš jen použitelný úsek.
 by klip mohl přerušit. Takhle to bude střihač hledat, takže buď konkrétní a
 štědrý: ne `politika`, ale `regulátoři, co nechápou, co regulují`.
 
+**`youtube`** — pole uploadů na YouTube, které jsi **skutečně viděl**. Prázdné
+pole, když žádný neznáš. Střihač chce na video kliknout, takže když upload
+existuje, patří sem, i když `audio_url` míří jinam.
+
+```json
+"youtube": [
+  {"url": "https://www.youtube.com/watch?v=4G7H_6ts77Q", "title": "Congressman: Does TikTok access home WiFi network ?"},
+  {"url": "https://www.youtube.com/watch?v=7MXDBbZUFZc", "title": "Richard Hudson Asks TikTok CEO If The App Is Able To Access Other Devices On A Wi-Fi Network"}
+]
+```
+
+Pravidla:
+
+- `url` **musí** být kanonický tvar `https://www.youtube.com/watch?v=<11 znaků>`,
+  volitelně s `&t=<n>s`. Validátor nic jiného nepustí — ani `youtu.be/…`, ani
+  odkaz na výsledky hledání. Je to zároveň pojistka proti vymyšlenému ID.
+- `title` je název, jak ho ukázal výsledek hledání. Nepřepisuj ho, nevymýšlej.
+  Když jsou uploady dva, střihač si podle názvu vybere.
+- Když už umíš čas (`scripts/yt_timestamp.py`), přidej `&t=Ns` rovnou do URL.
+  Střihač pak klikne a je na místě.
+- **YouTube je náleziště, ne zdroj souboru.** Tohle pole slouží k tomu, aby si
+  střihač klip pustil a ověřil. Master pořád ber z původního archivu — proto je
+  `youtube` samostatné pole, a ne náhrada za `audio_url`.
+- Když je upload jediné, co máš, `audio_url` na něj klidně ukazuj — ale
+  `licence_note` musí říct, odkud se bere master.
+
 **`beat`** — `null` v režimu široké těžby. V režimu lovu ke scénáři objekt:
 
 ```json
@@ -114,6 +143,7 @@ kandidáty — první volba často padne na licenci.
 - `start_time` vyplněn ⇒ `verification` je `verified_transcript`.
 - `duration_sec` ≤ 10.
 - `topics` má 2 až 5 položek.
+- `youtube` je pole; každá položka má `url` v kanonickém tvaru a `title`.
 - `id` je kebab-case a v knihovně unikátní; unikátní musí být i normalizované
   znění hlášky (malá písmena, bez interpunkce).
 

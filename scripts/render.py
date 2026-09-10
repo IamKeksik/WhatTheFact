@@ -46,6 +46,9 @@ def row_html(r):
         links.append(f'<a class="lk lk-main" href="{e(r["audio_url"])}" target="_blank" rel="noopener">Zdroj zvuku ↗</a>')
     else:
         links.append('<span class="lk lk-none">Přímý odkaz na zvuk chybí</span>')
+    for i, y in enumerate(r.get("youtube") or []):
+        lab = "YouTube ↗" if i == 0 else f"YouTube {i+1} ↗"
+        links.append(f'<a class="lk lk-yt" href="{e(y["url"])}" target="_blank" rel="noopener" title="{e(y["title"])}">{lab}</a>')
     for u in r["alt_sources"]:
         host = u.split("/")[2].replace("www.","") if "//" in u else u
         links.append(f'<a class="lk" href="{e(u)}" target="_blank" rel="noopener">{e(host)}</a>')
@@ -97,6 +100,7 @@ for r in rows: groups[r["source_type"]].append(r)
 n_lic=collections.Counter(r["licence"] for r in rows)
 n_ver=sum(1 for r in rows if r["verification"]=="verified_transcript")
 n_self=sum(1 for r in rows if r["self_contained"]=="yes")
+n_yt=sum(1 for r in rows if r.get("youtube"))
 
 sections=[]
 for k in ORDER:
@@ -120,6 +124,7 @@ out = (TPL.replace("@@TOTAL@@", str(len(rows)))
           .replace("@@RED@@", str(n_lic["red_rights_reserved"]))
           .replace("@@VER@@", str(n_ver))
           .replace("@@SELF@@", str(n_self))
+          .replace("@@YT@@", str(n_yt))
           .replace("@@SEAMTABS@@", seam_tabs)
           .replace("@@SECTIONS@@", "\n".join(sections)))
 open(OUT,"w",encoding="utf-8").write(out)

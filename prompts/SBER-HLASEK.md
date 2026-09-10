@@ -99,6 +99,7 @@ cannot tell good rows from bad ones.
   "year": 2006,
   "audio_url": "https://www.youtube.com/watch?v=VIDEO_ID&t=0s",
   "audio_url_type": "youtube_timestamp",
+  "youtube": [{"url": "https://www.youtube.com/watch?v=VIDEO_ID", "title": "název, jak ho ukázalo hledání"}],
   "start_time": "00:00:12",
   "duration_sec": 6,
   "duration_estimated": false,

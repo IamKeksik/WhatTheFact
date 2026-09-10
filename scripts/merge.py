@@ -16,7 +16,7 @@ LIB = os.path.join(ROOT, "data", "soundbites.jsonl")
 SHARDS = os.path.join(ROOT, "data", "shards")
 
 KEYS = ["id","quote","quote_verbatim","speaker","source_title","source_type","year",
-        "audio_url","audio_url_type","start_time","duration_sec","duration_estimated",
+        "audio_url","audio_url_type","youtube","start_time","duration_sec","duration_estimated",
         "context_before","context_after","cultural_background","why_it_lands",
         "self_contained","licence","licence_note","topics","verification",
         "verification_note","search_query","alt_sources","beat"]
@@ -52,6 +52,15 @@ def validate(r, where):
     if not isinstance(r["topics"], list) or not (2 <= len(r["topics"]) <= 5):
         errs.append("topics musí být 2 až 5 položek")
     if not isinstance(r["alt_sources"], list): errs.append("alt_sources musí být pole")
+    if not isinstance(r["youtube"], list):
+        errs.append("youtube musí být pole (prázdné, když upload neznáš)")
+    else:
+        for y in r["youtube"]:
+            if not isinstance(y, dict) or "url" not in y or "title" not in y:
+                errs.append("položka youtube musí být objekt s url a title"); continue
+            m = re.fullmatch(r"https://www\.youtube\.com/watch\?v=([A-Za-z0-9_-]{11})(&t=\d+s)?", y["url"])
+            if not m:
+                errs.append(f"youtube url musí být https://www.youtube.com/watch?v=<11 znaků>[&t=Ns], ne {y['url']!r}")
     # tvrdá pravidla proti tichému omylu
     if r["verification"] == "verified_transcript" and not r["start_time"]:
         errs.append("verified_transcript bez start_time — ověřený řádek musí nést čas")

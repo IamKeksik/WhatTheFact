@@ -5,7 +5,7 @@ description: Sběr krátkých amerických zvukových hlášek (soundbitů) na cu
 
 # Sběr hlášek
 
-Knihovna je `data/soundbites.jsonl` — jeden JSON objekt na řádek, 25 klíčů,
+Knihovna je `data/soundbites.jsonl` — jeden JSON objekt na řádek, 26 klíčů,
 schéma v `references/schema.md`. Prohlížečka je `docs/soundbites.html`.
 
 Kanál střihne 1–8sekundový klip každých 45–60 s, aby zlomil rejstřík formální
@@ -19,6 +19,11 @@ Střihač musí kliknout, do pár vteřin hlášku slyšet a vzít si ji.
 Když to nejde, máš dvě možnosti a žádnou třetí: buď `verification: "unverified"`
 plus konkrétní `search_query`, co má střihač spustit, nebo položku vůbec nezapsat.
 Knihovnu nenafukuj.
+
+**Existuje-li k hlášce upload na YouTube, který jsi viděl, zapiš ho do pole
+`youtube`** — vždycky, i když `audio_url` míří na archiv. Střihač chce na video
+kliknout a poslechnout si to. Kanonický tvar `watch?v=<11 znaků>`, ideálně rovnou
+s `&t=Ns` z `scripts/yt_timestamp.py`. Validátor jiný tvar nepustí.
 
 **Nikdy si nevymýšlej ID videa, čas ani délku.** Detailní zákazy v
 `references/schema.md`, sekce „Proti falšování“. Řádek označený jako nejistý je
