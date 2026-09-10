@@ -183,6 +183,136 @@ brát v originále. Ta ztráta je mnohem menší, než to vypadalo.
 
 ---
 
+## 1c. „Ale reaction a recap kanály to dělají" — jak to funguje doopravdy
+
+Nejčastější a nejlegitimnější protiargument. Odpověď má tři části a první z nich
+je upřesnění: **nikdo tady netvrdí, že tvoje užití je nelegální.** Tvrzení je, že
+není bez licence a že je to riziko, které neovládáš. To je něco jiného.
+
+### Část A: ty kanály v bezpečné zóně nejsou
+
+Vypadá to tak zvenčí. Data říkají něco jiného.
+
+**1. Reakce na trailery se strikují.** Přesně ta kategorie, kterou jsi jmenoval.
+Warner Bros. dával copyright striky na reakce na trailer k filmu Minecraft
+([Techdirt, 2024](https://www.techdirt.com/2024/09/12/warner-bros-copyright-striking-reactions-to-the-minecraft-movie-trailer/)).
+Ne claim. **Strike.**
+
+Právní literatura je k téhle kategorii dost přímá: reaction videa, kde původní
+video běží celé na pozadí nebo v picture-in-picture, **pravděpodobně fair use
+nejsou**
+([Vondran Legal / JDSupra](https://www.jdsupra.com/legalnews/reaction-videos-and-copyright-law-best-9687112/) ·
+[Odin Law](https://odinlaw.com/reaction-videos-fair-use-copyright-law/) ·
+[Plagiarism Today](https://www.plagiarismtoday.com/2016/02/09/youtubes-reaction-video-controversy/)).
+
+Některá studia to tolerují jako zdarma marketing. Jiná to vymáhají. **Tolerance
+není licence** — dá se odvolat ve čtvrtek.
+
+**2. Recap kanály o ty peníze většinou přijdou.** Tohle je ta část, kterou zvenčí
+nevidíš:
+
+> Když recap video použije záběry ze studiového filmu, **téměř vždy** spustí
+> Content ID match, a **v nejlepším případě** to video monetizuje studio místo
+> tvůrce.
+
+([vidIQ](https://vidiq.com/blog/post/can-you-monetize-anime-clips-recaps-gameplay-youtube/) ·
+[recapo.ai](https://recapo.ai/blog/fair-use-for-movie-recap-videos/))
+
+Takže ten kanál, na který se díváš, možná má 2 miliony views na dílu a **nula
+dolarů z reklamy** — příjem šel studiu. Jeho model stojí na sponzorech a merchi,
+ne na AdSense. Ty views nejsou důkaz, že mu to platí.
+
+**3. „Poskládat příběh z částí filmu" je globálně nejžalovanější kategorie.**
+Japonské „fast movie" kanály — desetiminutový převyprávěný film s narací.
+Přesně ten formát:
+
+| Co se stalo | Výsledek |
+|---|---|
+| Trestní řízení | podmíněné tresty odnětí svobody + pokuty (2 mil. / 1 mil. / 500 tis. jenů) |
+| Civilní žaloba, Tokyo District Court, 11/2022 | **přes 500 milionů jenů** náhrady |
+| Poměr k výdělku | vydělali ~7 mil. jenů, platí ~500 mil. — **skoro 300×** |
+
+Zdroje: [TorrentFreak — odsouzení](https://torrentfreak.com/youtubers-who-uploaded-movie-edits-receive-suspended-prison-sentences-211118/) ·
+[Lexology — rozsudek](https://www.lexology.com/library/detail.aspx?g=0c7e20c9-835b-4d85-a4bc-b191b39dd9c0) ·
+[PitchMark](https://www.mynewsdesk.com/sg/pitchmark/news/japan-court-orders-jpy-500-million-in-damages-over-fast-movie-uploads-that-earned-just-jpy-7-million-for-the-infringer-459830) ·
+[Monolith Law](https://monolith.law/en/it/fast-movie)
+
+Jiná jurisdikce, jiná pravidla — ale ukazuje to, jak vypadá, když se držitel práv
+rozhodne přestat tolerovat.
+
+**4. Survivorship bias.** Vidíš kanály, které přežily. Nevidíš ty, které dostaly
+tři striky a zmizely. Ty nemají video, ve kterém by ti to řekly.
+
+### Část B: ale existuje reálný právní rozdíl — a je jinde, než čekáš
+
+Tady je poučná věc, a je ve tvůj prospěch to vědět.
+
+**Hosseinzadeh v. Klein** (SDNY, 2017): h3h3Productions **vyhráli**. Soudkyně
+Forrest rozhodla, že jejich reaction video je fair use *jako otázka práva*.
+
+Proč vyhráli? Přesně z tohoto důvodu:
+
+> Soud rozhodl, že video Kleinových je **kritický komentář** a **není tržní
+> substitut** originálu.
+
+Zdroje: [Copyright Office — souhrn (PDF)](https://www.copyright.gov/fair-use/summaries/hosseinzadeh-klein-sdny2017.pdf) ·
+[Loeb & Loeb](https://www.loeb.com/en/insights/publications/2017/08/hosseinzadeh-v-klein) ·
+[Plagiarism Today](https://www.plagiarismtoday.com/2017/08/24/h3h3-wins-summary-judgment/) ·
+[TechCrunch](https://techcrunch.com/2017/08/23/judge-sides-with-youtubers-ethan-and-hila-klein-in-copyright-lawsuit/)
+
+To je celá hra. Ne délka klipu. Ne „přidal jsem hodnotu". **Jestli je komentář
+tou podstatou.**
+
+A tady je ta asymetrie proti tvému původnímu plánu:
+
+| Užití | Co je podstata | Pozice ve fair use |
+|---|---|---|
+| Lore kanál analyzující film | **analýza** — klip ji ilustruje | silná |
+| Reaction s reálnou kritikou | **kritika** — viz Klein | silná (vyhrané) |
+| Recap převyprávějící film | klip **nahrazuje** originál | slabá (viz Japonsko) |
+| **Komediální cutaway** | **klip JE pointa** | **nejslabší** |
+
+Není to „oni legálně, ty nelegálně". Je to **oni mají lepší pozici, protože
+u nich klip podpírá komentář. U cutaway gagu klip žádný komentář nepodpírá —
+on je ta atrakce.**
+
+### Část C: a hlavně — riziko není symetrické
+
+Tohle je ten praktický důvod, proč jejich příklad není tvůj precedent:
+
+| | Zaběhnutý recap kanál | Tvůj kanál u třetího videa |
+|---|---|---|
+| Příjmy | sponzoři, merch, katalog | žádné |
+| Claim na jednom videu | ztráta jednoho příjmu z mnoha | ztráta všeho |
+| Tři striky | přežije, má právníky a zálohu | **konec** |
+| Riziko unese? | ano, je to nákladová položka | ne, je to existence |
+
+Oni si claim mohou dovolit. Ty u třetího dílu ne.
+
+### Co z toho plyne prakticky — a je to dobrá zpráva
+
+**1. Nestavěj formát tak, aby na 🔴 materiálu závisel.** Když ho potřebuješ
+k pointě, každý claim ti sundá díl. Když je bonus, claim ti sundá jeden gag.
+To je celý rozdíl mezi rizikem a nákladem.
+
+**2. Můžeš si tu pozici zlepšit — a shodou okolností tím zlepšíš i video.**
+
+Vzpomeň si na rozbor formátu, [§ 2.4](06-ROZBOR-FORMATU.md): cutaway, který
+**komentuje obsah**, funguje. Cutaway, který jen přeruší, je vata.
+
+*„Cibule mají vrstvy, zlobři mají vrstvy"* nad výkladem o vrstvení šifrování —
+to je vtip **o tom, co se právě vysvětluje.** To je blíž komentáři než náhodná
+hláška hozená do ticha.
+
+Takže **kreativně lepší volba je zároveň právně bezpečnější.** To se nestává
+často. Dělej každý cutaway argumentační vůči obsahu a máš obojí.
+
+**3. Testuj empiricky, ne právně.** Jestli to chceš zkusit, zkus to na jednom
+dílu se dvěma 🔴 cutawayi a koukni, co přijde. Ale architekturu postav tak, aby
+odpověď „přišel claim" neznamenala, že se formát rozpadl.
+
+---
+
 ## 2. Dobrá zpráva: whiteboard animace ti dává čistou cestu
 
 Tady je pointa, kterou původní formát ani nemůže využít — ale ty ano, protože
@@ -340,6 +470,11 @@ Zapiš si to jako produkční checklist. Před každým dílem:
    je to tvoje obrana za 30 sekund.
 4. **Není-li klip čistý, hláška se překreslí.** Text je zdarma vždy.
 5. **Nikdy nekresli chráněnou postavu.** Reálný člověk ano, fikční postava ne.
+6. **Každý cutaway musí komentovat obsah, ne jen přerušit.** Zlepšuje to video
+   ([06 § 2.4](06-ROZBOR-FORMATU.md)) a zároveň posouvá fair use pozici k tomu,
+   co u *Hosseinzadeh v. Klein* rozhodlo — komentář jako podstata (§ 1c).
+7. **Formát nesmí na 🔴 materiálu záviset.** Když je nutný k pointě, claim sundá
+   díl. Když je bonus, claim sundá jeden gag.
 
 > Toto je produkční politika, ne právní posudek. U čehokoli, co má reálné peníze
 > na stole (sponzor, velký rozpočet, sporný klip), si vezmi US IP právníka.
