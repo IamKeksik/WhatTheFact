@@ -269,12 +269,38 @@ A tady je ta asymetrie proti tvému původnímu plánu:
 |---|---|---|
 | Lore kanál analyzující film | **analýza** — klip ji ilustruje | silná |
 | Reaction s reálnou kritikou | **kritika** — viz Klein | silná (vyhrané) |
+| **Krátký komediální insert v jinak vlastním videu** | **video je vlastní, klip je ozdoba** | **středně silná** |
 | Recap převyprávějící film | klip **nahrazuje** originál | slabá (viz Japonsko) |
-| **Komediální cutaway** | **klip JE pointa** | **nejslabší** |
 
-Není to „oni legálně, ty nelegálně". Je to **oni mají lepší pozici, protože
-u nich klip podpírá komentář. U cutaway gagu klip žádný komentář nepodpírá —
-on je ta atrakce.**
+### Upřesnění k tomu třetímu řádku
+
+Dřívější verze tohoto dokumentu řadila komediální cutaway na **nejslabší** pozici.
+To bylo přehnané a je to opravené. Rozdíl je v tom, na jaké úrovni se to hodnotí.
+
+**Co platí a co hraje pro tebe:** fair use se posuzuje **per užití** taženého
+díla, ne per video — ale dva ze čtyř faktorů jsou u tvého uspořádání příznivé:
+
+- **Rozsah (faktor 3) se měří vůči originálu, ne vůči tvému videu.** Tohle si
+  většina lidí plete v obráceném směru. Šest sekund z devadesátiminutového filmu
+  je zanedbatelný zlomek **toho filmu**. To hraje pro tebe.
+- **Dopad na trh (faktor 4)**, v praxi nejsilněji vážený, je u tebe **skoro
+  nulový.** Nikdo se nerozhodne nepodívat se na film proto, že viděl šest sekund
+  v tvém explaineru. Recap kanál je přesně naopak — ten originál nahrazuje. To je
+  reálný a podstatný rozdíl mezi tebou a nimi.
+
+**Co zůstává slabé:** faktor účelu. Komediální beat, který „se k tomu nějak hodí",
+používá klip **pro tu samou zábavní hodnotu, jakou měl v originálu**. To je
+nejslabší druh transformativního nároku — ne nulový, ale slabý. Silnější je
+cutaway, který o obsahu **něco tvrdí** (viz níž, bod 2 v praktických důsledcích).
+
+**Co se tím nemění vůbec:** Content ID nedělá žádnou z těchto analýz. Osm insertů
+v dílu = osm expozic fingerprintu, bez ohledu na to, jak dobrý fair use argument
+máš. Právní pozice a provozní riziko jsou dvě různé věci a tvoje je dobrá
+v první a špatná ve druhé.
+
+Takže: **není to „oni legálně, ty nelegálně".** Máš slušnou pozici — lepší než
+recap kanály, slabší než analytické. Co ti chybí, není argument. Chybí ti
+licence a rozpočet na to, aby claim nebyl problém.
 
 ### Část C: a hlavně — riziko není symetrické
 

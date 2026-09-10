@@ -214,5 +214,5 @@ Plus dvě pravidla navíc, která formát nemá a mít by měl:
 10. **Highlighter Method** — vytiskni, zvýrazni každý koncept, cokoli zvýrazněného
     dvakrát slouč nebo vyhoď.
 
-Aplikováno na všech 30 dílů v [04-VIDEA-01-30.md](04-VIDEA-01-30.md) — každý má
+Aplikováno na všech 36 dílů v [04-VIDEA-01-30.md](04-VIDEA-01-30.md) — každý má
 vyplněnou premisu, loop, metaforu a otočku.

@@ -15,9 +15,10 @@ Formát: **animovaný whiteboard bez kreslící ruky, 8–10 minut, 1× týdně.
 | [docs/01-AUTORSKA-PRAVA.md](docs/01-AUTORSKA-PRAVA.md) | Co smíš a co ne. Proč „trochu to pozměním" nefunguje a proč je whiteboard výhoda |
 | [docs/02-ZDROJE.md](docs/02-ZDROJE.md) | Knihovna zdrojů podle licenčního rizika — zelená / žlutá / červená |
 | [docs/03-KNIHOVNA-HLASEK.md](docs/03-KNIHOVNA-HLASEK.md) | Hlášky a momenty pro cutaway. Náhrada archivu, na kterém stojí originál |
-| [docs/04-VIDEA-01-30.md](docs/04-VIDEA-01-30.md) | 30 videí — titulky, hooky, thumbnaily, cutaway assety |
+| [docs/04-VIDEA-01-30.md](docs/04-VIDEA-01-30.md) | 36 videí v šesti pilířích — titulky, premisa, loop, metafora, otočka, thumbnaily, cutaway assety |
 | [docs/05-VIZUALNI-STYL.md](docs/05-VIZUALNI-STYL.md) | Paleta, tah, opakující se postava, thumbnail systém, struktura dílu |
 | [docs/06-ROZBOR-FORMATU.md](docs/06-ROZBOR-FORMATU.md) | Rozbor tří dílů referenčního pořadu s 18× rozptylem — co dělá dobře, co špatně, a osmibodový checklist pro každý díl |
+| [docs/07-METODIKA.md](docs/07-METODIKA.md) | Podle čeho se vybírá téma a titulek — pět filtrů, čtyři pravidla, data na 15 dílech a jejich limity |
 | [docs/knihovna.html](docs/knihovna.html) | **Prohledatelná knihovna** — hlášky i videa v jedné stránce, filtr podle licence a hledání. [Publikovaná verze](https://claude.ai/code/artifact/7ee5ea1d-5326-4c94-8392-d8b44670518e) |
 
 ---
@@ -47,7 +48,8 @@ církev“ 313 K vs „Jak vzniklo očkování“ 18 K. Data v
 - [x] Právní režim cutawayů
 - [x] Knihovna zdrojů
 - [x] Startovní knihovna hlášek
-- [x] 30 videí — titulky, struktura a thumbnaily
+- [x] 36 videí — titulky, struktura a thumbnaily
+- [x] Metodika výběru témat a titulků
 - [x] Rozbor formátu — co referenční pořad dělá dobře a co špatně
 - [x] Vizuální systém
 - [ ] Handle ověřený v YouTube Studiu (`@whatthefacttv`, záloha `@whatthefactusa`)
