@@ -17,6 +17,7 @@ Formát: **animovaný whiteboard bez kreslící ruky, 8–10 minut, 1× týdně.
 | [docs/03-KNIHOVNA-HLASEK.md](docs/03-KNIHOVNA-HLASEK.md) | Hlášky a momenty pro cutaway. Náhrada archivu, na kterém stojí originál |
 | [docs/04-VIDEA-01-30.md](docs/04-VIDEA-01-30.md) | 30 videí — titulky, hooky, thumbnaily, cutaway assety |
 | [docs/05-VIZUALNI-STYL.md](docs/05-VIZUALNI-STYL.md) | Paleta, tah, opakující se postava, thumbnail systém, struktura dílu |
+| [docs/knihovna.html](docs/knihovna.html) | **Prohledatelná knihovna** — hlášky i videa v jedné stránce, filtr podle licence a hledání. [Publikovaná verze](https://claude.ai/code/artifact/7ee5ea1d-5326-4c94-8392-d8b44670518e) |
 
 ---
 

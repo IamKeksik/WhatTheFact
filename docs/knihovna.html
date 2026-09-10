@@ -1,0 +1,547 @@
+<title>Knihovna What The Fact</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F2ED; --card:#FBFAF7; --sunk:#EDEAE3;
+  --ink:#17171A; --ink2:#5A5A62; --ink3:#8A8A91;
+  --rule:#DCD7CC; --rule2:#C7C1B3;
+  --stamp:#1E4B87; --stamp-soft:#E4EAF3; --on-stamp:#FBFAF7;
+  --ok:#2C6E49; --ok-soft:#E1EEE6;
+  --warn:#8F6410; --warn-soft:#F5EBD6;
+  --stop:#AB2E24; --stop-soft:#F7E4E1;
+  --brand:#E03131;
+  --shadow:0 1px 2px rgba(23,23,26,.06), 0 8px 24px -16px rgba(23,23,26,.28);
+  --f-ui:'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-prose:'Newsreader', Georgia, 'Times New Roman', serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#161614; --card:#1E1E1B; --sunk:#121210;
+    --ink:#F0EEE8; --ink2:#A9A59C; --ink3:#7B7871;
+    --rule:#32322D; --rule2:#43433C;
+    --stamp:#84AEE6; --stamp-soft:#1B2739; --on-stamp:#10151D;
+    --ok:#6FBC8B; --ok-soft:#16261C;
+    --warn:#DDAC52; --warn-soft:#2A2213;
+    --stop:#EA8478; --stop-soft:#2E1A17;
+    --brand:#F2564F;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#161614; --card:#1E1E1B; --sunk:#121210;
+  --ink:#F0EEE8; --ink2:#A9A59C; --ink3:#7B7871;
+  --rule:#32322D; --rule2:#43433C;
+  --stamp:#84AEE6; --stamp-soft:#1B2739; --on-stamp:#10151D;
+  --ok:#6FBC8B; --ok-soft:#16261C;
+  --warn:#DDAC52; --warn-soft:#2A2213;
+  --stop:#EA8478; --stop-soft:#2E1A17;
+  --brand:#F2564F;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-ui); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--stamp); text-decoration-thickness:1px; text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--stamp); outline-offset:2px; border-radius:2px}
+
+/* ---------- masthead ---------- */
+.wrap{max-width:1120px; margin:0 auto; padding-inline:20px}
+.mast{padding-block:34px 22px; border-bottom:2px solid var(--ink)}
+.kicker{
+  font-family:var(--f-mono); font-size:11px; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink3);
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+}
+.kicker b{color:var(--brand); font-weight:600}
+h1{
+  font-family:var(--f-ui); font-weight:800; font-size:clamp(30px,6vw,46px);
+  letter-spacing:-.022em; line-height:1.02; margin:.28em 0 0; text-wrap:balance;
+}
+.dek{
+  font-family:var(--f-prose); font-size:17px; line-height:1.55;
+  color:var(--ink2); max-width:80ch; margin:12px 0 0;
+}
+
+/* ---------- toolbar ---------- */
+.bar{
+  position:sticky; top:0; z-index:20; background:var(--paper);
+  border-bottom:1px solid var(--rule); padding-block:12px;
+}
+.bar-in{display:flex; flex-direction:column; gap:12px}
+.tabs{display:flex; gap:0; border:1.5px solid var(--ink); width:fit-content; max-width:100%}
+.tab{
+  appearance:none; border:0; background:transparent; color:var(--ink);
+  font-family:var(--f-ui); font-size:13px; font-weight:700; letter-spacing:.02em;
+  padding:9px 16px; cursor:pointer; display:flex; gap:8px; align-items:baseline;
+}
+.tab + .tab{border-left:1.5px solid var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink); color:var(--paper)}
+.tab span{font-family:var(--f-mono); font-size:11px; opacity:.7; font-variant-numeric:tabular-nums}
+
+.controls{display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap}
+.search{flex:1 1 240px; min-width:0; position:relative}
+.search input{
+  width:100%; font-family:var(--f-ui); font-size:14px; color:var(--ink);
+  background:var(--card); border:1px solid var(--rule2); border-radius:0;
+  padding:9px 12px 9px 32px;
+}
+.search input::placeholder{color:var(--ink3)}
+.search svg{position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--ink3)}
+.chips{display:flex; gap:6px; flex-wrap:wrap; align-items:center}
+.chiplab{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink3); margin-right:2px;
+}
+.chip{
+  appearance:none; cursor:pointer; font-family:var(--f-mono); font-size:11px; font-weight:500;
+  padding:5px 9px; border:1px solid var(--rule2); background:var(--card); color:var(--ink2);
+  display:inline-flex; gap:6px; align-items:center;
+}
+.chip:hover{border-color:var(--ink3)}
+.chip[aria-pressed="true"]{background:var(--stamp); border-color:var(--stamp); color:var(--on-stamp)}
+.chip .dot{width:7px; height:7px; border-radius:50%; flex:none}
+.dot-ok{background:var(--ok)} .dot-warn{background:var(--warn)} .dot-stop{background:var(--stop)}
+.count{font-family:var(--f-mono); font-size:11px; color:var(--ink3); font-variant-numeric:tabular-nums; padding-top:6px}
+
+/* ---------- licence legend ---------- */
+.legend{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:24px 0 0;
+}
+.legend div{background:var(--card); padding:12px 14px}
+.legend dt{
+  font-family:var(--f-mono); font-size:11px; font-weight:600; letter-spacing:.06em;
+  display:flex; gap:7px; align-items:center; margin:0 0 4px;
+}
+.legend dd{margin:0; font-size:13px; color:var(--ink2); line-height:1.45}
+.l-ok dt{color:var(--ok)} .l-warn dt{color:var(--warn)} .l-stop dt{color:var(--stop)}
+
+/* ---------- sections ---------- */
+main{padding-block:8px 72px}
+.grp{margin-top:38px}
+.grp-head{
+  display:flex; gap:12px; align-items:baseline; flex-wrap:wrap;
+  padding-bottom:8px; border-bottom:1.5px solid var(--ink);
+  position:sticky; top:0; background:var(--paper); z-index:5; padding-top:10px;
+}
+.grp-id{
+  font-family:var(--f-mono); font-size:12px; font-weight:600; color:var(--brand);
+  letter-spacing:.1em;
+}
+.grp-head h2{
+  font-size:19px; font-weight:700; letter-spacing:-.012em; margin:0; flex:1 1 auto;
+}
+.grp-n{font-family:var(--f-mono); font-size:11px; color:var(--ink3); font-variant-numeric:tabular-nums}
+.grp-note{
+  font-family:var(--f-prose); font-size:14.5px; color:var(--ink2);
+  margin:10px 0 0; max-width:88ch;
+}
+
+/* ---------- quote rows ---------- */
+.rows{display:flex; flex-direction:column}
+.row{
+  display:grid; grid-template-columns:46px 1fr 130px; gap:16px;
+  padding:16px 0; border-bottom:1px solid var(--rule); align-items:start;
+}
+.row-id{
+  font-family:var(--f-mono); font-size:12px; font-weight:600; color:var(--ink3);
+  padding-top:3px; font-variant-numeric:tabular-nums;
+}
+.q{
+  font-family:var(--f-prose); font-size:19px; line-height:1.34; font-weight:400;
+  letter-spacing:-.005em; margin:0 0 6px; text-wrap:pretty;
+}
+.q em{font-style:italic; color:var(--ink2)}
+.who{font-size:13px; color:var(--ink2); margin:0 0 8px}
+.who b{font-weight:600; color:var(--ink)}
+.use{font-size:13.5px; color:var(--ink2); margin:0 0 9px; max-width:78ch}
+.use::before{
+  content:'K TÉMATU'; font-family:var(--f-mono); font-size:9.5px; letter-spacing:.14em;
+  color:var(--ink3); display:block; margin-bottom:2px;
+}
+.srcs{display:flex; gap:5px; flex-wrap:wrap}
+.srcs a{
+  font-family:var(--f-mono); font-size:11px; text-decoration:none;
+  padding:3px 7px; border:1px solid var(--rule2); color:var(--stamp);
+}
+.srcs a:hover{background:var(--stamp-soft); border-color:var(--stamp)}
+.srcs .nolink{
+  font-family:var(--f-mono); font-size:11px; padding:3px 7px;
+  border:1px dashed var(--rule2); color:var(--ink3);
+}
+.lic{display:flex; flex-direction:column; gap:6px; align-items:flex-start}
+.flag{
+  font-family:var(--f-mono); font-size:10.5px; font-weight:600; letter-spacing:.06em;
+  padding:4px 8px; display:inline-flex; gap:6px; align-items:center; white-space:nowrap;
+}
+.f-ok{background:var(--ok-soft); color:var(--ok); border:1px solid var(--ok)}
+.f-warn{background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn)}
+.f-stop{background:var(--stop-soft); color:var(--stop); border:1px solid var(--stop)}
+.lic-note{font-family:var(--f-mono); font-size:10px; color:var(--ink3); line-height:1.4}
+
+/* ---------- video cards ---------- */
+.vids{display:flex; flex-direction:column; gap:1px; background:var(--rule)}
+.vid{background:var(--card); padding:20px 20px 18px; display:grid; grid-template-columns:1fr 232px; gap:22px}
+.vid-id{
+  font-family:var(--f-mono); font-size:11px; font-weight:600; color:var(--brand);
+  letter-spacing:.1em; display:block; margin-bottom:5px;
+}
+.vid h3{
+  font-size:21px; font-weight:700; line-height:1.16; letter-spacing:-.018em;
+  margin:0 0 10px; text-wrap:balance;
+}
+.hook{
+  font-family:var(--f-prose); font-size:16px; line-height:1.48; color:var(--ink2);
+  margin:0 0 16px; max-width:76ch;
+}
+.meta{display:flex; flex-direction:column; gap:11px}
+.mrow{display:grid; grid-template-columns:74px 1fr; gap:12px; align-items:start}
+.mrow dt{
+  font-family:var(--f-mono); font-size:9.5px; letter-spacing:.13em; color:var(--ink3);
+  text-transform:uppercase; padding-top:3px;
+}
+.mrow dd{margin:0; font-size:13.5px; color:var(--ink2); line-height:1.45}
+.mrow dd a{font-family:var(--f-mono); font-size:12px}
+.verify{color:var(--warn)}
+.verify b{font-weight:600}
+
+/* thumbnail spec — rendered in the channel's own whiteboard style */
+.thumb-spec{display:flex; flex-direction:column; gap:8px}
+.thumb{
+  aspect-ratio:16/9; max-width:100%; background:#F7F5F0; border:2px solid #1A1A1A;
+  display:flex; align-items:center; justify-content:center; padding:12px; position:relative;
+  overflow:hidden;
+}
+.thumb-txt{
+  font-family:var(--f-ui); font-weight:800; font-size:clamp(15px,2.4vw,22px);
+  line-height:1.02; letter-spacing:-.03em; text-transform:uppercase;
+  color:#1A1A1A; text-align:center; text-wrap:balance;
+}
+.thumb::after{
+  content:''; position:absolute; right:9px; bottom:9px;
+  width:11px; height:11px; border-radius:50%; background:#E03131;
+}
+.thumb-cap{display:flex; flex-direction:column; gap:4px}
+.thumb-cap p{
+  font-family:var(--f-mono); font-size:10.5px; line-height:1.45; color:var(--ink2); margin:0;
+}
+.thumb-cap b{color:var(--ink3); font-weight:600; letter-spacing:.1em}
+
+/* ---------- misc ---------- */
+.empty{
+  padding:56px 20px; text-align:center; border:1px dashed var(--rule2); margin-top:32px;
+}
+.empty p{font-family:var(--f-prose); font-size:17px; color:var(--ink2); margin:0}
+.hidden{display:none !important}
+footer{border-top:2px solid var(--ink); padding-block:22px 40px; margin-top:8px}
+footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 0 6px; line-height:1.6}
+.pill{
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--rule2); padding:3px 7px; color:var(--ink3);
+}
+
+@media (max-width:860px){
+  .vid{grid-template-columns:1fr}
+  .thumb-spec{max-width:300px}
+}
+@media (max-width:620px){
+  .row{grid-template-columns:34px 1fr; gap:12px}
+  .lic{grid-column:2; flex-direction:row; flex-wrap:wrap; align-items:center}
+  .q{font-size:17px}
+  .mrow{grid-template-columns:1fr; gap:2px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="kicker">
+      <span>What The Fact</span><span>·</span><span>US / EN</span><span>·</span>
+      <span>Produkční knihovna</span><span>·</span><b>v1</b>
+    </div>
+    <h1>Knihovna hlášek a videí</h1>
+    <p class="dek">Cutaway materiál a 30 rozpracovaných dílů. Každá položka nese licenční vlajku — bez ní se do scénáře nedostane. Filtruj, hledej, klikej na primární zdroje.</p>
+  </header>
+
+  <div class="bar">
+    <div class="bar-in">
+      <div class="tabs" role="tablist" aria-label="Sekce knihovny">
+        <button class="tab" id="tab-q" role="tab" aria-selected="true" aria-controls="view-q">Hlášky <span id="tc-q"></span></button>
+        <button class="tab" id="tab-v" role="tab" aria-selected="false" aria-controls="view-v">Videa <span id="tc-v"></span></button>
+      </div>
+      <div class="controls">
+        <div class="search">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6.8" cy="6.8" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.4 10.4 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input id="q-search" type="search" placeholder="Hledej v hláškách, tématech, titulcích…" aria-label="Hledat v knihovně" autocomplete="off">
+        </div>
+        <div class="chips" id="lic-chips">
+          <span class="chiplab">Licence</span>
+          <button class="chip" data-lic="ok" aria-pressed="false"><i class="dot dot-ok"></i>Volné</button>
+          <button class="chip" data-lic="warn" aria-pressed="false"><i class="dot dot-warn"></i>Ověřit</button>
+          <button class="chip" data-lic="stop" aria-pressed="false"><i class="dot dot-stop"></i>Překreslit</button>
+        </div>
+        <div class="count" id="count"></div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="view-q" role="tabpanel" aria-labelledby="tab-q">
+      <dl class="legend">
+        <div class="l-ok"><dt><i class="dot dot-ok"></i>VOLNÉ · text i záznam</dt><dd>Federální public domain nebo prokázané PD. Ber obojí, i komerčně.</dd></div>
+        <div class="l-warn"><dt><i class="dot dot-warn"></i>OVĚŘIT · soubor po souboru</dt><dd>Text volný, u záznamu zkontroluj licenci konkrétního souboru.</dd></div>
+        <div class="l-stop"><dt><i class="dot dot-stop"></i>PŘEKRESLIT · klip ne</dt><dd>Hlášku vyslov nebo napiš, scénu nakresli. Krátká fráze není chráněná.</dd></div>
+      </dl>
+      <div id="q-body"></div>
+    </section>
+
+    <section id="view-v" role="tabpanel" aria-labelledby="tab-v" class="hidden">
+      <div id="v-body"></div>
+    </section>
+
+    <div class="empty hidden" id="empty"><p>Nic pro tenhle filtr. Zkus jiný výraz nebo pusť licenční vlajky.</p></div>
+  </main>
+
+  <footer>
+    <p>Licenční značky vycházejí z <b>17 U.S.C. § 105</b> (federální materiál = public domain) a <b>37 C.F.R. § 202.1</b> (krátké fráze nejsou chráněné). Plné odůvodnění je v repozitáři v <b>docs/01-AUTORSKA-PRAVA.md</b>.</p>
+    <p>Toto je produkční politika, ne právní posudek. U čehokoli, kde jsou na stole reálné peníze, si vezmi US IP právníka.</p>
+    <p style="margin-top:12px"><span class="pill">Zdroj dat: docs/03-KNIHOVNA-HLASEK.md + docs/04-VIDEA-01-30.md</span></p>
+  </footer>
+</div>
+
+<script>
+const L = {ok:['f-ok','VOLNÉ'], warn:['f-warn','OVĚŘIT'], stop:['f-stop','PŘEKRESLIT']};
+
+const QUOTES = [
+{id:'A', title:'Kongres — technologie a big tech', note:'Nejúrodnější kategorie. Záznam z jednacího sálu je PD bez omezení; záznam výboru ber z archivu výboru, ne z C-SPAN. Dohledání: govinfo, house.gov, senate.gov podle data a názvu výboru.', items:[
+ {id:'A1', q:'The internet is not a big truck. It’s a series of tubes.', who:'sen. <b>Ted Stevens</b>, Senate Commerce Committee, 28. 6. 2006', use:'Kdokoli rozhoduje o něčem, co nechápe. Net neutralita, infrastruktura.', lic:'ok', src:[['Know Your Meme','https://knowyourmeme.com/memes/series-of-tubes'],['Wikipedia','https://en.wikipedia.org/wiki/Series_of_tubes'],['Záznam','https://www.youtube.com/watch?v=6w5sfAyxmFk'],['Roll Call','https://rollcall.com/2018/02/16/flashback-friday-a-series-of-tubes/']]},
+ {id:'A2', q:'An internet was sent by my staff at 10 o’clock in the morning.', who:'sen. <b>Ted Stevens</b>, tamtéž', use:'Tentýž záběr. „An internet“ jako počitatelné podstatné jméno.', lic:'ok', src:[['Know Your Meme','https://knowyourmeme.com/memes/series-of-tubes'],['Záznam','https://www.youtube.com/watch?v=6w5sfAyxmFk']]},
+ {id:'A3', q:'Senator, we run ads.', who:'<b>Mark Zuckerberg</b> → sen. Orrin Hatch, Senát, duben 2018', use:'Obchodní model tak zřejmý, že otázka na něj je trapná.', lic:'ok', src:[['TheWrap','https://www.thewrap.com/senator-orrin-hatch-facebook-biz-model-zuckerberg/'],['NBC video','https://www.nbcnews.com/video/senator-asks-how-facebook-remains-free-zuckerberg-smirks-we-run-ads-1207622211889'],['WNYC','https://www.wnycstudios.org/podcasts/otm/segments/zuckerberg-hearings']]},
+ {id:'A4', q:'How do you sustain a business model in which users don’t pay for your service?', who:'sen. <b>Orrin Hatch</b>, tamtéž', use:'Setup k A3. Použij jako dvojici, gag je v kontrastu.', lic:'ok', src:[['TheWrap','https://www.thewrap.com/senator-orrin-hatch-facebook-biz-model-zuckerberg/']]},
+ {id:'A5', q:'<em>Slyšení k zákazu TikToku — 10 nejabsurdnějších momentů</em>', who:'House Energy &amp; Commerce, březen 2023', use:'Technologická negramotnost regulátorů. „Connects to wifi?“', lic:'ok', src:[['Gizmodo recap','https://gizmodo.com/tiktok-ban-hearing-recap-congress-ceo-10-crazy-moments-1850258504']]},
+]},
+{id:'B', title:'Kongres — historické momenty', note:'Rozšiřuj přes govinfo a Congress.gov. Watergate, Iran-Contra, tabákové slyšení 1994, Enron, krize 2008, Deepwater Horizon 2010 — všechno federální záznam, všechno PD.', items:[
+ {id:'B1', q:'Until this moment, Senator, I think I never fully gauged your cruelty or your recklessness.', who:'<b>Joseph Welch</b> → sen. Joseph McCarthy, 1954', use:'Zlomový okamžik, kdy se veřejné mínění obrátí. Morální panika.', lic:'ok', src:[['CBS News','https://www.cbsnews.com/amp/news/famous-congressional-hearings-james-comey-testimony'],['govinfo','https://www.govinfo.gov']]},
+ {id:'B2', q:'Have you no sense of decency, sir?', who:'<b>Joseph Welch</b>, tamtéž — pokračování B1', use:'Vrchol scény. Nejsilnější, když jde hned za B1.', lic:'ok', src:[['CBS News','https://www.cbsnews.com/amp/news/famous-congressional-hearings-james-comey-testimony']]},
+]},
+{id:'C', title:'Nejvyšší soud — ústní jednání', note:'Přepisy značí smích přímo slovem „(Laughter)“ — dá se v nich grepovat, což z toho dělá strojově prohledatelnou zásobu gagů. Nejvíc dodává dnes Chief Justice Roberts, dřív Scalia (40 % všech pobavených reakcí v termínu 2011–12).', items:[
+ {id:'C1', q:'I may need it for that question.', who:'gen. advokát <b>Verrilli</b> po dvouapůlstránkové otázce Scalii, <em>Shelby County v. Holder</em>', use:'Právník, kterého zavalí otázka. Byrokratická komplexita.', lic:'ok', src:[['Emory Law','https://law.emory.edu/faculty/scholarship/insights/2022/fall/-taking-laughter-seriously-at-the-supreme-court.html'],['Oyez','https://www.oyez.org']]},
+ {id:'C2', q:'I would be pretending if I remember what any of those questions were.', who:'začínající advokát → <b>Justice Gorsuch</b>, kapitálový případ', use:'Přiznaná bezradnost. Upřímnost pod tlakem.', lic:'ok', src:[['Emory Law','https://law.emory.edu/faculty/scholarship/insights/2022/fall/-taking-laughter-seriously-at-the-supreme-court.html']]},
+ {id:'C3', q:'<em>Je ryba „tangible object“? — 10+ smíchů v jednom jednání</em>', who:'<b>Yates v. United States</b>', use:'Absurdita právních definic. Co je vlastně „věc“.', lic:'ok', src:[['Emory Law','https://law.emory.edu/faculty/scholarship/insights/2022/fall/-taking-laughter-seriously-at-the-supreme-court.html'],['Oyez','https://www.oyez.org']]},
+ {id:'C4', q:'<em>Sedm smíchů v 90 minutách o svatebním dortu</em>', who:'<b>Masterpiece Cakeshop v. Colorado</b>', use:'Kde končí umění a začíná služba.', lic:'ok', src:[['Emory Law','https://law.emory.edu/faculty/scholarship/insights/2022/fall/-taking-laughter-seriously-at-the-supreme-court.html'],['Oyez','https://www.oyez.org']]},
+ {id:'C5', q:'<em>Roberts drží dolarovku a koncipienti se mu ji snaží vytrhnout — jeho příprava na případ</em>', who:'<b>Chief Justice John Roberts</b>', use:'Jak se připravuje soudce. Absurdní metodika s vážným účelem.', lic:'ok', src:[['Emory Law','https://law.emory.edu/faculty/scholarship/insights/2022/fall/-taking-laughter-seriously-at-the-supreme-court.html'],['SCOTUSblog','https://www.scotusblog.com/2025/09/the-funniest-justice/'],['Law360','https://www.law360.com/articles/1171925/the-funniest-moments-of-the-supreme-court-term']]},
+]},
+{id:'D', title:'Předpisy, které si nikdo nevymyslel — a přesto platí', note:'Text federálního předpisu je PD a zároveň citace s razítkem. Nejsilnější kombinace pro tenhle formát: vtip, který je doslovně pravda. Doluj systematicky — eCFR je plnotextově prohledatelný, standards of identity (21 CFR 130–169) jsou nejlepší vstupní bod.', items:[
+ {id:'D1', q:'<em>Zmrzlina musí obsahovat vzduch. Když ho má moc, nesmí se jmenovat zmrzlina.</em>', who:'min. 10 % mléčného tuku; při vysokém <b>overrun</b> musí být „frozen dairy dessert“', use:'Co je legálně jídlo. Jak značka obchází zákon a zůstává v právu.', lic:'ok', src:[['21 CFR 135.110','https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135/subpart-B/section-135.110'],['21 CFR část 135','https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135']]},
+ {id:'D2', q:'<em>Zmrzlina nemusí obsahovat smetanu.</em>', who:'cream je ve standardu of identity uvedena jako <b>optional dairy ingredient</b>', use:'Druhá pointa téhož dílu. Nejlepší jako payoff.', lic:'ok', src:[['21 CFR 135.110','https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135/subpart-B/section-135.110']]},
+]},
+{id:'E', title:'Padesátkové PSA a social guidance — PD film', note:'Funkční ekvivalent českého filmového archivu. Absurdně vážný tón padesátek střihnutý do moderního tématu je tentýž gag — a je zdarma. Pozor: ~65 % Prelinger fondu je PD, ne 100 %. U každého titulu hledej v metadatech Public Domain Mark nebo CC0.', items:[
+ {id:'E1', q:'<em>Duck and Cover</em> — Bert the Turtle: schovej se pod stůl před atomovou bombou', who:'1951, Federal Civil Defense Administration · <b>National Film Registry 2004</b>', use:'Absurdní rada úřadu podaná s plnou vážností. Institucionální falešná jistota.', lic:'ok', src:[['FCDA verze','https://archive.org/details/gov.ntis.ava11109vnb1'],['Archer','https://archive.org/details/DuckandC1951'],['Bert','https://archive.org/details/BertTheTurtleSaysDuckAndCover'],['Další','https://archive.org/details/23634CivilDefenseDuckAndCoverVwr'],['LOC','https://www.loc.gov/item/2022604365/']]},
+ {id:'E2', q:'<em>Are You Popular?</em> — dívky, které „sedají v autech s chlapci“, nejsou populární', who:'1947, Prelinger Archives', use:'Sociální tlak, normy, „správné“ chování.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E3', q:'<em>Shy Guy</em> — jak se stát oblíbeným pozorováním ostatních', who:'1947, Prelinger Archives', use:'Zapadnutí do kolektivu, trapnost.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E4', q:'<em>Act Your Age</em> — dospělý, který se chová jako dítě', who:'1949, Prelinger Archives', use:'Infantilizace, emoční regulace.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E5', q:'<em>The Snob</em> — elitářství jako společenská vada', who:'1958, Prelinger Archives', use:'Statusové hry, třídy.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E6', q:'<em>Gossip</em> — jak se šíří pomluva po škole', who:'1953, Prelinger Archives', use:'Dezinformace, virální šíření, jak vzniká mýtus.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E7', q:'<em>Good Table Manners</em> — katalog správného chování u stolu', who:'1951, Prelinger Archives', use:'Absurdní pravidla, etiketa, normy jídla.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E8', q:'<em>Ways To Settle Disputes</em> — jak řešit konflikt', who:'1950, Prelinger Archives', use:'Vyjednávání, právo, spory.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E9', q:'<em>The Procrastinator</em> — co se stane, když odkládáš', who:'1952, Prelinger Archives', use:'Produktivita, deadliny.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+ {id:'E10', q:'<em>Office Etiquette</em> — hierarchie a chování v kanceláři', who:'1950, Prelinger Archives', use:'Práce, korporát, 9–5.', lic:'warn', src:[['Prelinger kolekce','https://archive.org/details/prelinger']]},
+]},
+{id:'F', title:'Lokální zpravodajství a internetové virály', note:'Zásadní upozornění: zpravodajský šot vlastní stanice, klip nepoužívej. Ale hláška je krátká fráze = nechráněná. Vyslov ji, napiš ji, překresli scénu. Pro whiteboard kanál je to plnohodnotné a levnější než licence. Původ a dataci dohledej na Know Your Meme.', items:[
+ {id:'F1', q:'Ain’t nobody got time for that!', who:'<b>Sweet Brown</b>, lokální zpravodajství Oklahoma City, 2012', use:'Reakce na absurdní požadavek. Nedostatek času jako americké téma.', lic:'stop', src:[['Ranker','https://www.ranker.com/list/funny-news-interviews/chris-abraham'],['Mental Floss','https://www.mentalfloss.com/culture/media/hilarious-moments-local-news']]},
+ {id:'F2', q:'Hide your kids, hide your wife.', who:'<b>Antoine Dodson</b>, „Bed Intruder“, Huntsville AL, 2010', use:'Morální panika, zpravodajský poplach.', lic:'stop', src:[['Ranker','https://www.ranker.com/list/best-local-news-interviews/jacob-shelton']]},
+ {id:'F3', q:'A piece of burger from Burger King.', who:'<b>Courtney Barnes</b>, policejní honička, 2015', use:'Naprosto věcný detail v chaotické situaci.', lic:'stop', src:[['WIBC top 8','https://wibc.com/playlist/top-8-funniest-local-news-interviews-of-all-time/']]},
+ {id:'F4', q:'Apparently…', who:'<b>Apparently Kid</b>, rozhovor na jarmarku, 2014', use:'Dítě, které mluví jako dospělý. Zlom tónu.', lic:'stop', src:[['Ranker','https://www.ranker.com/list/funny-news-interviews/chris-abraham']]},
+]},
+{id:'G', title:'Městská zasedání', note:'Americký žánr sám pro sebe — ale § 105 na města neplatí a režim se liší stát od státu. Doporučení: ber to jako inspiraci na téma, ne jako klip. Překresli. Vyjde to nastejno a nemáš právní otázku.', items:[
+ {id:'G1', q:'<em>Procedurální obstrukce jako umělecká forma</em>', who:'councilman <b>Eric Mays</b>, Flint City Council, Michigan', use:'Byrokracie, jednací řád, moc detailu.', lic:'warn', src:[['Kompilace','https://www.youtube.com/watch?v=DaCaX65Z4dI']]},
+ {id:'G2', q:'<em>Muž předvádí scénku o výmolech na silnici</em>', who:'Worcester City Council, Massachusetts', use:'Infrastruktura, opravy silnic, občanská frustrace.', lic:'warn', src:[['KLAQ','https://klaq.com/funniestmost-insane-town-hall-meeting-of-all-time/']]},
+ {id:'G3', q:'<em>„Rezoning lady“ — čte celá jména institucí v plném znění</em>', who:'městské zasedání', use:'Byrokratický jazyk a jeho absurdní důslednost.', lic:'warn', src:[['KLAQ','https://klaq.com/funniestmost-insane-town-hall-meeting-of-all-time/']]},
+]},
+{id:'H', title:'Odtajněné programy — vládní bizár s razítkem', note:'Nejlepší poměr „šílené vs. doložitelné“. Všechno federální, tedy PD, a všechno má spis, kterým to dokážeš přímo ve videu. Vždy si stáhni konkrétní dokument a ulož jeho URL — je to obrazový materiál i důkaz zároveň.', items:[
+ {id:'H1', q:'<em>CIA chtěla udělat z kočky odposlouchávací zařízení</em>', who:'<b>Acoustic Kitty</b>', use:'Absurdní projekt s vážným rozpočtem a spisem.', lic:'ok', src:[['CIA Reading Room','https://www.cia.gov/readingroom/']]},
+ {id:'H2', q:'<em>B. F. Skinner navrhl střelu naváděnou holuby</em>', who:'<b>Project Pigeon / Pelican</b>', use:'Behaviorismus, válečný výzkum, seriózní věda v absurdní roli.', lic:'ok', src:[['NARA katalog','https://catalog.archives.gov']]},
+ {id:'H3', q:'<em>Studie o odpálení jaderné hlavice na Měsíci</em>', who:'<b>Project A119</b>, US Air Force', use:'Závody ve zbrojení, prestiž nad rozumem.', lic:'ok', src:[['NARA katalog','https://catalog.archives.gov']]},
+ {id:'H4', q:'<em>Pokusy CIA s ovlivňováním mysli</em>', who:'<b>MKUltra</b>', use:'Etika výzkumu, dohled, zneužití vědy.', lic:'ok', src:[['CIA Reading Room','https://www.cia.gov/readingroom/']]},
+ {id:'H5', q:'<em>Armáda financovala „remote viewing“ dvacet let</em>', who:'<b>Stargate Project</b>', use:'Jak se financuje pseudověda z veřejných peněz.', lic:'ok', src:[['CIA Reading Room','https://www.cia.gov/readingroom/']]},
+ {id:'H6', q:'<em>Tajná základna s raketami v grónském ledu</em>', who:'<b>Project Iceworm</b> / Camp Century', use:'Tajné projekty, klima, co po nás zůstane.', lic:'ok', src:[['NARA katalog','https://catalog.archives.gov'],['NOAA','https://www.noaa.gov']]},
+ {id:'H7', q:'<em>Návrh na inscenované provokace</em>', who:'<b>Operation Northwoods</b>', use:'Jak vypadá skutečný odtajněný návrh — na rozdíl od konspirace.', lic:'ok', src:[['NARA katalog','https://catalog.archives.gov']]},
+]},
+{id:'I', title:'Nehody a vyšetřování — NTSB', note:'Pro whiteboard formát ideální: NTSB rekonstrukce už jsou schematické animace, takže se překreslí prakticky 1:1 a působí autenticky. U přepisů CVR zvaž tón — je to doslovný záznam smrti lidí, do komediálního cutaway to nepatří.', items:[
+ {id:'I1', q:'<em>Animace leteckých nehod</em>', who:'<b>NTSB</b>', use:'Rekonstrukce události krok za krokem.', lic:'ok', src:[['ntsb.gov','https://www.ntsb.gov']]},
+ {id:'I2', q:'<em>Přepisy CVR — kabinového záznamníku</em>', who:'<b>NTSB</b>', use:'Reálné poslední minuty. Dramatická vrstva, nikdy gag.', lic:'ok', src:[['ntsb.gov','https://www.ntsb.gov']]},
+ {id:'I3', q:'<em>Závěrečné zprávy o příčinách</em>', who:'<b>NTSB</b>', use:'„Proč se to stalo“ v konkrétních krocích.', lic:'ok', src:[['ntsb.gov','https://www.ntsb.gov']]},
+ {id:'I4', q:'<em>Železniční a lodní vyšetřování</em>', who:'<b>NTSB</b>', use:'Méně vytěžené než letecké — méně konkurence na téma.', lic:'ok', src:[['ntsb.gov','https://www.ntsb.gov']]},
+]},
+{id:'J', title:'Nově v public domain — od 1. 1. 2026', note:'K 1. lednu 2026 jsou PD publikovaná díla z roku 1930 a starší a zvukové nahrávky z 1925 a starších. Pozor: PD je ten konkrétní film, ne postava napříč pozdějšími filmy. Betty Boop je navíc registrovaná známka. Ber záběry, nekresli postavu.', items:[
+ {id:'J1', q:'<em>Dizzy Dishes</em> — první výskyt Betty Boop', who:'1930, Fleischer Studios', use:'Groteskní cutaway. Záběry ano, postavu nekresli.', lic:'ok', src:[['Duke CSPD','https://web.law.duke.edu/cspd/publicdomainday/2026/'],['NPR','https://www.npr.org/2025/12/26/nx-s1-5649395/public-domain-2026-copyright-betty-boop-pluto']]},
+ {id:'J2', q:'<em>The Chain Gang</em> — nejstarší Pluto', who:'1930, Disney', use:'Vězeňský motiv, útěk, pronásledování.', lic:'ok', src:[['Duke CSPD','https://web.law.duke.edu/cspd/publicdomainday/2026/'],['CBS News','https://www.cbsnews.com/news/new-public-domain-works-2026/']]},
+ {id:'J3', q:'<em>The Picnic</em>', who:'1930, Disney', use:'Idylka, která se rozpadá. Dobrý kontrast k vážnému tématu.', lic:'ok', src:[['Duke CSPD','https://web.law.duke.edu/cspd/publicdomainday/2026/']]},
+ {id:'J4', q:'<em>Zvukové nahrávky do roku 1925</em>', who:'≤ 1925', use:'Dobová hudba, jingly, podkres pod archivní záběr.', lic:'ok', src:[['LOC','https://blogs.loc.gov/copyright/2025/12/lifecycle-of-copyright-1930-works-in-the-public-domain/']]},
+]},
+];
+
+const VIDS = [
+{id:'A', title:'Pilíř A — Pravidla a formuláře', note:'Sdílená frustrace z amerického papírování. Nejsilnější „my“ bez politiky.', items:[
+ {id:'A1', t:'Half the Ice Cream in America Isn’t Legally Ice Cream', hook:'Zmrzlina musí podle federálního předpisu obsahovat vzduch. Když ho má moc, nesmí se jmenovat zmrzlina.', draw:'Kornout, z něj šipka do měřicího válce s nápisem AIR', txt:'NOT ICE CREAM', acc:'Červené přeškrtnutí slova ICE CREAM na obalu', cut:'D1, D2 · Prelinger E7 <em>Good Table Manners</em>', ver:'21 CFR 135.110 — min. 10 % mléčného tuku, overrun, „frozen dairy dessert“', verUrl:['21 CFR 135.110','https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-135/subpart-B/section-135.110'], warn:false},
+ {id:'A2', t:'There’s a Federal Law Limiting How Many Questions the Government Can Ask You', hook:'Každý americký formulář má v rohu číslo. Je to důkaz, že ho někdo musel schválit.', draw:'Stoh formulářů, lupa míří na malé číslo v rohu', txt:'OMB 3206-0005', acc:'Červený kroužek kolem toho čísla', cut:'Prelinger E10 <em>Office Etiquette</em>', ver:'Paperwork Reduction Act, OMB control numbers', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'A3', t:'Jaywalking Was Invented by the Car Industry', hook:'Slovo „jaywalker“ nevzniklo v zákoně. Vzniklo v PR kampani.', draw:'Chodec v poloviční ulici, nad ním ruka s nitkami jako u marionety', txt:'THEY MADE IT UP', acc:'Červená nitka', cut:'Prelinger dopravně-výchovné filmy 30.–50. let · nově PD grotesky 1930 (J1–J3)', ver:'Dobový tisk a lobbistické materiály', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:false},
+ {id:'A4', t:'The Mattress Tag You’re Actually Allowed to Remove', hook:'„Do not remove under penalty of law“ nikdy nemluvilo k tobě.', draw:'Matrace s cedulkou, vedle vyděšený člověk s nůžkami', txt:'NOT YOU', acc:'Červená šipka od cedulky k prodavači, ne k zákazníkovi', cut:'Prelinger E7, E9 · vlastní postava', ver:'Znění tagu a komu povinnost svědčí — předpisy o textilním značení', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'A5', t:'The Candy Lobby Changed When It Gets Dark in America', hook:'Posun letního času na konec října má co dělat s Halloweenem.', draw:'Hodiny, ručička tlačená rukou držící lízátko', txt:'WHO MOVED TIME', acc:'Červená ručička hodin', cut:'Kongresová slyšení k DST (A/B) · Prelinger <em>A Better Use Of Leisure Time</em>', ver:'Legislativní historie prodloužení DST', verUrl:['Congress.gov','https://www.congress.gov'], warn:false},
+ {id:'A6', t:'The Font the US Government Fought Over for Twenty Years', hook:'Písmo na amerických dálničních cedulích má vlastní federální předpis a vlastní dvacetiletý spor.', draw:'Zelená dálniční cedule, dvě verze jednoho slova pod sebou', txt:'ONE LETTER WAR', acc:'Červená mezi oběma verzemi', cut:'FHWA materiály (PD) · Prelinger dopravní filmy', ver:'MUTCD, Highway Gothic vs. Clearview, interim approval', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+]},
+{id:'B', title:'Pilíř B — Peníze', note:'Nejvyšší RPM z pěti pilířů. Nákupní a rozhodovací záměr publika.', items:[
+ {id:'B1', t:'Tipping Started as a Way to Avoid Paying Wages', hook:'Americké spropitné není zvyk. Je to náhrada mzdy s konkrétní historií.', draw:'Dlaň s drobnými, pod ní přeškrtnutá výplatní obálka', txt:'INSTEAD OF PAY', acc:'Červené přeškrtnutí obálky', cut:'Kongresová slyšení k minimální mzdě (A/B) · Prelinger E10', ver:'Historie tipped minimum wage, Pullman porters', verUrl:['LOC Free to Use','https://www.loc.gov/free-to-use/'], warn:false},
+ {id:'B2', t:'The Reason American Prices Never Include Tax', hook:'Cena na regálu není cena. A je to tak legální ve všech 50 státech.', draw:'Cenovka $9.99, pod ní účtenka delší než stůl', txt:'THAT’S NOT THE PRICE', acc:'Červená finální suma na účtence', cut:'Prelinger reklamní filmy · J1–J3', ver:'Absence federálního požadavku na tax-inclusive pricing; rozdíl vs. VAT', verUrl:null, warn:false},
+ {id:'B3', t:'America Spent Twenty Years Making a Coin That Cost More Than It Was Worth', hook:'Výroba centu byla dražší než cent. Roky.', draw:'Cent na vahách, na druhé straně hromada centů', txt:'1¢ COST MORE', acc:'Červená ručička vah', cut:'Materiály U.S. Mint (PD) · kongresová slyšení', ver:'Náklad na výrobu centu podle ročenek U.S. Mint <b>a aktuální stav produkce</b> — byla ukončena, ověř datum', verUrl:['GAO','https://www.gao.gov'], warn:true},
+ {id:'B4', t:'The Government Has a Cheese Warehouse', hook:'Federální vláda skladuje sýr. Ne metaforicky.', draw:'Obří jeskyně plná bloků sýra, drobná postavička dole', txt:'1.4 BILLION LBS', acc:'Červená čísla', cut:'USDA materiály (PD) · GAO audity · Prelinger zemědělské filmy', ver:'CCC zásoby, „government cheese“, aktuální objem', verUrl:['GAO','https://www.gao.gov'], warn:false},
+ {id:'B5', t:'Why a Bag of Chips Is Half Air — and Why That’s Legal', hook:'Prázdný prostor v obalu má právní jméno: slack-fill. A povolené důvody.', draw:'Pytlík chipsů v řezu, dvě třetiny prázdné, uvnitř nápis LEGAL', txt:'LEGALLY EMPTY', acc:'Červená hranice hladiny chipsů', cut:'D-kategorie · Prelinger reklamní filmy', ver:'Předpisy o nonfunctional slack-fill — 21 CFR 100.100', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'B6', t:'The Fee American Hospitals Charge You for the Room You Were Already In', hook:'Na účtu z nemocnice je položka za to, že jsi byl v místnosti.', draw:'Prázdná nemocniční místnost, na dveřích visí účet', txt:'FACILITY FEE', acc:'Červená částka na účtu', cut:'Kongresová slyšení ke cenám péče (A) · GAO audity', ver:'Facility fees, CMS kódování, <b>konkrétní kód a částka</b>', verUrl:['govinfo','https://www.govinfo.gov'], warn:true},
+]},
+{id:'C', title:'Pilíř C — Jídlo a tělo', note:'Nejlepší RPM po pilíři B. Zdravotní témata plus doložitelné předpisy.', items:[
+ {id:'C1', t:'America Has a Legal Definition of Chocolate. Most Candy Fails It.', hook:'Když v tom není kakaové máslo v předepsaném množství, není to čokoláda.', draw:'Tabulka čokolády, půlka přeškrtnutá', txt:'NOT CHOCOLATE', acc:'Červené přeškrtnutí', cut:'D-kategorie · Prelinger E7', ver:'Standards of identity pro kakao — 21 CFR 163', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'C2', t:'The FDA Allows a Legal Number of Insect Parts in Your Food', hook:'Existuje tabulka. Má čísla. Je veřejná.', draw:'Sklenice s potravinou, lupa, v ní drobné nožičky', txt:'ALLOWED: 60', acc:'Červené číslo', cut:'Prelinger hygienické a školní filmy', ver:'FDA Food Defect Action Levels', verUrl:['fda.gov','https://www.fda.gov'], warn:false},
+ {id:'C3', t:'One American City Volunteered to Test Fluoride on Its Children', hook:'V roce 1945 se jedno město přihlásilo jako pokusná skupina.', draw:'Kohoutek, kapka, pod ní mapa jednoho města', txt:'THEY SAID YES', acc:'Červený bod na mapě', cut:'CDC materiály (PD) · Prelinger zdravotnické filmy', ver:'Grand Rapids, Michigan, 1945', verUrl:['CDC','https://www.cdc.gov'], warn:false},
+ {id:'C4', t:'America Puts Vitamins in Its Flour Because of a Draft Problem', hook:'Obohacená moučka je důsledek toho, kolik odvedenců neprošlo lékařskou prohlídkou.', draw:'Pytel moučky, na něm vojenská přilba', txt:'TOO WEAK TO SERVE', acc:'Červená přilba', cut:'Prelinger válečné výživové filmy · NARA (PD)', ver:'Enriched flour, důvody 40. let, odvodní statistiky', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:false},
+ {id:'C5', t:'The Government Banned Margarine From Being Yellow', hook:'Margarín musel být bílý. Zákonem. Kvůli mlékařské lobby.', draw:'Dvě kostky, nad jednou policejní čepice', txt:'ILLEGAL COLOR', acc:'Ta zakázaná kostka je červená', cut:'Prelinger reklamní filmy · dobové materiály (PD)', ver:'Oleomargarine acts, státní zákazy barvení', verUrl:['govinfo','https://www.govinfo.gov'], warn:false},
+ {id:'C6', t:'Most American Expiration Dates Aren’t Required by Law', hook:'Federální předpis vyžaduje datum jen u jedné kategorie potravin.', draw:'Řada obalů s datem, jedno červeně, ostatní vybledlá', txt:'ONLY ONE IS REAL', acc:'To jedno datum', cut:'D-kategorie · Prelinger E6 <em>Gossip</em> — jak se šíří mýtus', ver:'Federální požadavek na datování (kojenecká výživa) vs. dobrovolné značení', verUrl:['fda.gov','https://www.fda.gov'], warn:false},
+]},
+{id:'D', title:'Pilíř D — Vládní bizár', note:'Nejlepší poměr „šílené vs. doložitelné“. Všechno federální = PD, všechno má spis.', items:[
+ {id:'D1', t:'The CIA Tried to Turn a Cat Into a Microphone', hook:'Projekt měl jméno, rozpočet a spis. Kočka měla anténu v ocase.', draw:'Kočka z profilu, technický výkres s vodiči, popisky jako u patentu', txt:'PROJECT: CAT', acc:'Červená anténa', cut:'H1 · Prelinger E4 <em>Act Your Age</em>', ver:'Acoustic Kitty', verUrl:['CIA Reading Room','https://www.cia.gov/readingroom/'], warn:false},
+ {id:'D2', t:'The Pentagon Funded a Missile Guided by Pigeons', hook:'Nejslavnější behaviorista Ameriky navrhl střelu s holubem v nose.', draw:'Řez střelou, vpředu holub u obrazovky', txt:'PIGEON GUIDED', acc:'Červené zaměřovací zkřížení', cut:'H2 · Prelinger válečné technické filmy', ver:'Project Pigeon / Pelican, B. F. Skinner', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:false},
+ {id:'D3', t:'The Air Force Studied Nuking the Moon', hook:'Byla to studie. S čísly. A s důvodem.', draw:'Měsíc, k němu letí raketa, dole malý dav s dalekohledy', txt:'A119', acc:'Červený záblesk na Měsíci', cut:'H3 · NASA záběry (bez loga) · Prelinger vesmírné filmy', ver:'Project A119', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:false},
+ {id:'D4', t:'The US Army Paid Psychics for Two Decades', hook:'Dvacet let financování „remote viewing“. S ročními rozpočty.', draw:'Postava se zavázanými očima, před ní zavřená obálka', txt:'20 YEARS', acc:'Červená pečeť na obálce', cut:'H5 · Prelinger E6, E9', ver:'Stargate Project', verUrl:['CIA Reading Room','https://www.cia.gov/readingroom/'], warn:false},
+ {id:'D5', t:'There’s an Abandoned US Base Frozen Inside Greenland', hook:'Postavili město pod ledem. A pak od něj odešli.', draw:'Řez ledovcem, uvnitř tunely a budovy', txt:'STILL DOWN THERE', acc:'Červený obrys základny', cut:'H6 · NARA (PD) · NOAA a USGS klimatická data', ver:'Project Iceworm, Camp Century', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:false},
+ {id:'D6', t:'The Film That Told American Children to Survive a Nuke Under a Desk', hook:'Vláda to vydala jako oficiální radu. Je to v National Film Registry. Doporučený pilotní díl — jediný z třiceti s celým archivním filmem v public domain.', draw:'Želva s helmou, za ní záblesk, dítě pod školní lavicí', txt:'DUCK AND COVER', acc:'Červený záblesk', cut:'<b>E1 celý film, volné</b> — archive.org, tři verze', ver:'Rok 1951/52, FCDA, National Film Registry 2004', verUrl:['LOC','https://www.loc.gov/item/2022604365/'], warn:false, pilot:true},
+]},
+{id:'E', title:'Pilíř E — Infrastruktura a věci', note:'Sdílená zkušenost v nejčistší formě. Každý Američan to má doma nebo za oknem.', items:[
+ {id:'E1', t:'The Room Where America Decides How Long a Second Is', hook:'Sekunda má fyzické místo. Je v Coloradu.', draw:'Laboratorní stůl, na něm hodiny bez ručiček, kolem kabely', txt:'1 SECOND LIVES HERE', acc:'Červená vteřinová značka', cut:'NIST materiály (PD) · Prelinger technické filmy', ver:'NIST atomové hodiny, definice sekundy', verUrl:['nist.gov','https://www.nist.gov'], warn:false},
+ {id:'E2', t:'The Law That Made Every American Shower Weaker', hook:'Průtok sprchy je federálně omezený. Od konkrétního zákona.', draw:'Sprchová hlavice, z ní tři kapky, vedle měřidlo', txt:'2.5 GPM', acc:'Červené číslo na měřidle', cut:'Kongresová slyšení k energetice (A) · Prelinger domácí filmy', ver:'Energy Policy Act, limit průtoku, rok', verUrl:['Congress.gov','https://www.congress.gov'], warn:false},
+ {id:'E3', t:'Why American Houses Are Made of Wood', hook:'Zbytek bohatého světa staví z betonu a cihel. Amerika ne, a má to důvody.', draw:'Dva domy vedle sebe v řezu — dřevěný rám vs. cihla', txt:'WOOD. WHY.', acc:'Červený obrys dřevěného rámu', cut:'Prelinger stavební a poválečné suburbanizační filmy · NARA', ver:'Dostupnost dřeva, stavební kodexy, poválečná výstavba', verUrl:['LOC Free to Use','https://www.loc.gov/free-to-use/'], warn:false},
+ {id:'E4', t:'Why American Traffic Lights Hang From Wires', hook:'Zbytek světa je má na sloupech. Amerika je věší na dráty.', draw:'Semafor visící na drátu ve větru, vedle evropský na sloupu', txt:'ON A STRING', acc:'Červené světlo', cut:'FHWA a MUTCD (PD) · Prelinger dopravní filmy', ver:'MUTCD, regionální praxe, náklady a vítr', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'E5', t:'The Federal Rulebook That Decides How Big Every Road Sign Is', hook:'Existuje manuál. Má stovky stran. Řeší i velikost písmen.', draw:'Cedule STOP s kótami jako technický výkres', txt:'EVERY INCH', acc:'Červené kóty', cut:'MUTCD (PD) · Prelinger dopravní filmy', ver:'MUTCD — struktura, závaznost, rozměry', verUrl:['ecfr.gov','https://www.ecfr.gov'], warn:false},
+ {id:'E6', t:'Why American Doors Open Outward', hook:'Směr, kterým se otevírají dveře v amerických budovách, je důsledkem jednoho požáru.', draw:'Dvojité dveře, panikové kování, za nimi tlačící se dav', txt:'602 DEAD', acc:'Červené panikové kování', cut:'Prelinger požární a bezpečnostní filmy · NARA', ver:'Iroquois Theatre fire 1903, <b>počet mrtvých</b>, vývoj požárních kodexů a panic hardware', verUrl:['NARA katalog','https://catalog.archives.gov'], warn:true},
+]},
+];
+
+/* ---------- render ---------- */
+const norm = s => (s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const strip = s => (s||'').replace(/<[^>]*>/g,'');
+
+function flag(l){ const [c,t]=L[l]; return `<span class="flag ${c}">${t}</span>`; }
+function srcList(src){
+  if(!src||!src.length) return '<span class="nolink">bez odkazu</span>';
+  return src.map(([lab,u])=>`<a href="${u}" target="_blank" rel="noopener">${lab}</a>`).join('');
+}
+
+function renderQuotes(){
+  document.getElementById('q-body').innerHTML = QUOTES.map(g=>`
+    <section class="grp" data-grp="${g.id}">
+      <div class="grp-head"><span class="grp-id">${g.id}</span><h2>${g.title}</h2><span class="grp-n" data-n></span></div>
+      <p class="grp-note">${g.note}</p>
+      <div class="rows">${g.items.map(it=>`
+        <article class="row" data-lic="${it.lic}" data-hay="${norm(strip(it.q)+' '+strip(it.who)+' '+strip(it.use)+' '+it.id)}">
+          <div class="row-id">${it.id}</div>
+          <div>
+            <p class="q">${it.q}</p>
+            <p class="who">${it.who}</p>
+            <p class="use">${it.use}</p>
+            <div class="srcs">${srcList(it.src)}</div>
+          </div>
+          <div class="lic">${flag(it.lic)}</div>
+        </article>`).join('')}</div>
+    </section>`).join('');
+}
+
+function renderVids(){
+  document.getElementById('v-body').innerHTML = VIDS.map(g=>`
+    <section class="grp" data-grp="${g.id}">
+      <div class="grp-head"><span class="grp-id">${g.id}</span><h2>${g.title}</h2><span class="grp-n" data-n></span></div>
+      <p class="grp-note">${g.note}</p>
+      <div class="vids">${g.items.map(v=>`
+        <article class="vid" data-lic="" data-hay="${norm(v.t+' '+strip(v.hook)+' '+strip(v.draw)+' '+v.txt+' '+strip(v.ver)+' '+v.id)}">
+          <div>
+            <span class="vid-id">${v.id}${v.pilot?' · PILOT':''}</span>
+            <h3>${v.t}</h3>
+            <p class="hook">${v.hook}</p>
+            <dl class="meta">
+              <div class="mrow"><dt>Cutaway</dt><dd>${v.cut}</dd></div>
+              <div class="mrow"><dt>Ověř</dt><dd class="${v.warn?'verify':''}">${v.warn?'⚠ ':''}${v.ver}${v.verUrl?` · <a href="${v.verUrl[1]}" target="_blank" rel="noopener">${v.verUrl[0]}</a>`:''}</dd></div>
+            </dl>
+          </div>
+          <div class="thumb-spec">
+            <div class="thumb"><span class="thumb-txt">${v.txt}</span></div>
+            <div class="thumb-cap">
+              <p><b>KRESBA</b> ${v.draw}</p>
+              <p><b>AKCENT</b> ${v.acc}</p>
+            </div>
+          </div>
+        </article>`).join('')}</div>
+    </section>`).join('');
+}
+
+renderQuotes(); renderVids();
+
+const nQ = QUOTES.reduce((a,g)=>a+g.items.length,0);
+const nV = VIDS.reduce((a,g)=>a+g.items.length,0);
+document.getElementById('tc-q').textContent = nQ;
+document.getElementById('tc-v').textContent = nV;
+
+/* ---------- filtering ---------- */
+const state = {tab:'q', term:'', lics:new Set()};
+
+function apply(){
+  const view = state.tab==='q' ? document.getElementById('view-q') : document.getElementById('view-v');
+  const other = state.tab==='q' ? document.getElementById('view-v') : document.getElementById('view-q');
+  view.classList.remove('hidden'); other.classList.add('hidden');
+  document.getElementById('tab-q').setAttribute('aria-selected', state.tab==='q');
+  document.getElementById('tab-v').setAttribute('aria-selected', state.tab==='v');
+  document.getElementById('lic-chips').style.opacity = state.tab==='q' ? '1' : '.4';
+  document.getElementById('lic-chips').style.pointerEvents = state.tab==='q' ? 'auto' : 'none';
+
+  const t = norm(state.term);
+  let shown = 0;
+  view.querySelectorAll('.grp').forEach(g=>{
+    let n = 0;
+    g.querySelectorAll('[data-hay]').forEach(it=>{
+      const okT = !t || it.dataset.hay.includes(t);
+      const okL = state.tab==='v' || !state.lics.size || state.lics.has(it.dataset.lic);
+      const vis = okT && okL;
+      it.classList.toggle('hidden', !vis);
+      if(vis) n++;
+    });
+    g.classList.toggle('hidden', n===0);
+    const nEl = g.querySelector('[data-n]');
+    if(nEl) nEl.textContent = n;
+    shown += n;
+  });
+
+  const total = state.tab==='q' ? nQ : nV;
+  document.getElementById('count').textContent =
+    shown===total ? `${total} položek` : `${shown} z ${total}`;
+  document.getElementById('empty').classList.toggle('hidden', shown>0);
+  if(shown===0) view.classList.add('hidden');
+}
+
+document.getElementById('q-search').addEventListener('input', e=>{ state.term=e.target.value; apply(); });
+document.getElementById('lic-chips').addEventListener('click', e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  const l = b.dataset.lic;
+  if(state.lics.has(l)) state.lics.delete(l); else state.lics.add(l);
+  b.setAttribute('aria-pressed', state.lics.has(l));
+  apply();
+});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click', ()=>{
+  state.tab = b.id==='tab-q' ? 'q' : 'v';
+  try{ localStorage.setItem('wtf-tab', state.tab); }catch(_){}
+  apply();
+}));
+try{ const s = localStorage.getItem('wtf-tab'); if(s==='v') state.tab='v'; }catch(_){}
+apply();
+</script>
