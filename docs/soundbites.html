@@ -121,6 +121,7 @@ main{padding-block:8px 72px}
 .dur.is-over .dur-bar span{background:var(--warn)}
 .tstamp{font-family:var(--f-mono); font-size:11px; font-weight:600; color:var(--ok); border:1px solid var(--ok); background:var(--ok-soft); padding:3px 7px; font-variant-numeric:tabular-nums}
 .beat{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.05em; padding:3px 7px; color:var(--brand); border:1px solid var(--brand)}
+.lictag{font-family:var(--f-mono); font-size:9.5px; letter-spacing:.05em; padding:2px 6px; color:var(--ink3); border:1px solid var(--rule2); white-space:nowrap; opacity:.75}
 .flag{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.05em; padding:4px 7px; white-space:nowrap}
 .f-ok{background:var(--ok-soft); color:var(--ok); border:1px solid var(--ok)}
 .f-warn{background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn)}
@@ -156,18 +157,15 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
   <header class="mast">
     <div class="kicker"><span>What The Fact</span><span>·</span><span>US / EN</span><span>·</span><span>Produkční knihovna</span><span>·</span><b>zvuk</b></div>
     <h1>Knihovna zvukových hlášek</h1>
-    <p class="dek">Krátké americké soundbity na cutaway — 1 až 8 sekund, tvrdý strop 10. Každý řádek nese délku, licenční vlajku, stav ověření a poznámku, co přesně dohledat, než se to střihne. Zdroj dat: <code>data/soundbites.jsonl</code>.</p>
+    <p class="dek">Krátké americké soundbity na cutaway — 1 až 8 sekund, tvrdý strop 10. Řazeno podle toho, jak moc to divák pozná. Každý řádek nese délku, rozpoznatelnost, odkaz na video a poznámku, co dohledat. Zdroj dat: <code>data/soundbites.jsonl</code>.</p>
 
     <div class="stats">
-      <div class="stat"><b>62</b><span>položek</span></div>
-      <div class="stat s-ok"><b>26</b><span>zelená · federální PD</span></div>
-      <div class="stat s-warn"><b>12</b><span>žlutá · ověř soubor</span></div>
-      <div class="stat s-stop"><b>24</b><span>červená · přemluvit</span></div>
-      <div class="stat"><b>56</b><span>samonosných</span></div>
-      <div class="stat"><b>23</b><span>zná každý</span></div>
+      <div class="stat"><b>76</b><span>položek</span></div>
+      <div class="stat"><b>70</b><span>samonosných</span></div>
+      <div class="stat"><b>36</b><span>zná každý</span></div>
       <div class="stat"><b>21</b><span>zná málokdo</span></div>
       <div class="stat s-warn"><b>2</b><span>s ukotveným časem</span></div>
-      <div class="stat"><b>19</b><span>s odkazem na YouTube</span></div>
+      <div class="stat"><b>22</b><span>s odkazem na YouTube</span></div>
     </div>
 
     <div class="caveat">
@@ -184,17 +182,13 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
         </div>
         <p class="count" id="count"></p>
       </div>
-      <div class="chips"><span class="chiplab">Seam</span><button class="chip" data-f="seam" data-v="youtube_viral" aria-pressed="false">VIRÁL <span>6</span></button><button class="chip" data-f="seam" data-v="tv" aria-pressed="false">SERIÁL <span>3</span></button><button class="chip" data-f="seam" data-v="advertisement" aria-pressed="false">REKLAMA <span>5</span></button><button class="chip" data-f="seam" data-v="local_news" aria-pressed="false">LOKÁLKA <span>8</span></button><button class="chip" data-f="seam" data-v="congressional_hearing" aria-pressed="false">KONGRES <span>9</span></button><button class="chip" data-f="seam" data-v="scotus_argument" aria-pressed="false">SCOTUS <span>9</span></button><button class="chip" data-f="seam" data-v="prelinger_film" aria-pressed="false">PRELINGER <span>6</span></button><button class="chip" data-f="seam" data-v="other" aria-pressed="false">MISE <span>8</span></button><button class="chip" data-f="seam" data-v="federal_psa" aria-pressed="false">PSA <span>6</span></button><button class="chip" data-f="seam" data-v="speech" aria-pressed="false">PROJEV <span>2</span></button></div>
+      <div class="chips"><span class="chiplab">Seam</span><button class="chip" data-f="seam" data-v="film" aria-pressed="false">FILM <span>8</span></button><button class="chip" data-f="seam" data-v="tv" aria-pressed="false">SERIÁL <span>6</span></button><button class="chip" data-f="seam" data-v="youtube_viral" aria-pressed="false">VIRÁL <span>9</span></button><button class="chip" data-f="seam" data-v="advertisement" aria-pressed="false">REKLAMA <span>5</span></button><button class="chip" data-f="seam" data-v="local_news" aria-pressed="false">LOKÁLKA <span>8</span></button><button class="chip" data-f="seam" data-v="congressional_hearing" aria-pressed="false">KONGRES <span>9</span></button><button class="chip" data-f="seam" data-v="scotus_argument" aria-pressed="false">SCOTUS <span>9</span></button><button class="chip" data-f="seam" data-v="prelinger_film" aria-pressed="false">PRELINGER <span>6</span></button><button class="chip" data-f="seam" data-v="other" aria-pressed="false">MISE <span>8</span></button><button class="chip" data-f="seam" data-v="federal_psa" aria-pressed="false">PSA <span>6</span></button><button class="chip" data-f="seam" data-v="speech" aria-pressed="false">PROJEV <span>2</span></button></div>
       <div class="chips">
         <span class="chiplab">Pozná to</span>
         <button class="chip" data-f="rec" data-v="universal" aria-pressed="false">zná každý</button>
         <button class="chip" data-f="rec" data-v="high" aria-pressed="false">zná hodně lidí</button>
         <button class="chip" data-f="rec" data-v="niche" aria-pressed="false">zná málokdo</button>
-        <span class="chiplab" style="margin-left:8px">Licence</span>
-        <button class="chip" data-f="lic" data-v="green_federal_pd" aria-pressed="false">zelená</button>
-        <button class="chip" data-f="lic" data-v="yellow_verify" aria-pressed="false">žlutá</button>
-        <button class="chip" data-f="lic" data-v="red_rights_reserved" aria-pressed="false">červená</button>
-        <span class="chiplab" style="margin-left:8px">Ověření</span>
+        <span class="chiplab">Ověření</span>
         <button class="chip" data-f="ver" data-v="v" aria-pressed="false">ověřeno</button>
         <button class="chip" data-f="ver" data-v="u" aria-pressed="false">neověřeno</button>
         <span class="chiplab" style="margin-left:8px">Srozumitelnost</span>
@@ -205,26 +199,26 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
   </div>
 
   <main>
-<section class="grp" data-seam="youtube_viral">
-  <div class="grp-head"><span class="grp-id">VIRÁL</span><h2>Virály, Vine a YouTube</h2><span class="grp-n">6</span></div>
-  <p class="grp-note">Nejvyšší rozpoznatelnost v celé knihovně. Skoro vždy červené — text se přemluví, scéna překreslí. Přesně na tohle je whiteboard stavěný.</p>
-  <div class="rows"><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="road work ahead? uh, yeah, i sure hope it does. drew gooden vine, drew gooden špatné přečtení nápisu, které dává gramaticky perfektní smysl. absurdita je uvnitř věty a nepotřebuje kulturní paměť — ale ta paměť je bonus, protože půlka publika se zasměje už při &#x27;road work ahead?&#x27;. zveřejněno 20. března 2016, přes 127 tisíc revinů a 10 milionů přehrání. patří k pěti nejcitovanějším vinům vůbec a přežilo smrt platformy — dodnes koluje na tiktoku. kdokoli pod pětatřicet to v usa pozná okamžitě a umí dokončit větu. nedorozumění, které dává smysl dopravní značení internetová kultura 2010s jazyk a dvojznačnost 2016 road-work-ahead">
+<section class="grp" data-seam="film">
+  <div class="grp-head"><span class="grp-id">FILM</span><h2>Kultovní filmové hlášky</h2><span class="grp-n">8</span></div>
+  <p class="grp-note">Nejvyšší rozpoznatelnost vůbec. Věty, které Američan pozná z první slabiky a často je i sám používá.</p>
+  <div class="rows"><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="i am serious. and don&#x27;t call me shirley. dr. rumack (leslie nielsen) airplane! slovní hříčka na homofonu, doručená naprosto vážně. vtip je uvnitř věty — nepotřebuje film, jen anglický sluch. film z roku 1980, který definoval celý žánr parodie. tahle výměna je nejcitovanější replika filmu a v usa je to standardní vtip pokaždé, když někdo řekne „surely“. slovní hříčka kamenná tvář letadla a katastrofy parodie 1980 dont-call-me-shirley">
   <div class="row-a">
-    <p class="q">„Road work ahead? Uh, yeah, I sure hope it does.“ </p>
-    <p class="who"><b>Drew Gooden</b> · Vine, Drew Gooden · 2016</p>
-    <p class="why">Špatné přečtení nápisu, které dává gramaticky perfektní smysl. Absurdita je uvnitř věty a nepotřebuje kulturní paměť — ale ta paměť je bonus, protože půlka publika se zasměje už při &#x27;Road work ahead?&#x27;.</p>
+    <p class="q">„I am serious. And don&#x27;t call me Shirley.“ </p>
+    <p class="who"><b>Dr. Rumack (Leslie Nielsen)</b> · Airplane! · 1980</p>
+    <p class="why">Slovní hříčka na homofonu, doručená naprosto vážně. Vtip je uvnitř věty — nepotřebuje film, jen anglický sluch.</p>
     <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
       <dl class="dets">
-        <dt>Před</dt><dd>Gooden natáčí z auta ceduli s nápisem ROAD WORK AHEAD.</dd>
-        <dt>Po</dt><dd>Konec, šest sekund celkem.</dd>
-        <dt>Pozadí</dt><dd>Zveřejněno 20. března 2016, přes 127 tisíc revinů a 10 milionů přehrání. Patří k pěti nejcitovanějším Vinům vůbec a přežilo smrt platformy — dodnes koluje na TikToku. Kdokoli pod pětatřicet to v USA pozná okamžitě a umí dokončit větu.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne.</dd>
-        <dt>Ověření</dt><dd>Znění, datum i čísla přehrání z Know Your Meme. Vine je zrušený, originál žije v kompilacích. Žádné potvrzené ID videa jsem neviděl, proto youtube prázdné.</dd>
+        <dt>Před</dt><dd>Striker: „Surely you can&#x27;t be serious.“</dd>
+        <dt>Po</dt><dd>Nielsen to řekne s naprosto kamennou tváří a scéna jede dál.</dd>
+        <dt>Pozadí</dt><dd>Film z roku 1980, který definoval celý žánr parodie. Tahle výměna je nejcitovanější replika filmu a v USA je to standardní vtip pokaždé, když někdo řekne „surely“.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno na IMDb, Slate a Shmoop. Dvě ID videa z výsledků hledání, obsah jsem neotevřel.</dd>
       </dl>
     </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/road-work-ahead — má vložený originál; na YouTube hledej &#x27;Drew Gooden road work ahead vine original&#x27;</div>
-    <div class="tps"><span class="tp">nedorozumění, které dává smysl</span><span class="tp">dopravní značení</span><span class="tp">internetová kultura 2010s</span><span class="tp">jazyk a dvojznačnost</span></div>
-    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/road-work-ahead" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/Drew_Gooden_(internet_personality)" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://medium.com/@kelsimanning/remembering-vine-25748805a3f2" target="_blank" rel="noopener">medium.com</a></div>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>imdb.com/title/tt0080339/quotes — replika je v prvním dialogu Rumacka a Strikera</div>
+    <div class="tps"><span class="tp">slovní hříčka</span><span class="tp">kamenná tvář</span><span class="tp">letadla a katastrofy</span><span class="tp">parodie</span></div>
+    <div class="lks"><a class="lk lk-main" href="https://www.youtube.com/watch?v=xR4BKfY9Zyk" target="_blank" rel="noopener">Zdroj zvuku ↗</a><a class="lk lk-yt" href="https://www.youtube.com/watch?v=xR4BKfY9Zyk" target="_blank" rel="noopener" title="„I Am Serious… And Don&#x27;t Call Me Shirley!“ | Airplane! (1980) CLIP 4K">YouTube ↗</a><a class="lk lk-yt" href="https://www.youtube.com/watch?v=zMOuHFBWDqw" target="_blank" rel="noopener" title="Airplane! (1980) | Don&#x27;t Call Me Shirley! | Leslie Nielsen, Robert Hays, Lorna Patterson">YouTube 2 ↗</a><a class="lk" href="https://www.imdb.com/title/tt0080339/quotes/" target="_blank" rel="noopener">imdb.com</a><a class="lk" href="https://slate.com/culture/2016/02/airplane-s-don-t-call-me-shirley-origins-explained.html" target="_blank" rel="noopener">slate.com</a><a class="lk" href="https://screenrant.com/airplane-dont-call-me-shirley-joke-origin/" target="_blank" rel="noopener">screenrant.com</a></div>
   </div>
   <div class="row-b">
     <div class="dur">
@@ -232,149 +226,29 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
-    <span class="ver v-no">Neověřeno</span>
-    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
-    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">road-work-ahead</code>
-  </div>
-</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="fre sh a vaca do! uživatel vine &#x27;gasoleen&#x27; vine, cedule v del taco typografická chyba přečtená nahlas přesně tak, jak je vysázená. vizuální gag, který funguje jen zvukem — ideální na whiteboard, protože ceduli stejně kreslíš. únor 2016, zhruba 16 milionů přehrání. fráze se osamostatnila natolik, že ji lidé používají, aniž by vine kdy viděli, a dictionary.com jí věnoval heslo. typografická chyba jak se čte nahlas to, co je napsáno špatně internetová kultura 2010s rychlé občerstvení 2016 fre-sha-vaca-do">
-  <div class="row-a">
-    <p class="q">„Fre sh a vaca do!“ <span class="warnmark" title="Znění není potvrzeno doslovně">znění nepotvrzeno</span></p>
-    <p class="who"><b>uživatel Vine &#x27;gasoleen&#x27;</b> · Vine, cedule v Del Taco · 2016</p>
-    <p class="why">Typografická chyba přečtená nahlas přesně tak, jak je vysázená. Vizuální gag, který funguje jen zvukem — ideální na whiteboard, protože ceduli stejně kreslíš.</p>
-    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
-      <dl class="dets">
-        <dt>Před</dt><dd>Kamera najíždí na ceduli, kde má stát &#x27;fresh avocado&#x27;, ale rozpal písmen z toho udělá &#x27;fre shavocado&#x27;.</dd>
-        <dt>Po</dt><dd>Smích za kamerou.</dd>
-        <dt>Pozadí</dt><dd>Únor 2016, zhruba 16 milionů přehrání. Fráze se osamostatnila natolik, že ji lidé používají, aniž by Vine kdy viděli, a Dictionary.com jí věnoval heslo.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne.</dd>
-        <dt>Ověření</dt><dd>Přepis se u téhle hlášky liší doslova v každém zdroji (&#x27;free shavacado&#x27;, &#x27;fre sh a vaca do&#x27;, &#x27;fr-e-sh-a-voca-do&#x27;), proto quote_verbatim false. Před střihem si poslechni, jak to vysloví, a přepiš.</dd>
-      </dl>
-    </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>dictionary.com/culture/memes/free-shavacado — má vložený originál; nebo YouTube &#x27;fresh avocado vine original gasoleen&#x27;</div>
-    <div class="tps"><span class="tp">typografická chyba</span><span class="tp">jak se čte nahlas to, co je napsáno špatně</span><span class="tp">internetová kultura 2010s</span><span class="tp">rychlé občerstvení</span></div>
-    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.dictionary.com/culture/memes/free-shavacado" target="_blank" rel="noopener">dictionary.com</a><a class="lk" href="https://www.urbandictionary.com/define.php?term=fre+sh+a+vaca+do" target="_blank" rel="noopener">urbandictionary.com</a><a class="lk" href="https://www.buzzfeed.com/matwhitehead/fre-sha-voca-do" target="_blank" rel="noopener">buzzfeed.com</a></div>
-  </div>
-  <div class="row-b">
-    <div class="dur">
-      <div class="dur-n">2<span>s</span><i>odhad</i></div>
-      <div class="dur-bar"><span style="width:20%"></span></div>
-    </div>
-    
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
-    <span class="ver v-no">Neověřeno</span>
-    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
-    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">fre-sha-vaca-do</code>
-  </div>
-</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="miss keisha? … oh my god, she&#x27;s dead. neznámá dívka, účet &#x27;wtfvon&#x27; vine naprosto nepřiměřený závěr vyvozený z toho, že panenka nemluví. logický skok je uvnitř scény, takže to funguje i bez znalosti originálu. nahráno na vine 10. září 2015. deset let stará hláška, kterou know your meme připomíná k výročí — pro americké publikum pod třicet je to okamžitá reference na &#x27;dramatický závěr z ničeho&#x27;. nepřiměřený závěr dětská logika internetová kultura 2010s dramatické oznámení 2015 miss-keisha-shes-dead">
-  <div class="row-a">
-    <p class="q">„Miss Keisha? … Oh my god, she&#x27;s dead.“ <span class="warnmark" title="Znění není potvrzeno doslovně">znění nepotvrzeno</span></p>
-    <p class="who"><b>neznámá dívka, účet &#x27;wtfvon&#x27;</b> · Vine · 2015</p>
-    <p class="why">Naprosto nepřiměřený závěr vyvozený z toho, že panenka nemluví. Logický skok je uvnitř scény, takže to funguje i bez znalosti originálu.</p>
-    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
-      <dl class="dets">
-        <dt>Před</dt><dd>Dívka oslovuje panenku jménem Miss Keisha a čeká na odpověď.</dd>
-        <dt>Po</dt><dd>Panenka neodpoví. Konec.</dd>
-        <dt>Pozadí</dt><dd>Nahráno na Vine 10. září 2015. Deset let stará hláška, kterou Know Your Meme připomíná k výročí — pro americké publikum pod třicet je to okamžitá reference na &#x27;dramatický závěr z ničeho&#x27;.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. NAVÍC: originál obsahuje vulgarismus, který kanál nemůže odvysílat — verze zapsaná zde je už učesaná. A mluví tam dítě, takže přemluvení musí být hraný přednes, ne imitace toho konkrétního hlasu.</dd>
-        <dt>Ověření</dt><dd>Originál zní &#x27;Oh my fucking god, she&#x27;s fucking dead&#x27;. Zapsaná verze je zcenzurovaná, proto quote_verbatim false. Datum a účet z Know Your Meme.</dd>
-      </dl>
-    </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/miss-keisha-oh-my-fucking-god-shes-fucking-dead — má vložený originál</div>
-    <div class="tps"><span class="tp">nepřiměřený závěr</span><span class="tp">dětská logika</span><span class="tp">internetová kultura 2010s</span><span class="tp">dramatické oznámení</span></div>
-    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/miss-keisha-oh-my-fucking-god-shes-fucking-dead" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://medium.com/@coolmotherpuppr/rip-ms-keisha-and-vine-70faeb1810" target="_blank" rel="noopener">medium.com</a></div>
-  </div>
-  <div class="row-b">
-    <div class="dur">
-      <div class="dur-n">4<span>s</span><i>odhad</i></div>
-      <div class="dur-bar"><span style="width:40%"></span></div>
-    </div>
-    
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
-    <span class="ver v-no">Neověřeno</span>
-    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
-    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">miss-keisha-shes-dead</code>
-  </div>
-</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="is this real life? david devore jr., 7 let david after dentist, youtube existenciální otázka položená sedmiletým dítětem v narkóze. absurdita je uvnitř věty a je použitelná doslova kdekoli, kde narace dojde k něčemu neuvěřitelnému. nejlepší dvousekundová vsuvka v celé knihovně. nahráno 30. ledna 2009, tři miliony zhlédnutí za tři dny, druhé nejsledovanější video roku na youtube. jeden z pilířů rané virální éry — američané nad třicet to znají všichni. existenciální otázky na nevhodném místě anestezie a zubař internetová kultura 2000s děti 2009 david-after-dentist-real-life">
-  <div class="row-a">
-    <p class="q">„Is this real life?“ </p>
-    <p class="who"><b>David DeVore Jr., 7 let</b> · David After Dentist, YouTube · 2009</p>
-    <p class="why">Existenciální otázka položená sedmiletým dítětem v narkóze. Absurdita je uvnitř věty a je použitelná doslova kdekoli, kde narace dojde k něčemu neuvěřitelnému. Nejlepší dvousekundová vsuvka v celé knihovně.</p>
-    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
-      <dl class="dets">
-        <dt>Před</dt><dd>Otec natáčí syna na zadním sedadle auta cestou od zubaře, ještě pod anestezií.</dd>
-        <dt>Po</dt><dd>&#x27;Is this gonna be forever?&#x27;</dd>
-        <dt>Pozadí</dt><dd>Nahráno 30. ledna 2009, tři miliony zhlédnutí za tři dny, druhé nejsledovanější video roku na YouTube. Jeden z pilířů rané virální éry — Američané nad třicet to znají všichni.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Video vlastní rodina DeVorových, ne studio — u licencování je to teoreticky jednodušší, ale bez písemného svolení to pořád nejde.</dd>
-        <dt>Ověření</dt><dd>Znění, datum i čísla zhlédnutí z Know Your Meme a Wikipedie. Potvrzené ID videa jsem neviděl.</dd>
-      </dl>
-    </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;David After Dentist original&#x27; — kanál booba1234, nahráno 30. ledna 2009; hláška je zhruba v půlce dvouminutového klipu</div>
-    <div class="tps"><span class="tp">existenciální otázky na nevhodném místě</span><span class="tp">anestezie a zubař</span><span class="tp">internetová kultura 2000s</span><span class="tp">děti</span></div>
-    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/david-after-dentist" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/David_After_Dentist" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://www.today.com/parents/dads/david-after-dentist-devore-rcna100473" target="_blank" rel="noopener">today.com</a></div>
-  </div>
-  <div class="row-b">
-    <div class="dur">
-      <div class="dur-n">2<span>s</span><i>odhad</i></div>
-      <div class="dur-bar"><span style="width:20%"></span></div>
-    </div>
-    
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">david-after-dentist-real-life</code>
+    <code class="rid">dont-call-me-shirley</code>
   </div>
-</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="what does this mean? paul &#x27;bear&#x27; vasquez yosemitebear mountain giant double rainbow 1-8-10, youtube muž pláče nad meteorologickým jevem a ptá se, co to znamená. funguje samo; se znalostí originálu je to silnější, protože pod tím je slyšet skutečné dojetí, ne hraná blbost. nahráno 8. ledna 2010, virální po parodii schmoyoho ze 6. července 2010. vasquez zemřel v roce 2020 a nekrology ho označovaly právě tímhle videem. pro američany je to zkratka pro nepřiměřené dojetí z běžného úkazu. nepřiměřené dojetí příroda a úžas internetová kultura 2000s otázky bez odpovědi 2010 double-rainbow-what-does-it-mean">
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="i&#x27;m in a glass case of emotion! ron burgundy (will ferrell) anchorman: the legend of ron burgundy metafora, která je zároveň doslovný popis situace. absurdita je uvnitř věty a funguje na kohokoli. film z roku 2004, který se v usa cituje dodnes. tahle věta je zkratka pro teatrální zoufalství — používá se ironicky vždy, když někdo přehání. teatrální zoufalství metafora, která je i doslovná přehánění krize 2004 glass-case-of-emotion">
   <div class="row-a">
-    <p class="q">„What does this mean?“ </p>
-    <p class="who"><b>Paul &#x27;Bear&#x27; Vasquez</b> · Yosemitebear Mountain Giant Double Rainbow 1-8-10, YouTube · 2010</p>
-    <p class="why">Muž pláče nad meteorologickým jevem a ptá se, co to znamená. Funguje samo; se znalostí originálu je to silnější, protože pod tím je slyšet skutečné dojetí, ne hraná blbost.</p>
+    <p class="q">„I&#x27;m in a glass case of emotion!“ </p>
+    <p class="who"><b>Ron Burgundy (Will Ferrell)</b> · Anchorman: The Legend of Ron Burgundy · 2004</p>
+    <p class="why">Metafora, která je zároveň doslovný popis situace. Absurdita je uvnitř věty a funguje na kohokoli.</p>
     <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
       <dl class="dets">
-        <dt>Před</dt><dd>Vasquez natáčí dvojitou duhu nad Yosemity a postupně se rozpláče.</dd>
-        <dt>Po</dt><dd>Pláč pokračuje. &#x27;Oh my god, oh my god.&#x27;</dd>
-        <dt>Pozadí</dt><dd>Nahráno 8. ledna 2010, virální po parodii schmoyoho ze 6. července 2010. Vasquez zemřel v roce 2020 a nekrology ho označovaly právě tímhle videem. Pro Američany je to zkratka pro nepřiměřené dojetí z běžného úkazu.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Autotunovaná píseň od schmoyoho je zvlášť chráněná a nepoužitelná vůbec.</dd>
-        <dt>Ověření</dt><dd>Znění, datum i okolnosti z Know Your Meme, CNN a Washington Post. Potvrzené ID videa jsem neviděl.</dd>
+        <dt>Před</dt><dd>Burgundy volá z telefonní budky, na dně kariéry i života.</dd>
+        <dt>Po</dt><dd>Křičí dál. Budka zůstává budkou.</dd>
+        <dt>Pozadí</dt><dd>Film z roku 2004, který se v USA cituje dodnes. Tahle věta je zkratka pro teatrální zoufalství — používá se ironicky vždy, když někdo přehání.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno na IMDb a Shmoop. Potvrzené ID videa jsem neviděl.</dd>
       </dl>
     </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Yosemitebear Mountain Giant Double Rainbow 1-8-10&#x27; — kanál Yosemitebear62; hláška je ve druhé polovině klipu</div>
-    <div class="tps"><span class="tp">nepřiměřené dojetí</span><span class="tp">příroda a úžas</span><span class="tp">internetová kultura 2000s</span><span class="tp">otázky bez odpovědi</span></div>
-    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/double-rainbow" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/Double_Rainbow_(viral_video)" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://www.washingtonpost.com/technology/2020/05/11/double-rainbow-paul-vasquez-youtube-video/" target="_blank" rel="noopener">washingtonpost.com</a></div>
-  </div>
-  <div class="row-b">
-    <div class="dur">
-      <div class="dur-n">2<span>s</span><i>odhad</i></div>
-      <div class="dur-bar"><span style="width:20%"></span></div>
-    </div>
-    
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
-    <span class="ver v-no">Neověřeno</span>
-    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
-    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">double-rainbow-what-does-it-mean</code>
-  </div>
-</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="it&#x27;s still real to me, dammit! david wills, divák a tribute to starrcade, divácké q&amp;a emocionální obrana něčeho, o čem všichni vědí, že je to nastavené. funguje samo — ale pozadí je smutnější, než jak se meme používá, takže to zvaž. vhodné tam, kde narace mluví o něčem, na čem lidé lpí navzdory důkazům. listopad 2005, na youtube 8. ledna 2006 poté, co to odvysílal jimmy kimmel live. v usa je to univerzální zkratka pro člověka, který bere fikci smrtelně vážně. wills později vysvětlil, že krátce předtím zemřel eddie guerrero a on plakal kvůli tomu, co si zápasníci dělají s tělem. lpění navzdory důkazům fikce brána vážně fanouškovská kultura emoce na nečekaném místě 2005 still-real-to-me-dammit">
-  <div class="row-a">
-    <p class="q">„It&#x27;s still real to me, dammit!“ </p>
-    <p class="who"><b>David Wills, divák</b> · A Tribute to Starrcade, divácké Q&amp;A · 2005</p>
-    <p class="why">Emocionální obrana něčeho, o čem všichni vědí, že je to nastavené. Funguje samo — ale pozadí je smutnější, než jak se meme používá, takže to zvaž. Vhodné tam, kde narace mluví o něčem, na čem lidé lpí navzdory důkazům.</p>
-    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
-      <dl class="dets">
-        <dt>Před</dt><dd>Wills dostane mikrofon na setkání fanoušků wrestlingu a rozpláče se.</dd>
-        <dt>Po</dt><dd>Sál ztichne.</dd>
-        <dt>Pozadí</dt><dd>Listopad 2005, na YouTube 8. ledna 2006 poté, co to odvysílal Jimmy Kimmel Live. V USA je to univerzální zkratka pro člověka, který bere fikci smrtelně vážně. Wills později vysvětlil, že krátce předtím zemřel Eddie Guerrero a on plakal kvůli tomu, co si zápasníci dělají s tělem.</dd>
-        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Wills sám je soukromá osoba, která si z toho udělala značku a prodává na to trička — je to spíš otázka slušnosti než práva.</dd>
-        <dt>Ověření</dt><dd>Znění, datum i pozadí z Know Your Meme a rozhovoru na Wrestling Inc. ID videa z výsledku hledání, obsah jsem neotevřel.</dd>
-      </dl>
-    </details>
-    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Its Still Real To Me Damn It&#x27; — hláška je na konci klipu</div>
-    <div class="tps"><span class="tp">lpění navzdory důkazům</span><span class="tp">fikce brána vážně</span><span class="tp">fanouškovská kultura</span><span class="tp">emoce na nečekaném místě</span></div>
-    <div class="lks"><a class="lk lk-main" href="https://www.youtube.com/watch?v=Yvd3aEsThbc" target="_blank" rel="noopener">Zdroj zvuku ↗</a><a class="lk lk-yt" href="https://www.youtube.com/watch?v=Yvd3aEsThbc" target="_blank" rel="noopener" title="Its Still Real To Me Damn It!">YouTube ↗</a><a class="lk" href="https://knowyourmeme.com/memes/it-s-still-real-to-me-damn-it" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://www.wrestlinginc.com/news/2021/09/dave-wills-explains-why-he-was-crying-in-infamous-its-still-real-to-me-dammit-meme/" target="_blank" rel="noopener">wrestlinginc.com</a></div>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>imdb.com/title/tt0357413/quotes — hledej &#x27;glass case&#x27;</div>
+    <div class="tps"><span class="tp">teatrální zoufalství</span><span class="tp">metafora, která je i doslovná</span><span class="tp">přehánění</span><span class="tp">krize</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.imdb.com/title/tt0357413/quotes/" target="_blank" rel="noopener">imdb.com</a><a class="lk" href="https://www.shmoop.com/quotes/glass-case-of-emotion.html" target="_blank" rel="noopener">shmoop.com</a></div>
   </div>
   <div class="row-b">
     <div class="dur">
@@ -382,16 +256,196 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">glass-case-of-emotion</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="i love lamp. brick tamland (steve carell) anchorman: the legend of ron burgundy tři slova, nula gramatiky, absolutní upřímnost. nejlepší dvousekundová vsuvka na moment, kdy narace řekne něco zjevného. z téhož filmu. v usa je to zkratka pro člověka, který se snaží zapadnout do konverzace a jen jmenuje, co vidí. snaha zapadnout do konverzace říkat, co vidíš nábytek upřímnost bez obsahu 2004 i-love-lamp">
+  <div class="row-a">
+    <p class="q">„I love lamp.“ </p>
+    <p class="who"><b>Brick Tamland (Steve Carell)</b> · Anchorman: The Legend of Ron Burgundy · 2004</p>
+    <p class="why">Tři slova, nula gramatiky, absolutní upřímnost. Nejlepší dvousekundová vsuvka na moment, kdy narace řekne něco zjevného.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Kolegové v redakci si vyznávají lásku k tomu, co mají rádi. Brick se rozhlédne po místnosti.</dd>
+        <dt>Po</dt><dd>Burgundy: „Do you really love the lamp, or are you just saying it because you saw it?“</dd>
+        <dt>Pozadí</dt><dd>Z téhož filmu. V USA je to zkratka pro člověka, který se snaží zapadnout do konverzace a jen jmenuje, co vidí.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno v citacích filmu; Burgundyho odpověď z clip.cafe. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>imdb.com/title/tt0357413/quotes — hledej &#x27;lamp&#x27;</div>
+    <div class="tps"><span class="tp">snaha zapadnout do konverzace</span><span class="tp">říkat, co vidíš</span><span class="tp">nábytek</span><span class="tp">upřímnost bez obsahu</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.imdb.com/title/tt0357413/quotes/" target="_blank" rel="noopener">imdb.com</a><a class="lk" href="https://clip.cafe/anchorman-the-legend-of-ron-burgundy-2004/are-just-looking-at-things-in-the-office-saying-you-love-them/" target="_blank" rel="noopener">clip.cafe</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">i-love-lamp</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="the dude abides. jeffrey „the dude“ lebowski (jeff bridges) the big lebowski sloveso „abides“ je archaické a vážné, subjekt je „the dude“. ten rozpor je celý vtip a nepotřebuje film. film z roku 1998 s vlastním kultem včetně festivalů a parodického náboženství (dudeismus). fráze je v usa hotová filozofie v dvou slovech: vydržím, nic neřeším. klid navzdory všemu archaické slovo v moderní větě nicnedělání jako filozofie kultovní filmy 1998 the-dude-abides">
+  <div class="row-a">
+    <p class="q">„The Dude abides.“ </p>
+    <p class="who"><b>Jeffrey „the Dude“ Lebowski (Jeff Bridges)</b> · The Big Lebowski · 1998</p>
+    <p class="why">Sloveso „abides“ je archaické a vážné, subjekt je „the Dude“. Ten rozpor je celý vtip a nepotřebuje film.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Vypravěč se ptá, jak to s Dudem dopadlo.</dd>
+        <dt>Po</dt><dd>Konec filmu.</dd>
+        <dt>Pozadí</dt><dd>Film z roku 1998 s vlastním kultem včetně festivalů a parodického náboženství (dudeismus). Fráze je v USA hotová filozofie v dvou slovech: vydržím, nic neřeším.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno napříč Collider a Goodreads. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;The Dude abides Big Lebowski ending scene&#x27;</div>
+    <div class="tps"><span class="tp">klid navzdory všemu</span><span class="tp">archaické slovo v moderní větě</span><span class="tp">nicnedělání jako filozofie</span><span class="tp">kultovní filmy</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://collider.com/the-big-lebowski-quotes-best/" target="_blank" rel="noopener">collider.com</a><a class="lk" href="https://www.goodreads.com/work/quotes/838262" target="_blank" rel="noopener">goodreads.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">the-dude-abides</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="tina, you fat lard! come get some dinner! napoleon dynamite (jon heder) napoleon dynamite urážka adresovaná lamě, pronesená naprosto vážně. absurdita je uvnitř věty; kdo film zná, slyší navíc ten monotónní přednes. film z roku 2004, který se stal generační referencí pro trapnost jako estetiku. věta se cituje na kohokoli, kdo nejde k jídlu. urážky adresované zvířatům trapnost jako estetika krmení 2000s 2004 tina-eat-the-food">
+  <div class="row-a">
+    <p class="q">„Tina, you fat lard! Come get some dinner!“ </p>
+    <p class="who"><b>Napoleon Dynamite (Jon Heder)</b> · Napoleon Dynamite · 2004</p>
+    <p class="why">Urážka adresovaná lamě, pronesená naprosto vážně. Absurdita je uvnitř věty; kdo film zná, slyší navíc ten monotónní přednes.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Napoleon krmí lamu na dvorku.</dd>
+        <dt>Po</dt><dd>„Tina, eat. Food. Eat the food!“</dd>
+        <dt>Pozadí</dt><dd>Film z roku 2004, který se stal generační referencí pro trapnost jako estetiku. Věta se cituje na kohokoli, kdo nejde k jídlu.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno na Collider a ScreenRant. Pozor: často se to citace mylně uvádí jako &#x27;come get some ham&#x27; — správně je &#x27;dinner&#x27;. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Napoleon Dynamite Tina you fat lard&#x27; — scéna s lamou</div>
+    <div class="tps"><span class="tp">urážky adresované zvířatům</span><span class="tp">trapnost jako estetika</span><span class="tp">krmení</span><span class="tp">2000s</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://collider.com/napoleon-dynamite-best-quotes-ranked/" target="_blank" rel="noopener">collider.com</a><a class="lk" href="https://screenrant.com/napoleon-dynamite-best-quotes/" target="_blank" rel="noopener">screenrant.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">4<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:40%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
-    <code class="rid">still-real-to-me-dammit</code>
+    <code class="rid">tina-eat-the-food</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="i&#x27;ll be back. terminátor (arnold schwarzenegger) the terminator naprosto obyčejná věta, kterou přednes a kontext promění v hrozbu. sama o sobě je nenápadná — to je právě použitelné, protože ji můžeš položit pod jakoukoli naraci o návratu. nejcitovanější filmová replika v běžné americké mluvě — v anketách pravidelně vede. používá se pokaždé, když někdo odchází, a skoro vždy s přízvukem. nenápadná hrozba návrat roboti a budoucnost fráze, které se osamostatnily 1984 ill-be-back">
+  <div class="row-a">
+    <p class="q">„I&#x27;ll be back.“ </p>
+    <p class="who"><b>Terminátor (Arnold Schwarzenegger)</b> · The Terminator · 1984</p>
+    <p class="why">Naprosto obyčejná věta, kterou přednes a kontext promění v hrozbu. Sama o sobě je nenápadná — to je právě použitelné, protože ji můžeš položit pod jakoukoli naraci o návratu.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Terminátor stojí na policejní stanici, kde mu odmítli přístup.</dd>
+        <dt>Po</dt><dd>Odejde. Za pár vteřin projede autem zdí.</dd>
+        <dt>Pozadí</dt><dd>Nejcitovanější filmová replika v běžné americké mluvě — v anketách pravidelně vede. Používá se pokaždé, když někdo odchází, a skoro vždy s přízvukem.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno napříč přehledy nejcitovanějších replik. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Terminator I&#x27;ll be back police station scene 1984&#x27;</div>
+    <div class="tps"><span class="tp">nenápadná hrozba</span><span class="tp">návrat</span><span class="tp">roboti a budoucnost</span><span class="tp">fráze, které se osamostatnily</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.theregister.com/2007/11/08/top_movie_quotes/" target="_blank" rel="noopener">theregister.com</a><a class="lk" href="https://www.aol.com/articles/15-greatest-movie-quotes-time-141447950.html" target="_blank" rel="noopener">aol.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">ill-be-back</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="you talkin&#x27; to me? travis bickle (robert de niro) taxi driver otázka položená prázdné místnosti. absurdita je uvnitř scény a je slyšet i bez obrazu — právě proto, že odpověď nepřijde. scéna byla podle štábu z velké části improvizovaná. v usa je to univerzální vtip na někoho, kdo si hraje na drsňáka před zrcadlem. hrát si na drsňáka mluvit sám se sebou zrcadlo konfrontace, která se nekoná 1976 you-talkin-to-me">
+  <div class="row-a">
+    <p class="q">„You talkin&#x27; to me?“ </p>
+    <p class="who"><b>Travis Bickle (Robert De Niro)</b> · Taxi Driver · 1976</p>
+    <p class="why">Otázka položená prázdné místnosti. Absurdita je uvnitř scény a je slyšet i bez obrazu — právě proto, že odpověď nepřijde.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Bickle stojí sám před zrcadlem a zkouší si konfrontaci.</dd>
+        <dt>Po</dt><dd>„You talkin&#x27; to me? Well, I&#x27;m the only one here.“</dd>
+        <dt>Pozadí</dt><dd>Scéna byla podle štábu z velké části improvizovaná. V USA je to univerzální vtip na někoho, kdo si hraje na drsňáka před zrcadlem.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno napříč přehledy nejcitovanějších replik. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Taxi Driver you talkin to me mirror scene&#x27;</div>
+    <div class="tps"><span class="tp">hrát si na drsňáka</span><span class="tp">mluvit sám se sebou</span><span class="tp">zrcadlo</span><span class="tp">konfrontace, která se nekoná</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.theregister.com/2007/11/08/top_movie_quotes/" target="_blank" rel="noopener">theregister.com</a><a class="lk" href="https://editorial.rottentomatoes.com/article/most-memorable-movie-lines-of-the-last-21-years" target="_blank" rel="noopener">editorial.rottentomatoes.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">you-talkin-to-me</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="life is like a box of chocolates. you never know what you&#x27;re gonna get. forrest gump (tom hanks) forrest gump přirovnání, které při bližším pohledu nefunguje (v bonboniéře bývá plánek). právě proto je použitelné tam, kde narace odhalí, že se lidová moudrost o realitu rozbíjí. film z roku 1994. věta se v usa cituje tak často, že se používá i ironicky jako příklad prázdné moudrosti z bonboniéry. lidová moudrost, která neobstojí náhoda a osud přirovnání sladkosti 1994 box-of-chocolates">
+  <div class="row-a">
+    <p class="q">„Life is like a box of chocolates. You never know what you&#x27;re gonna get.“ </p>
+    <p class="who"><b>Forrest Gump (Tom Hanks)</b> · Forrest Gump · 1994</p>
+    <p class="why">Přirovnání, které při bližším pohledu nefunguje (v bonboniéře bývá plánek). Právě proto je použitelné tam, kde narace odhalí, že se lidová moudrost o realitu rozbíjí.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Gump sedí na lavičce u autobusové zastávky a mluví k cizímu člověku.</dd>
+        <dt>Po</dt><dd>Nabídne bonboniéru dál.</dd>
+        <dt>Pozadí</dt><dd>Film z roku 1994. Věta se v USA cituje tak často, že se používá i ironicky jako příklad prázdné moudrosti z bonboniéry.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Znění potvrzeno v přehledech nejcitovanějších replik; ve filmu zazní ve dvou mírně odlišných variantách (Gump a jeho matka). Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Forrest Gump box of chocolates bench scene&#x27;</div>
+    <div class="tps"><span class="tp">lidová moudrost, která neobstojí</span><span class="tp">náhoda a osud</span><span class="tp">přirovnání</span><span class="tp">sladkosti</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.aol.com/articles/15-greatest-movie-quotes-time-141447950.html" target="_blank" rel="noopener">aol.com</a><a class="lk" href="https://www.theregister.com/2007/11/08/top_movie_quotes/" target="_blank" rel="noopener">theregister.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">5<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:50%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">box-of-chocolates</code>
   </div>
 </article></div>
 </section>
 <section class="grp" data-seam="tv">
-  <div class="grp-head"><span class="grp-id">SERIÁL</span><h2>Kultovní seriály a animace</h2><span class="grp-n">3</span></div>
+  <div class="grp-head"><span class="grp-id">SERIÁL</span><h2>Kultovní seriály a animace</h2><span class="grp-n">6</span></div>
   <p class="grp-note">Hlášky, které Američan pozná z první slabiky. Práva hlídají studia agresivně, ale krátká fráze chráněná není.</p>
   <div class="rows"><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="is mayonnaise an instrument? patrick star (hlas bill fagerbakke) spongebob squarepants, díl band geeks otázka položená s naprostou vážností, jejíž absurdita je uvnitř věty. použitelné kdekoli, kde narace dojde ke kategorii, do které něco zjevně nepatří — a to je pro explainery zlatý důl. odvysíláno 7. září 2001, díl band geeks. jedna z nejcitovanějších replik celého seriálu; v roce 2024 na ni hellmann&#x27;s udělal marketingovou kampaň a spongebob dostal navazující díl. zná to každý američan pod padesát. věci, které do kategorie nepatří otázky položené s vážnou tváří kreslené seriály majonéza 2001 mayonnaise-instrument">
   <div class="row-a">
@@ -417,7 +471,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:20%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -447,7 +501,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -477,11 +531,376 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
     <code class="rid">steamed-hams-aurora-borealis</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="no soup for you! yev kassem, „soup nazi“ (larry thomas) seinfeld, díl the soup nazi (s07e06) absolutní autorita nad naprostou banalitou. funguje bez kontextu jako univerzální „zamítá se“ a je to dvousekundový střih. odvysíláno 2. listopadu 1995. postava vznikla podle skutečného newyorského kuchaře ala yeganeha. fráze se v usa používá naprosto běžně jako zamítnutí čehokoli — je to jedna z mála sitcomových hlášek, které přežily do obecné mluvy. absolutní zamítnutí malá moc a její zneužití fronty a pravidla jídlo 1995 no-soup-for-you">
+  <div class="row-a">
+    <p class="q">„No soup for you!“ </p>
+    <p class="who"><b>Yev Kassem, „Soup Nazi“ (Larry Thomas)</b> · Seinfeld, díl The Soup Nazi (S07E06) · 1995</p>
+    <p class="why">Absolutní autorita nad naprostou banalitou. Funguje bez kontextu jako univerzální „zamítá se“ a je to dvousekundový střih.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Zákazník poruší nepsané pravidlo fronty u pultu s polévkou.</dd>
+        <dt>Po</dt><dd>Vykázán bez polévky. Fronta pokračuje beze slova.</dd>
+        <dt>Pozadí</dt><dd>Odvysíláno 2. listopadu 1995. Postava vznikla podle skutečného newyorského kuchaře Ala Yeganeha. Fráze se v USA používá naprosto běžně jako zamítnutí čehokoli — je to jedna z mála sitcomových hlášek, které přežily do obecné mluvy.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Datum a původ postavy potvrzeny napříč Hollywood Reporterem, IMDb a Wikipedií. Znění koluje ve dvou variantách — „No soup for you!“ a „No more soup for you.“ Před střihem si ověř, kterou chceš.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>imdb.com/title/tt0697782/quotes — citace dílu The Soup Nazi; nebo YouTube &#x27;No Soup For You Seinfeld&#x27;</div>
+    <div class="tps"><span class="tp">absolutní zamítnutí</span><span class="tp">malá moc a její zneužití</span><span class="tp">fronty a pravidla</span><span class="tp">jídlo</span></div>
+    <div class="lks"><a class="lk lk-main" href="https://www.youtube.com/watch?v=RqlQYBcsq54" target="_blank" rel="noopener">Zdroj zvuku ↗</a><a class="lk lk-yt" href="https://www.youtube.com/watch?v=RqlQYBcsq54" target="_blank" rel="noopener" title="&quot;No Soup For You!&quot; | The Soup Nazi | Seinfeld">YouTube ↗</a><a class="lk" href="https://www.imdb.com/title/tt0697782/quotes/" target="_blank" rel="noopener">imdb.com</a><a class="lk" href="https://www.hollywoodreporter.com/tv/tv-news/seinfeld-soup-nazi-turns-30-catchphrase-1236418333/" target="_blank" rel="noopener">hollywoodreporter.com</a><a class="lk" href="https://funfactfriyay.com/p/soup-nazi-seinfeld" target="_blank" rel="noopener">funfactfriyay.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">no-soup-for-you</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="that&#x27;s what she said. michael scott (steve carell) the office (us) univerzální dvojsmysl, který se dá nasadit na jakoukoli větu. pro explainer je to ideální, protože ho můžeš připnout k naraci, kterou sám napíšeš. michael scott to říká od roku 2005; fráze je starší (wayne&#x27;s world 1992, doložené užití ještě dřív), ale the office ji připnul k jedné postavě. rolling stone o ní udělal celý žebříček. v usa to zná úplně každý. dvojsmysly kancelářský humor vtip, který nikdo neocení fráze, které se osamostatnily 2005 thats-what-she-said">
+  <div class="row-a">
+    <p class="q">„That&#x27;s what she said.“ </p>
+    <p class="who"><b>Michael Scott (Steve Carell)</b> · The Office (US) · 2005</p>
+    <p class="why">Univerzální dvojsmysl, který se dá nasadit na jakoukoli větu. Pro explainer je to ideální, protože ho můžeš připnout k naraci, kterou sám napíšeš.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Kdokoli v kanceláři řekne cokoli, co jde vyložit dvojsmyslně.</dd>
+        <dt>Po</dt><dd>Ticho. Michael se rozhlíží, jestli to někdo ocenil.</dd>
+        <dt>Pozadí</dt><dd>Michael Scott to říká od roku 2005; fráze je starší (Wayne&#x27;s World 1992, doložené užití ještě dřív), ale The Office ji připnul k jedné postavě. Rolling Stone o ní udělal celý žebříček. V USA to zná úplně každý.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Původ starší než The Office — B. J. Novak to podle Office Ladies slyšel na vysoké, Mike Myers to zpopularizoval ve Wayne&#x27;s World 1992. Rok 2005 je nástup v The Office, ne vznik fráze. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/thats-what-she-said — původ; Rolling Stone má žebříček všech výskytů v seriálu</div>
+    <div class="tps"><span class="tp">dvojsmysly</span><span class="tp">kancelářský humor</span><span class="tp">vtip, který nikdo neocení</span><span class="tp">fráze, které se osamostatnily</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/thats-what-she-said" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://www.rollingstone.com/tv-movies/tv-movie-lists/the-office-nbc-ranking-every-thats-what-she-said-joke-michael-scott-steve-carell-dwight-jim-pam-1234734586/season-6-episode-20-new-leads-1234734665" target="_blank" rel="noopener">rollingstone.com</a><a class="lk" href="https://en.wikipedia.org/wiki/That%27s_What_She_Said" target="_blank" rel="noopener">en.wikipedia.org</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">thats-what-she-said</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="we were on a break! ross geller (david schwimmer) friends obhajoba pronesená s takovou naléhavostí, že sama sebe podkopává. funguje bez seriálu jako univerzální „ale já měl důvod“. fráze vznikla ve třetí sérii (1997) a stala se v usa obecnou zkratkou pro výmluvu, kterou nikdo neuznává. kolik přesně sérií ji ross opakuje, je vlastní žánr internetových článků. výmluva, kterou nikdo neuznává technicky vzato mám pravdu vztahy opakování jako komika 1997 we-were-on-a-break">
+  <div class="row-a">
+    <p class="q">„We were on a break!“ </p>
+    <p class="who"><b>Ross Geller (David Schwimmer)</b> · Friends · 1997</p>
+    <p class="why">Obhajoba pronesená s takovou naléhavostí, že sama sebe podkopává. Funguje bez seriálu jako univerzální „ale já měl důvod“.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Rachel obviní Rosse z nevěry.</dd>
+        <dt>Po</dt><dd>Ross to bude opakovat dalších sedm sérií.</dd>
+        <dt>Pozadí</dt><dd>Fráze vznikla ve třetí sérii (1997) a stala se v USA obecnou zkratkou pro výmluvu, kterou nikdo neuznává. Kolik přesně sérií ji Ross opakuje, je vlastní žánr internetových článků.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Fráze poprvé v S03E16 The One With The Morning After; poprvé ji vysloví Rachel, Ross ji pak opakuje celý seriál. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>friends.fandom.com/wiki/&quot;We_Were_On_A_Break!&quot; — přehled všech výskytů s díly</div>
+    <div class="tps"><span class="tp">výmluva, kterou nikdo neuznává</span><span class="tp">technicky vzato mám pravdu</span><span class="tp">vztahy</span><span class="tp">opakování jako komika</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://friends.fandom.com/wiki/%22We_Were_On_A_Break!%22" target="_blank" rel="noopener">friends.fandom.com</a><a class="lk" href="https://screenrant.com/friends-how-many-times-ross-said-we-were-on-break/" target="_blank" rel="noopener">screenrant.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">we-were-on-a-break</code>
+  </div>
+</article></div>
+</section>
+<section class="grp" data-seam="youtube_viral">
+  <div class="grp-head"><span class="grp-id">VIRÁL</span><h2>Virály, Vine a YouTube</h2><span class="grp-n">9</span></div>
+  <p class="grp-note">Nejvyšší rozpoznatelnost v celé knihovně. Skoro vždy červené — text se přemluví, scéna překreslí. Přesně na tohle je whiteboard stavěný.</p>
+  <div class="rows"><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="road work ahead? uh, yeah, i sure hope it does. drew gooden vine, drew gooden špatné přečtení nápisu, které dává gramaticky perfektní smysl. absurdita je uvnitř věty a nepotřebuje kulturní paměť — ale ta paměť je bonus, protože půlka publika se zasměje už při &#x27;road work ahead?&#x27;. zveřejněno 20. března 2016, přes 127 tisíc revinů a 10 milionů přehrání. patří k pěti nejcitovanějším vinům vůbec a přežilo smrt platformy — dodnes koluje na tiktoku. kdokoli pod pětatřicet to v usa pozná okamžitě a umí dokončit větu. nedorozumění, které dává smysl dopravní značení internetová kultura 2010s jazyk a dvojznačnost 2016 road-work-ahead">
+  <div class="row-a">
+    <p class="q">„Road work ahead? Uh, yeah, I sure hope it does.“ </p>
+    <p class="who"><b>Drew Gooden</b> · Vine, Drew Gooden · 2016</p>
+    <p class="why">Špatné přečtení nápisu, které dává gramaticky perfektní smysl. Absurdita je uvnitř věty a nepotřebuje kulturní paměť — ale ta paměť je bonus, protože půlka publika se zasměje už při &#x27;Road work ahead?&#x27;.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Gooden natáčí z auta ceduli s nápisem ROAD WORK AHEAD.</dd>
+        <dt>Po</dt><dd>Konec, šest sekund celkem.</dd>
+        <dt>Pozadí</dt><dd>Zveřejněno 20. března 2016, přes 127 tisíc revinů a 10 milionů přehrání. Patří k pěti nejcitovanějším Vinům vůbec a přežilo smrt platformy — dodnes koluje na TikToku. Kdokoli pod pětatřicet to v USA pozná okamžitě a umí dokončit větu.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne.</dd>
+        <dt>Ověření</dt><dd>Znění, datum i čísla přehrání z Know Your Meme. Vine je zrušený, originál žije v kompilacích. Žádné potvrzené ID videa jsem neviděl, proto youtube prázdné.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/road-work-ahead — má vložený originál; na YouTube hledej &#x27;Drew Gooden road work ahead vine original&#x27;</div>
+    <div class="tps"><span class="tp">nedorozumění, které dává smysl</span><span class="tp">dopravní značení</span><span class="tp">internetová kultura 2010s</span><span class="tp">jazyk a dvojznačnost</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/road-work-ahead" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/Drew_Gooden_(internet_personality)" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://medium.com/@kelsimanning/remembering-vine-25748805a3f2" target="_blank" rel="noopener">medium.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">4<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:40%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">road-work-ahead</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="fre sh a vaca do! uživatel vine &#x27;gasoleen&#x27; vine, cedule v del taco typografická chyba přečtená nahlas přesně tak, jak je vysázená. vizuální gag, který funguje jen zvukem — ideální na whiteboard, protože ceduli stejně kreslíš. únor 2016, zhruba 16 milionů přehrání. fráze se osamostatnila natolik, že ji lidé používají, aniž by vine kdy viděli, a dictionary.com jí věnoval heslo. typografická chyba jak se čte nahlas to, co je napsáno špatně internetová kultura 2010s rychlé občerstvení 2016 fre-sha-vaca-do">
+  <div class="row-a">
+    <p class="q">„Fre sh a vaca do!“ <span class="warnmark" title="Znění není potvrzeno doslovně">znění nepotvrzeno</span></p>
+    <p class="who"><b>uživatel Vine &#x27;gasoleen&#x27;</b> · Vine, cedule v Del Taco · 2016</p>
+    <p class="why">Typografická chyba přečtená nahlas přesně tak, jak je vysázená. Vizuální gag, který funguje jen zvukem — ideální na whiteboard, protože ceduli stejně kreslíš.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Kamera najíždí na ceduli, kde má stát &#x27;fresh avocado&#x27;, ale rozpal písmen z toho udělá &#x27;fre shavocado&#x27;.</dd>
+        <dt>Po</dt><dd>Smích za kamerou.</dd>
+        <dt>Pozadí</dt><dd>Únor 2016, zhruba 16 milionů přehrání. Fráze se osamostatnila natolik, že ji lidé používají, aniž by Vine kdy viděli, a Dictionary.com jí věnoval heslo.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne.</dd>
+        <dt>Ověření</dt><dd>Přepis se u téhle hlášky liší doslova v každém zdroji (&#x27;free shavacado&#x27;, &#x27;fre sh a vaca do&#x27;, &#x27;fr-e-sh-a-voca-do&#x27;), proto quote_verbatim false. Před střihem si poslechni, jak to vysloví, a přepiš.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>dictionary.com/culture/memes/free-shavacado — má vložený originál; nebo YouTube &#x27;fresh avocado vine original gasoleen&#x27;</div>
+    <div class="tps"><span class="tp">typografická chyba</span><span class="tp">jak se čte nahlas to, co je napsáno špatně</span><span class="tp">internetová kultura 2010s</span><span class="tp">rychlé občerstvení</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://www.dictionary.com/culture/memes/free-shavacado" target="_blank" rel="noopener">dictionary.com</a><a class="lk" href="https://www.urbandictionary.com/define.php?term=fre+sh+a+vaca+do" target="_blank" rel="noopener">urbandictionary.com</a><a class="lk" href="https://www.buzzfeed.com/matwhitehead/fre-sha-voca-do" target="_blank" rel="noopener">buzzfeed.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">fre-sha-vaca-do</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="miss keisha? … oh my god, she&#x27;s dead. neznámá dívka, účet &#x27;wtfvon&#x27; vine naprosto nepřiměřený závěr vyvozený z toho, že panenka nemluví. logický skok je uvnitř scény, takže to funguje i bez znalosti originálu. nahráno na vine 10. září 2015. deset let stará hláška, kterou know your meme připomíná k výročí — pro americké publikum pod třicet je to okamžitá reference na &#x27;dramatický závěr z ničeho&#x27;. nepřiměřený závěr dětská logika internetová kultura 2010s dramatické oznámení 2015 miss-keisha-shes-dead">
+  <div class="row-a">
+    <p class="q">„Miss Keisha? … Oh my god, she&#x27;s dead.“ <span class="warnmark" title="Znění není potvrzeno doslovně">znění nepotvrzeno</span></p>
+    <p class="who"><b>neznámá dívka, účet &#x27;wtfvon&#x27;</b> · Vine · 2015</p>
+    <p class="why">Naprosto nepřiměřený závěr vyvozený z toho, že panenka nemluví. Logický skok je uvnitř scény, takže to funguje i bez znalosti originálu.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Dívka oslovuje panenku jménem Miss Keisha a čeká na odpověď.</dd>
+        <dt>Po</dt><dd>Panenka neodpoví. Konec.</dd>
+        <dt>Pozadí</dt><dd>Nahráno na Vine 10. září 2015. Deset let stará hláška, kterou Know Your Meme připomíná k výročí — pro americké publikum pod třicet je to okamžitá reference na &#x27;dramatický závěr z ničeho&#x27;.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. NAVÍC: originál obsahuje vulgarismus, který kanál nemůže odvysílat — verze zapsaná zde je už učesaná. A mluví tam dítě, takže přemluvení musí být hraný přednes, ne imitace toho konkrétního hlasu.</dd>
+        <dt>Ověření</dt><dd>Originál zní &#x27;Oh my fucking god, she&#x27;s fucking dead&#x27;. Zapsaná verze je zcenzurovaná, proto quote_verbatim false. Datum a účet z Know Your Meme.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/miss-keisha-oh-my-fucking-god-shes-fucking-dead — má vložený originál</div>
+    <div class="tps"><span class="tp">nepřiměřený závěr</span><span class="tp">dětská logika</span><span class="tp">internetová kultura 2010s</span><span class="tp">dramatické oznámení</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/miss-keisha-oh-my-fucking-god-shes-fucking-dead" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://medium.com/@coolmotherpuppr/rip-ms-keisha-and-vine-70faeb1810" target="_blank" rel="noopener">medium.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">4<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:40%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">miss-keisha-shes-dead</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="is this real life? david devore jr., 7 let david after dentist, youtube existenciální otázka položená sedmiletým dítětem v narkóze. absurdita je uvnitř věty a je použitelná doslova kdekoli, kde narace dojde k něčemu neuvěřitelnému. nejlepší dvousekundová vsuvka v celé knihovně. nahráno 30. ledna 2009, tři miliony zhlédnutí za tři dny, druhé nejsledovanější video roku na youtube. jeden z pilířů rané virální éry — američané nad třicet to znají všichni. existenciální otázky na nevhodném místě anestezie a zubař internetová kultura 2000s děti 2009 david-after-dentist-real-life">
+  <div class="row-a">
+    <p class="q">„Is this real life?“ </p>
+    <p class="who"><b>David DeVore Jr., 7 let</b> · David After Dentist, YouTube · 2009</p>
+    <p class="why">Existenciální otázka položená sedmiletým dítětem v narkóze. Absurdita je uvnitř věty a je použitelná doslova kdekoli, kde narace dojde k něčemu neuvěřitelnému. Nejlepší dvousekundová vsuvka v celé knihovně.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Otec natáčí syna na zadním sedadle auta cestou od zubaře, ještě pod anestezií.</dd>
+        <dt>Po</dt><dd>&#x27;Is this gonna be forever?&#x27;</dd>
+        <dt>Pozadí</dt><dd>Nahráno 30. ledna 2009, tři miliony zhlédnutí za tři dny, druhé nejsledovanější video roku na YouTube. Jeden z pilířů rané virální éry — Američané nad třicet to znají všichni.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Video vlastní rodina DeVorových, ne studio — u licencování je to teoreticky jednodušší, ale bez písemného svolení to pořád nejde.</dd>
+        <dt>Ověření</dt><dd>Znění, datum i čísla zhlédnutí z Know Your Meme a Wikipedie. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;David After Dentist original&#x27; — kanál booba1234, nahráno 30. ledna 2009; hláška je zhruba v půlce dvouminutového klipu</div>
+    <div class="tps"><span class="tp">existenciální otázky na nevhodném místě</span><span class="tp">anestezie a zubař</span><span class="tp">internetová kultura 2000s</span><span class="tp">děti</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/david-after-dentist" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/David_After_Dentist" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://www.today.com/parents/dads/david-after-dentist-devore-rcna100473" target="_blank" rel="noopener">today.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">david-after-dentist-real-life</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="what does this mean? paul &#x27;bear&#x27; vasquez yosemitebear mountain giant double rainbow 1-8-10, youtube muž pláče nad meteorologickým jevem a ptá se, co to znamená. funguje samo; se znalostí originálu je to silnější, protože pod tím je slyšet skutečné dojetí, ne hraná blbost. nahráno 8. ledna 2010, virální po parodii schmoyoho ze 6. července 2010. vasquez zemřel v roce 2020 a nekrology ho označovaly právě tímhle videem. pro američany je to zkratka pro nepřiměřené dojetí z běžného úkazu. nepřiměřené dojetí příroda a úžas internetová kultura 2000s otázky bez odpovědi 2010 double-rainbow-what-does-it-mean">
+  <div class="row-a">
+    <p class="q">„What does this mean?“ </p>
+    <p class="who"><b>Paul &#x27;Bear&#x27; Vasquez</b> · Yosemitebear Mountain Giant Double Rainbow 1-8-10, YouTube · 2010</p>
+    <p class="why">Muž pláče nad meteorologickým jevem a ptá se, co to znamená. Funguje samo; se znalostí originálu je to silnější, protože pod tím je slyšet skutečné dojetí, ne hraná blbost.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Vasquez natáčí dvojitou duhu nad Yosemity a postupně se rozpláče.</dd>
+        <dt>Po</dt><dd>Pláč pokračuje. &#x27;Oh my god, oh my god.&#x27;</dd>
+        <dt>Pozadí</dt><dd>Nahráno 8. ledna 2010, virální po parodii schmoyoho ze 6. července 2010. Vasquez zemřel v roce 2020 a nekrology ho označovaly právě tímhle videem. Pro Američany je to zkratka pro nepřiměřené dojetí z běžného úkazu.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Autotunovaná píseň od schmoyoho je zvlášť chráněná a nepoužitelná vůbec.</dd>
+        <dt>Ověření</dt><dd>Znění, datum i okolnosti z Know Your Meme, CNN a Washington Post. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Yosemitebear Mountain Giant Double Rainbow 1-8-10&#x27; — kanál Yosemitebear62; hláška je ve druhé polovině klipu</div>
+    <div class="tps"><span class="tp">nepřiměřené dojetí</span><span class="tp">příroda a úžas</span><span class="tp">internetová kultura 2000s</span><span class="tp">otázky bez odpovědi</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/double-rainbow" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://en.wikipedia.org/wiki/Double_Rainbow_(viral_video)" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://www.washingtonpost.com/technology/2020/05/11/double-rainbow-paul-vasquez-youtube-video/" target="_blank" rel="noopener">washingtonpost.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">double-rainbow-what-does-it-mean</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="high" data-hay="it&#x27;s still real to me, dammit! david wills, divák a tribute to starrcade, divácké q&amp;a emocionální obrana něčeho, o čem všichni vědí, že je to nastavené. funguje samo — ale pozadí je smutnější, než jak se meme používá, takže to zvaž. vhodné tam, kde narace mluví o něčem, na čem lidé lpí navzdory důkazům. listopad 2005, na youtube 8. ledna 2006 poté, co to odvysílal jimmy kimmel live. v usa je to univerzální zkratka pro člověka, který bere fikci smrtelně vážně. wills později vysvětlil, že krátce předtím zemřel eddie guerrero a on plakal kvůli tomu, co si zápasníci dělají s tělem. lpění navzdory důkazům fikce brána vážně fanouškovská kultura emoce na nečekaném místě 2005 still-real-to-me-dammit">
+  <div class="row-a">
+    <p class="q">„It&#x27;s still real to me, dammit!“ </p>
+    <p class="who"><b>David Wills, divák</b> · A Tribute to Starrcade, divácké Q&amp;A · 2005</p>
+    <p class="why">Emocionální obrana něčeho, o čem všichni vědí, že je to nastavené. Funguje samo — ale pozadí je smutnější, než jak se meme používá, takže to zvaž. Vhodné tam, kde narace mluví o něčem, na čem lidé lpí navzdory důkazům.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Wills dostane mikrofon na setkání fanoušků wrestlingu a rozpláče se.</dd>
+        <dt>Po</dt><dd>Sál ztichne.</dd>
+        <dt>Pozadí</dt><dd>Listopad 2005, na YouTube 8. ledna 2006 poté, co to odvysílal Jimmy Kimmel Live. V USA je to univerzální zkratka pro člověka, který bere fikci smrtelně vážně. Wills později vysvětlil, že krátce předtím zemřel Eddie Guerrero a on plakal kvůli tomu, co si zápasníci dělají s tělem.</dd>
+        <dt>Licence</dt><dd>Původní zvuk nepoužitelný. Krátká fráze chráněná není (37 C.F.R. 202.1), takže se přemluví a scéna překreslí — přesně na to je whiteboard. POZOR na hlas: napodobování charakteristického hlasu pro komerční účely je v americké judikatuře žalovatelné (Midler v. Ford Motor Co.). Neutrální přečtení téže věty je bezpečná cesta, imitace konkrétního herce nebo postavy ne. Wills sám je soukromá osoba, která si z toho udělala značku a prodává na to trička — je to spíš otázka slušnosti než práva.</dd>
+        <dt>Ověření</dt><dd>Znění, datum i pozadí z Know Your Meme a rozhovoru na Wrestling Inc. ID videa z výsledku hledání, obsah jsem neotevřel.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Its Still Real To Me Damn It&#x27; — hláška je na konci klipu</div>
+    <div class="tps"><span class="tp">lpění navzdory důkazům</span><span class="tp">fikce brána vážně</span><span class="tp">fanouškovská kultura</span><span class="tp">emoce na nečekaném místě</span></div>
+    <div class="lks"><a class="lk lk-main" href="https://www.youtube.com/watch?v=Yvd3aEsThbc" target="_blank" rel="noopener">Zdroj zvuku ↗</a><a class="lk lk-yt" href="https://www.youtube.com/watch?v=Yvd3aEsThbc" target="_blank" rel="noopener" title="Its Still Real To Me Damn It!">YouTube ↗</a><a class="lk" href="https://knowyourmeme.com/memes/it-s-still-real-to-me-damn-it" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://www.wrestlinginc.com/news/2021/09/dave-wills-explains-why-he-was-crying-in-infamous-its-still-real-to-me-dammit-meme/" target="_blank" rel="noopener">wrestlinginc.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">3<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:30%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">still-real-to-me-dammit</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="leave britney alone! chris crocker youtube prosba pronesená s naprosto neúměrnou intenzitou. funguje samo; americké publikum navíc slyší celou éru bulváru. nahráno 10. září 2007. zpětně se na to amerika dívá jinak — crocker měl pravdu a dostával za to výhrůžky smrtí. rolling stone i npr to po letech přehodnotily. fráze zůstala jako zkratka pro přehnanou obhajobu kohokoli. přehnaná obhajoba bulvár a jeho oběti internetová kultura 2000s emoce na kameru 2007 leave-britney-alone">
+  <div class="row-a">
+    <p class="q">„Leave Britney alone!“ </p>
+    <p class="who"><b>Chris Crocker</b> · YouTube · 2007</p>
+    <p class="why">Prosba pronesená s naprosto neúměrnou intenzitou. Funguje samo; americké publikum navíc slyší celou éru bulváru.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Crocker v slzách pod bílým prostěradlem prosí média, ať přestanou.</dd>
+        <dt>Po</dt><dd>Pláč pokračuje. Video mělo přes dva miliony zhlédnutí za prvních čtyřiadvacet hodin.</dd>
+        <dt>Pozadí</dt><dd>Nahráno 10. září 2007. Zpětně se na to Amerika dívá jinak — Crocker měl pravdu a dostával za to výhrůžky smrtí. Rolling Stone i NPR to po letech přehodnotily. Fráze zůstala jako zkratka pro přehnanou obhajobu kohokoli.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Datum, čísla zhlédnutí i pozdější přehodnocení z Know Your Meme, Rolling Stone a NPR. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>knowyourmeme.com/memes/leave-britney-alone — má vložený originál</div>
+    <div class="tps"><span class="tp">přehnaná obhajoba</span><span class="tp">bulvár a jeho oběti</span><span class="tp">internetová kultura 2000s</span><span class="tp">emoce na kameru</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://knowyourmeme.com/memes/leave-britney-alone" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://www.rollingstone.com/culture/culture-features/leave-britney-alone-chris-crocker-10-years-later-111918/" target="_blank" rel="noopener">rollingstone.com</a><a class="lk" href="https://www.npr.org/2021/06/27/1010355669/chris-crocker-leave-britney-alone-video-creator-reflects-on-whats-changed" target="_blank" rel="noopener">npr.org</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">2<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:20%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">leave-britney-alone</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="chocolate rain… tay zonday chocolate rain, youtube nesoulad mezi drobným mladíkem a hlubokým hlasem. je to zpěv, ne replika, takže to použij jako stinger pod naraci, ne jako dialog. nahráno 22. dubna 2007, přes 142 milionů zhlédnutí. nejvirálnější video léta 2007 a držitel youtube award. většina lidí neví, že je to protirasistická píseň — pamatují si ten hlas. hlas, který nesedí k člověku internetová kultura 2000s písničky, které se osamostatnily nečekaný zvuk 2007 chocolate-rain">
+  <div class="row-a">
+    <p class="q">„Chocolate rain…“ <span class="warnmark" title="Znění není potvrzeno doslovně">znění nepotvrzeno</span></p>
+    <p class="who"><b>Tay Zonday</b> · Chocolate Rain, YouTube · 2007</p>
+    <p class="why">Nesoulad mezi drobným mladíkem a hlubokým hlasem. Je to zpěv, ne replika, takže to použij jako stinger pod naraci, ne jako dialog.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Zonday sedí u mikrofonu a spustí nečekaně hlubokým hlasem.</dd>
+        <dt>Po</dt><dd>Odvrátí se od mikrofonu, aby se nadechl — titulek v videu to vysvětluje.</dd>
+        <dt>Pozadí</dt><dd>Nahráno 22. dubna 2007, přes 142 milionů zhlédnutí. Nejvirálnější video léta 2007 a držitel YouTube Award. Většina lidí neví, že je to protirasistická píseň — pamatují si ten hlas.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>Zpívaná fráze, ne mluvená — proto quote_verbatim false. Datum a čísla z Wikipedie a Know Your Meme. Potvrzené ID videa jsem neviděl.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>YouTube &#x27;Chocolate Rain Original Song by Tay Zonday&#x27; — kanál TayZonday, nahráno 22. dubna 2007</div>
+    <div class="tps"><span class="tp">hlas, který nesedí k člověku</span><span class="tp">internetová kultura 2000s</span><span class="tp">písničky, které se osamostatnily</span><span class="tp">nečekaný zvuk</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk" href="https://en.wikipedia.org/wiki/Chocolate_Rain" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://knowyourmeme.com/memes/chocolate-rain" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://www.mprnews.org/story/2023/07/07/when-chocolate-rain-ruled-the-internet-antiracism-song-captured-minneapolis-and-beyond" target="_blank" rel="noopener">mprnews.org</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">3<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:30%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">chocolate-rain</code>
+  </div>
+</article><article class="row" data-lic="red_rights_reserved" data-ver="u" data-self="yes" data-rec="universal" data-hay="charlie bit me! and that really hurt! harry davies-carr, 3 roky charlie bit my finger — again!, youtube naprosto věcné oznámení bolesti od tříletého dítěte. funguje bez kontextu; s ním je to okamžitá reference na ranou éru internetu. nahráno 22. května 2007. jedno z prvních skutečně virálních videí youtube a dodnes ho pozná v usa prakticky každý — přestože jsou bratři angličani. v roce 2021 rodina video prodala jako nft za 760 tisíc dolarů a stáhla ho z youtube; originál tam už není. věcné oznámení bolesti sourozenci internetová kultura 2000s děti 2007 charlie-bit-my-finger">
+  <div class="row-a">
+    <p class="q">„Charlie bit me! And that really hurt!“ </p>
+    <p class="who"><b>Harry Davies-Carr, 3 roky</b> · Charlie bit my finger — again!, YouTube · 2007</p>
+    <p class="why">Naprosto věcné oznámení bolesti od tříletého dítěte. Funguje bez kontextu; s ním je to okamžitá reference na ranou éru internetu.</p>
+    <details class="more"><summary>Kontext, kulturní pozadí, licence</summary>
+      <dl class="dets">
+        <dt>Před</dt><dd>Roční Charlie kousne staršího bratra do prstu.</dd>
+        <dt>Po</dt><dd>Harry se zasměje. Padesát šest sekund celkem.</dd>
+        <dt>Pozadí</dt><dd>Nahráno 22. května 2007. Jedno z prvních skutečně virálních videí YouTube a dodnes ho pozná v USA prakticky každý — přestože jsou bratři Angličani. V roce 2021 rodina video prodala jako NFT za 760 tisíc dolarů a stáhla ho z YouTube; originál tam už není.</dd>
+        <dt>Licence</dt><dd></dd>
+        <dt>Ověření</dt><dd>POZOR: originál byl v roce 2021 z YouTube stažen po prodeji jako NFT — odkazy na původní video nefungují. Zapsané ID je retrospektiva, ne originál. Britský původ, ale rozpoznatelnost v USA univerzální.</dd>
+      </dl>
+    </details>
+    <div class="sq"><span class="sq-lab">Co dohledat</span>Originál na YouTube není. Hledej reupload nebo archivní kopii; kontext na knowyourmeme.com/memes/charlie-bit-my-finger</div>
+    <div class="tps"><span class="tp">věcné oznámení bolesti</span><span class="tp">sourozenci</span><span class="tp">internetová kultura 2000s</span><span class="tp">děti</span></div>
+    <div class="lks"><span class="lk lk-none">Přímý odkaz na zvuk chybí</span><a class="lk lk-yt" href="https://www.youtube.com/watch?v=lsds1fr1-_o" target="_blank" rel="noopener" title="&quot;CHARLIE BIT MY FINGER!&quot;: YouTube&#x27;s first accidental superstars">YouTube ↗</a><a class="lk" href="https://en.wikipedia.org/wiki/Charlie_Bit_My_Finger" target="_blank" rel="noopener">en.wikipedia.org</a><a class="lk" href="https://knowyourmeme.com/memes/charlie-bit-my-finger" target="_blank" rel="noopener">knowyourmeme.com</a><a class="lk" href="https://time.com/6050450/charlie-bit-my-finger-leaving-youtube/" target="_blank" rel="noopener">time.com</a></div>
+  </div>
+  <div class="row-b">
+    <div class="dur">
+      <div class="dur-n">4<span>s</span><i>odhad</i></div>
+      <div class="dur-bar"><span style="width:40%"></span></div>
+    </div>
+    
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="ver v-no">Neověřeno</span>
+    <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
+    <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
+    <code class="rid">charlie-bit-my-finger</code>
   </div>
 </article></div>
 </section>
@@ -512,7 +931,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -542,7 +961,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -572,7 +991,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -602,7 +1021,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:20%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -632,7 +1051,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -667,7 +1086,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -697,7 +1116,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -727,7 +1146,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:20%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -757,7 +1176,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -787,7 +1206,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -817,7 +1236,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -847,7 +1266,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -877,7 +1296,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -912,7 +1331,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -942,7 +1361,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:80%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -972,7 +1391,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:20%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1002,7 +1421,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1032,7 +1451,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1062,7 +1481,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1092,7 +1511,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1122,7 +1541,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1152,7 +1571,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1187,7 +1606,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1217,7 +1636,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:70%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1247,7 +1666,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:70%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1277,7 +1696,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1307,7 +1726,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -1337,7 +1756,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1367,7 +1786,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1397,7 +1816,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1427,7 +1846,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -1462,7 +1881,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1492,7 +1911,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1522,7 +1941,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:70%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1552,7 +1971,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1582,7 +2001,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:70%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -1612,7 +2031,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1647,7 +2066,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     <span class="tstamp">055:55:19 GET</span>
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-ok">Ověřeno přepisem</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1677,7 +2096,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1707,7 +2126,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     <span class="tstamp">000:01:36 GET</span>
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-ok">Ověřeno přepisem</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-partial" title="Funguje samo, se znalostí zdroje je silnější.">Částečně samonosné</span>
@@ -1737,7 +2156,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1767,7 +2186,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:10%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1797,7 +2216,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1827,7 +2246,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:40%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1857,7 +2276,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1892,7 +2311,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:70%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1922,7 +2341,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:80%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1952,7 +2371,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:60%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-high" title="Pozná to velká část publika, typicky jedna generace.">Zná hodně lidí</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -1982,7 +2401,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -2012,7 +2431,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:30%"></span></div>
     </div>
     
-    <span class="flag f-stop">ČERVENÁ · PŘEMLUVIT</span>
+    <span class="lictag t-stop">ČERVENÁ · PŘEMLUVIT</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -2042,7 +2461,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
+    <span class="lictag t-warn">ŽLUTÁ · OVĚŘ SOUBOR</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -2077,7 +2496,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:20%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-universal" title="Naprostá většina Američanů to okamžitě pozná.">Zná každý</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>
@@ -2107,7 +2526,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
       <div class="dur-bar"><span style="width:50%"></span></div>
     </div>
     
-    <span class="flag f-ok">ZELENÁ · FEDERÁLNÍ PD</span>
+    <span class="lictag t-ok">ZELENÁ · FEDERÁLNÍ PD</span>
     <span class="ver v-no">Neověřeno</span>
     <span class="rec rec-niche" title="Rozpoznatelnost skoro nulová. Musí fungovat čistě obsahem věty.">Zná málokdo</span>
     <span class="sc sc-yes" title="Funguje na kohokoli. Absurdita je uvnitř věty.">Samonosné</span>

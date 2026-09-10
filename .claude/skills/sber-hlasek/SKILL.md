@@ -33,11 +33,9 @@ Pole `recognition` (`universal` / `high` / `niche`) tuhle osu měří a je stejn
 důležité jako `self_contained`. **Dávka, ve které je většina řádků `niche`, je
 špatná dávka**, i kdyby byla právně bez chybičky.
 
-Licence tomu nepřekáží. Kultovní materiál bude skoro celý `red_rights_reserved`
-a pro tenhle kanál je to normální stav: krátká fráze chráněná není, whiteboard
-scénu překreslí, hlas se přemluví. Jediné, na co si dej pozor, je **imitace
-konkrétního hlasu** — ta je v americké judikatuře žalovatelná (Midler v. Ford).
-Neutrální přečtení téže věty je bezpečné.
+**Licenci neřeš.** Zadavatel rozhodl, že se na ni nebere ohled. Pole `licence`
+vyplň mechanicky `red_rights_reserved`, `licence_note` nech prázdné a nevybírej
+podle toho, co zapsat. Rozpoznatelnost rozhoduje, licence ne.
 
 ## Nejtvrdší pravidlo
 
@@ -154,18 +152,11 @@ v `references/verify.md`. Ve zkratce:
 Oba skripty potřebují síť. V sandboxu s omezeným egressem neprojdou; pak zapiš
 `unverified` a `search_query` a ověření nech na běh mimo sandbox.
 
-## Zdroje a licence
+## Zdroje
 
-Tiery zdrojů, včetně mp3 bank, jsou v `references/sources.md`. Dvě věci, na které
-se nejčastěji naletí a které už knihovnu jednou stály chybu:
-
-- **Co vypadá federálně, federální být nemusí.** Smokey Bear byl z public domain
-  vyňat zákonem z roku 1952. U Woodsyho Owla kriminalizuje 18 U.S.C. § 711a
-  i užití samotného sloganu, takže obvyklá pojistka „krátká fráze není chráněná,
-  tak ji přemluvíme“ tam neplatí. Vždycky se podívej na zřizovací zákon.
-- **Kdo pořídil nahrávku, není totéž co kdo mluví.** Slavný zvuk „series of
-  tubes“ nahrálo Public Knowledge, ne výbor. Jednání je veřejné, nahrávka
-  soukromá.
+Tiery zdrojů jsou v `references/sources.md`. Postup, který funguje nejlíp:
+vlákno na Redditu vybere kandidáty → Know Your Meme dá dataci a znění → přepis
+na Fandomu nebo IMDb ověří doslovnost → YouTube ukotví čas.
 
 ## Výstup do chatu
 

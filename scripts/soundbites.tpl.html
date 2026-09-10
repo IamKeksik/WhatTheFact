@@ -121,6 +121,7 @@ main{padding-block:8px 72px}
 .dur.is-over .dur-bar span{background:var(--warn)}
 .tstamp{font-family:var(--f-mono); font-size:11px; font-weight:600; color:var(--ok); border:1px solid var(--ok); background:var(--ok-soft); padding:3px 7px; font-variant-numeric:tabular-nums}
 .beat{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.05em; padding:3px 7px; color:var(--brand); border:1px solid var(--brand)}
+.lictag{font-family:var(--f-mono); font-size:9.5px; letter-spacing:.05em; padding:2px 6px; color:var(--ink3); border:1px solid var(--rule2); white-space:nowrap; opacity:.75}
 .flag{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.05em; padding:4px 7px; white-space:nowrap}
 .f-ok{background:var(--ok-soft); color:var(--ok); border:1px solid var(--ok)}
 .f-warn{background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn)}
@@ -156,13 +157,10 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
   <header class="mast">
     <div class="kicker"><span>What The Fact</span><span>·</span><span>US / EN</span><span>·</span><span>Produkční knihovna</span><span>·</span><b>zvuk</b></div>
     <h1>Knihovna zvukových hlášek</h1>
-    <p class="dek">Krátké americké soundbity na cutaway — 1 až 8 sekund, tvrdý strop 10. Každý řádek nese délku, licenční vlajku, stav ověření a poznámku, co přesně dohledat, než se to střihne. Zdroj dat: <code>data/soundbites.jsonl</code>.</p>
+    <p class="dek">Krátké americké soundbity na cutaway — 1 až 8 sekund, tvrdý strop 10. Řazeno podle toho, jak moc to divák pozná. Každý řádek nese délku, rozpoznatelnost, odkaz na video a poznámku, co dohledat. Zdroj dat: <code>data/soundbites.jsonl</code>.</p>
 
     <div class="stats">
       <div class="stat"><b>@@TOTAL@@</b><span>položek</span></div>
-      <div class="stat s-ok"><b>@@GREEN@@</b><span>zelená · federální PD</span></div>
-      <div class="stat s-warn"><b>@@YELLOW@@</b><span>žlutá · ověř soubor</span></div>
-      <div class="stat s-stop"><b>@@RED@@</b><span>červená · přemluvit</span></div>
       <div class="stat"><b>@@SELF@@</b><span>samonosných</span></div>
       <div class="stat"><b>@@UNI@@</b><span>zná každý</span></div>
       <div class="stat"><b>@@NICHE@@</b><span>zná málokdo</span></div>
@@ -190,11 +188,7 @@ footer p{font-family:var(--f-mono); font-size:11px; color:var(--ink3); margin:0 
         <button class="chip" data-f="rec" data-v="universal" aria-pressed="false">zná každý</button>
         <button class="chip" data-f="rec" data-v="high" aria-pressed="false">zná hodně lidí</button>
         <button class="chip" data-f="rec" data-v="niche" aria-pressed="false">zná málokdo</button>
-        <span class="chiplab" style="margin-left:8px">Licence</span>
-        <button class="chip" data-f="lic" data-v="green_federal_pd" aria-pressed="false">zelená</button>
-        <button class="chip" data-f="lic" data-v="yellow_verify" aria-pressed="false">žlutá</button>
-        <button class="chip" data-f="lic" data-v="red_rights_reserved" aria-pressed="false">červená</button>
-        <span class="chiplab" style="margin-left:8px">Ověření</span>
+        <span class="chiplab">Ověření</span>
         <button class="chip" data-f="ver" data-v="v" aria-pressed="false">ověřeno</button>
         <button class="chip" data-f="ver" data-v="u" aria-pressed="false">neověřeno</button>
         <span class="chiplab" style="margin-left:8px">Srozumitelnost</span>

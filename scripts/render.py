@@ -13,6 +13,7 @@ TPLP=os.path.join(ROOT,"scripts","soundbites.tpl.html")
 rows=[json.loads(l) for l in open(SRC) if l.strip()]
 
 SEAM={
+ "film":("FILM","Kultovní filmové hlášky","Nejvyšší rozpoznatelnost vůbec. Věty, které Američan pozná z první slabiky a často je i sám používá."),
  "youtube_viral":("VIRÁL","Virály, Vine a YouTube","Nejvyšší rozpoznatelnost v celé knihovně. Skoro vždy červené — text se přemluví, scéna překreslí. Přesně na tohle je whiteboard stavěný."),
  "tv":("SERIÁL","Kultovní seriály a animace","Hlášky, které Američan pozná z první slabiky. Práva hlídají studia agresivně, ale krátká fráze chráněná není."),
  "scotus_argument":("SCOTUS","Nejvyšší soud — ústní jednání","Přepisy značí smích slovem „(Laughter)“. Federální PD, ale bez přístupu k Oyez z tohoto prostředí nejde ukotvit čas — všechny řádky nesou dohledávací dotaz."),
@@ -24,7 +25,7 @@ SEAM={
  "local_news":("LOKÁLKA","Lokální zprávy — virály","Vše červené: záznam patří stanici. Text se přemluví, scéna překreslí."),
  "other":("MISE","NASA a řízení letového provozu","Jediné dva řádky s reálně ukotveným časem v celé knihovně. Zvuk mise je federální PD; CVR z NTSB je uzavřený zdroj."),
 }
-ORDER=["youtube_viral","tv","advertisement","local_news","congressional_hearing","scotus_argument","prelinger_film","other","federal_psa","speech"]
+ORDER=["film","tv","youtube_viral","advertisement","local_news","congressional_hearing","scotus_argument","prelinger_film","other","federal_psa","speech"]
 
 LIC={"green_federal_pd":("ok","ZELENÁ · FEDERÁLNÍ PD"),
      "green_pd_age":("ok","ZELENÁ · PD VĚKEM"),
@@ -92,7 +93,7 @@ def row_html(r):
       <div class="dur-bar"><span style="width:{pct:.0f}%"></span></div>
     </div>
     {st}{bt}
-    <span class="flag f-{lic_cls}">{lic_lab}</span>
+    <span class="lictag t-{lic_cls}">{lic_lab}</span>
     <span class="ver {'v-ok' if ver_ok else 'v-no'}">{'Ověřeno přepisem' if ver_ok else 'Neověřeno'}</span>
     <span class="rec rec-{e(r['recognition'])}" title="{e(rec_hint)}">{rec_lab}</span>
     <span class="sc sc-{e(r['self_contained'])}" title="{e(self_hint)}">{self_lab}</span>

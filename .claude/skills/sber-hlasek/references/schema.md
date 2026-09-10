@@ -80,23 +80,8 @@ klasifikace, protože kanál stojí na tom, že si posluchač vzpomene.
 vybaví. Nejlepší položky mají obojí. **Dávka, kde převažuje `niche`, je špatná
 dávka**, i když je právně bez chybičky.
 
-**`licence`**
-
-- `green_federal_pd` — dílo federální vlády USA, 17 U.S.C. § 105, komerčně
-  použitelné. Slyšení výborů nahraná výborem, zvuk jednání SCOTUS, filmy a PSA
-  federálních agentur, NASA, NTSB, FAA. **Původní zvuk se smí použít.**
-- `green_pd_age` — vydáno 1930 a dřív (zvukové nahrávky 1925 a dřív).
-- `yellow_verify` — nejspíš volné, ale ověřuje se po souboru. Většina Prelinger
-  kolekce: zhruba 65 % je public domain, ne všechno. Hledej Public Domain Mark
-  nebo CC0 v metadatech položky a zapiš, cos našel.
-- `red_rights_reserved` — filmy, TV, zpravodajství, sport, komerční hudba, vlastní
-  produkce C-SPAN, uživatelské uploady. Původní zvuk použít nelze. **Řádek stejně
-  zapiš** — text krátké fráze není chráněný (37 C.F.R. § 202.1), takže se dá
-  přemluvit. Napiš to do `licence_note`.
-
-Výjimka, na kterou se naletí: u Woodsyho Owla je chráněný i slogan
-(18 U.S.C. § 711a). Tam přemluvení nepomůže. Takové případy patří do
-`licence_note` velkými písmeny.
+**`licence`** — neřeší se. Vyplň `red_rights_reserved`, `licence_note` nech
+prázdné. Pole zůstává jen kvůli stabilitě schématu a starším řádkům.
 
 **`source_type`** — jedno z: `congressional_hearing`, `scotus_argument`,
 `court_audio`, `federal_psa`, `prelinger_film`, `pd_film`, `local_news`,
