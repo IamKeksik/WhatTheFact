@@ -1,17 +1,35 @@
 # Prompt pro sběr hlášek — vlož do nového chatu
 
+> **Kanonická verze je skill, ne tenhle soubor.** V Claude Code napiš
+> `/sber-hlasek` — skill v `.claude/skills/sber-hlasek/` umí navíc paralelní běh
+> pěti agentů, lov ke scénáři a ověřovací skripty. Tenhle soubor je verze
+> na vložení do libovolného chatu s web searchem, kde skill k dispozici není.
+
 **Jak to použít:** zkopíruj celý blok mezi `=== START ===` a `=== END ===` do nového
 chatu s modelem, který má web search. Nech ho běžet. Po každé dávce ti vypíše
-JSONL řádky — ty si ukládej do jednoho souboru `hlasky.jsonl`. Až budeš chtít
+JSONL řádky — ty si ukládej do `data/soundbites.jsonl`. Až budeš chtít
 skončit, napiš `STOP`.
 
 **Proč JSONL a ne tabulka:** roste to do tisíců položek, přežije to čárky
-a uvozovky v textu, a dá se z toho vygenerovat prohledávatelná knihovna.
-Až budeš mít první tisíc, pošli mi ten soubor a vyrenderuju ti to do stejné
-stránky jako `docs/knihovna.html`.
+a uvozovky v textu, a dá se z toho vygenerovat prohledávatelná knihovna:
+`python3 scripts/render.py` udělá `docs/soundbites.html`.
+
+**Kontrola:** `python3 scripts/merge.py --check` zvaliduje knihovnu. Chytí
+vymyšlené kombinace polí — ověřený řádek bez času, neověřený bez dohledávacího
+dotazu, stopáž přes deset sekund, duplicitní znění hlášky.
 
 **Volitelné:** chceš-li kulturní poznámky česky, přidej na konec promptu řádek
 `Write cultural_background and why_it_lands in Czech.`
+
+## Co umí skill navíc
+
+| | Tenhle prompt | Skill `/sber-hlasek` |
+|---|---|---|
+| Široká těžba | ano, sériově | ano, pět agentů paralelně na nepřekrývajících se územích |
+| Lov ke scénáři | ne | ano — scénář → beaty → cue sheet s náhradníky |
+| Ověření času | jen co najde hledáním | `scripts/oyez_timestamp.py` (přesné sekundy + mp3), `scripts/yt_timestamp.py` (titulky YouTube) |
+| Duplicity | na tobě | `scripts/merge.py`, i podle normalizovaného znění |
+| Schéma | popsané v promptu | vynucené validátorem, 25 klíčů |
 
 ---
 
@@ -95,7 +113,8 @@ cannot tell good rows from bad ones.
   "verification": "verified_transcript",
   "verification_note": "Timestamp from the description of the full-hearing upload.",
   "search_query": null,
-  "alt_sources": ["https://knowyourmeme.com/memes/series-of-tubes"]
+  "alt_sources": ["https://knowyourmeme.com/memes/series-of-tubes"],
+  "beat": null
 }
 ```
 

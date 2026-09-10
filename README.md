@@ -19,8 +19,10 @@ Formát: **animovaný whiteboard bez kreslící ruky, 8–10 minut, 1× týdně.
 | [docs/05-VIZUALNI-STYL.md](docs/05-VIZUALNI-STYL.md) | Paleta, tah, opakující se postava, thumbnail systém, struktura dílu |
 | [docs/06-ROZBOR-FORMATU.md](docs/06-ROZBOR-FORMATU.md) | Rozbor tří dílů referenčního pořadu s 18× rozptylem — co dělá dobře, co špatně, a osmibodový checklist pro každý díl |
 | [docs/07-METODIKA.md](docs/07-METODIKA.md) | Podle čeho se vybírá téma a titulek — pět filtrů, čtyři pravidla, data na 15 dílech a jejich limity |
+| [.claude/skills/sber-hlasek/](.claude/skills/sber-hlasek/SKILL.md) | **Skill `/sber-hlasek`** — dva režimy: široká těžba pěti paralelními agenty a lov ke scénáři. Schéma, zdroje a ověřovací recepty v `references/` |
+| [data/TERRITORIES.md](data/TERRITORIES.md) | Co je vytěžené a co si kdo drží. Čte se před spuštěním agentů, doplňuje po |
 | [prompts/SBER-HLASEK.md](prompts/SBER-HLASEK.md) | Prompt do samostatného chatu na průběžný sběr hlášek. Vynucuje časově ukotvený odkaz na audio, délku, kulturní kontext a licenci — bez nich se položka nezapisuje |
-| [data/soundbites.jsonl](data/soundbites.jsonl) | **Strojově čitelná knihovna soundbitů** — jeden JSON na řádek podle schématu z [prompts/SBER-HLASEK.md](prompts/SBER-HLASEK.md). Délka, licence, stav ověření a dohledávací dotaz u každé položky |
+| [data/soundbites.jsonl](data/soundbites.jsonl) | **Strojově čitelná knihovna soundbitů** — jeden JSON na řádek podle schématu v [references/schema.md](.claude/skills/sber-hlasek/references/schema.md). Délka, licence, stav ověření a dohledávací dotaz u každé položky |
 | [docs/soundbites.html](docs/soundbites.html) | **Prohlížečka soundbitů** — filtr podle seamu, licence, ověření a srozumitelnosti; generuje se z JSONL |
 | [docs/knihovna.html](docs/knihovna.html) | **Prohledatelná knihovna** — hlášky i videa v jedné stránce, filtr podle licence a hledání. [Publikovaná verze](https://claude.ai/code/artifact/7ee5ea1d-5326-4c94-8392-d8b44670518e) |
 
