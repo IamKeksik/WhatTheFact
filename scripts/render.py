@@ -23,9 +23,14 @@ SEAM={
  "advertisement":("REKLAMA","Reklamní slogany a kampaně","Slogany, které přeskočily z televize do běžné řeči. Pozor na ochranné známky, ne jen na autorská práva."),
  "speech":("PROJEV","Projevy z Bílého domu","Prezidentova část je federální dílo. U první dámy to jednoznačné není."),
  "local_news":("LOKÁLKA","Lokální zprávy — virály","Vše červené: záznam patří stanici. Text se přemluví, scéna překreslí."),
+ "radio":("RÁDIO","Rádio","Mluvené slovo z éteru — spoty, moderátoři, přenosy."),
+ "podcast":("PODCAST","Podcasty","Novější seam. Rozpoznatelnost bývá vysoká u úzkého publika."),
+ "court_audio":("SOUD","Soudní záznamy mimo SCOTUS","Nižší soudy, kde se úředně rozebírá nesmysl."),
+ "city_council":("RADNICE","Zastupitelstva","Pozor na soukromé osoby a pranky."),
+ "pd_film":("PD FILM","Starý film","Materiál, kde licenční otázka mizí věkem."),
  "other":("MISE","NASA a řízení letového provozu","Jediné dva řádky s reálně ukotveným časem v celé knihovně. Zvuk mise je federální PD; CVR z NTSB je uzavřený zdroj."),
 }
-ORDER=["film","tv","youtube_viral","advertisement","local_news","congressional_hearing","scotus_argument","prelinger_film","other","federal_psa","speech"]
+ORDER=["film","tv","youtube_viral","advertisement","local_news","radio","podcast","congressional_hearing","scotus_argument","court_audio","city_council","other","federal_psa","prelinger_film","pd_film","speech"]
 
 LIC={"green_federal_pd":("ok","ZELENÁ · FEDERÁLNÍ PD"),
      "green_pd_age":("ok","ZELENÁ · PD VĚKEM"),
@@ -103,7 +108,12 @@ def row_html(r):
 
 groups=collections.OrderedDict()
 for k in ORDER: groups[k]=[]
-for r in rows: groups[r["source_type"]].append(r)
+unknown=set()
+for r in rows:
+    st=r["source_type"]
+    if st not in groups: unknown.add(st); st="other"
+    groups[st].append(r)
+if unknown: print("POZOR: neznámý source_type zařazen do 'other':", ", ".join(sorted(unknown)))
 
 n_lic=collections.Counter(r["licence"] for r in rows)
 n_ver=sum(1 for r in rows if r["verification"]=="verified_transcript")
