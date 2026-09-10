@@ -11,7 +11,38 @@ Až budeš mít první tisíc, pošli mi ten soubor a vyrenderuju ti to do stejn
 stránky jako `docs/knihovna.html`.
 
 **Volitelné:** chceš-li kulturní poznámky česky, přidej na konec promptu řádek
-`Write cultural_background and why_it_lands in Czech.`
+`Write cultural_background and why_it_lands in Czech.` Poznámky jsou interní —
+do videa jde jen `quote`. Doporučení je nechat je anglicky: model posuzuje
+americkou kulturní rezonanci přesněji v angličtině a `topics` musí zůstat
+anglicky tak jako tak, protože podle nich knihovnu prohledáváš.
+
+## Když spouštíš podruhé a dál
+
+Sekce *Deduplication* uvnitř promptu platí **jen uvnitř jednoho běhu** — model si
+drží seznam vydaných `id` v kontextu. Nový chat začne od nuly a znovu ti vytěží
+žílu, kterou už máš. Napříč běhy to řeší dva skripty v `tools/`.
+
+**Před startem** vygeneruj seznam toho, co už máš, a přilep ho pod prompt:
+
+```bash
+python3 tools/prime.py hlasky.jsonl
+```
+
+Je to měkká pojistka. Ušetří ti dávky, nezaručí nic.
+
+**Po běhu** projeď soubor tvrdou pojistkou:
+
+```bash
+python3 tools/dedup.py hlasky.jsonl          # jen report, nic nepřepíše
+python3 tools/dedup.py hlasky.jsonl --write  # aplikuje, .bak zůstane
+```
+
+Klíčem není `id`, ale normalizovaný text citace — `id` je slug, který si model
+vymýšlí, takže tutéž hlášku najde příště pod jiným. Při shodě vyhrává řádek,
+který ten druhý `supersedes`, pak silnější `verification`, pak reálný
+`start_time`, pak změřená délka. Skript skončí kódem 1, když narazí na
+nerozparsovatelný řádek — ten se do výstupu nedostane, takže si rozbitou dávku
+nezamícháš do knihovny bez varování.
 
 ---
 
@@ -231,6 +262,12 @@ punctuation) that you have already emitted. Before emitting, check against it.
 If a line already exists but you found a **better** source — a real timestamp
 where there was none, PD where it was red — emit it again with
 `"supersedes": "<old id>"` and say why in `verification_note`.
+
+If an `ALREADY COLLECTED` list is pasted below this prompt, that list is your
+starting baseline: every id in it counts as emitted before your first batch. It
+is generated from the library on disk, so it outranks your own recollection of
+what you have produced. Territories it covers heavily are mined out — rotate
+past them.
 
 ## Rotate territories
 
