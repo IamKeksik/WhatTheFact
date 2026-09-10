@@ -224,6 +224,28 @@ registrovaná známka.
 
 ---
 
+## ⚠️ Známá slabina této verze
+
+Odkazy v tabulkách výše vedou na **kolekci nebo článek, ne na konkrétní místo
+v záznamu**. „CIA Reading Room" nebo „Prelinger kolekce" ti při střihu nepomůže —
+nevíš, ve kterém souboru a v jaké minuté ta hláška je.
+
+Tohle je startovní jádro pro orientaci v *kategoriích*, ne produkční nástroj.
+
+**Produkční verze se sbírá promptem v [prompts/SBER-HLASEK.md](../prompts/SBER-HLASEK.md).**
+Ten vynucuje schéma, ve kterém bez těchhle polí položka neexistuje:
+
+- `audio_url` s časovým ukotvením (`&t=317s`)
+- `start_time` a `duration_sec`
+- `context_before` / `context_after` — kde přesně řezat
+- `cultural_background` — co to referuje a jak je to známé
+- `self_contained` — jestli vtip funguje bez znalosti zdroje
+- `verification` — jestli je čas doložený, nebo jen odhad
+
+Výstup je JSONL, dá se z něj vygenerovat prohledávatelná stránka.
+
+---
+
 ## Jak knihovnu rozšiřovat
 
 Tohle je startovní jádro, ne konečný stav. Cutaway vrstva se musí plnit průběžně,
